@@ -33,7 +33,7 @@ namespace AnydeskEasyConnect
             try
             {
                 ConnectionString = CreateConnectionString();
-                string selectMaydonozAll = "SELECT SubeAdi,SubeAnydeskNumarasi,SubeAnydeskParolasi,BilgisayarYetkisi,OnlineStatus FROM Maydonoz";
+                string selectMaydonozAll = "SELECT SubeAdi,SubeAnydeskNumarasi,SubeAnydeskParolasi,BilgisayarYetkisi FROM Maydonoz";
                 SqlConnection sqlConnection;
                 sqlConnection = new SqlConnection(ConnectionString);
                 sqlConnection.Open();
@@ -48,11 +48,11 @@ namespace AnydeskEasyConnect
                             SubeAnydeskNumarasi = reader.IsDBNull(1) ? "null" : reader.GetString(1),
                             SubeAnydeskParolasi = reader.IsDBNull(2) ? "null" : reader.GetString(2),
                             BilgisayarYetkisi = reader.IsDBNull(3) ? "null" : reader.GetString(3),
-                            OnlineStatus = reader.IsDBNull(4) ? "null" : reader.GetString(4)
                         };
                         returnThese.Add(a);
                     }
                 }
+                sqlConnection.Close();
             }
             catch (Exception ex)
             {
@@ -66,7 +66,7 @@ namespace AnydeskEasyConnect
             try
             {
                 ConnectionString = CreateConnectionString();
-                string selectMaydonozAll = "SELECT SubeAdi,SubeAnydeskNumarasi,SubeAnydeskParolasi,BilgisayarYetkisi,OnlineStatus FROM Komagene";
+                string selectMaydonozAll = "SELECT SubeAdi,SubeAnydeskNumarasi,SubeAnydeskParolasi,BilgisayarYetkisi FROM Komagene";
                 SqlConnection sqlConnection;
                 sqlConnection = new SqlConnection(ConnectionString);
                 sqlConnection.Open();
@@ -81,7 +81,6 @@ namespace AnydeskEasyConnect
                             SubeAnydeskNumarasi = reader.IsDBNull(1) ? "null" : reader.GetString(1),
                             SubeAnydeskParolasi = reader.IsDBNull(2) ? "null" : reader.GetString(2),
                             BilgisayarYetkisi = reader.IsDBNull(3) ? "null" : reader.GetString(3),
-                            OnlineStatus = reader.IsDBNull(4) ? "null" : reader.GetString(4)
                         };
                         returnThese.Add(a);
                     }
@@ -100,7 +99,7 @@ namespace AnydeskEasyConnect
             try
             {
                 ConnectionString = CreateConnectionString();
-                string selectMaydonozAll = "SELECT SubeAdi,SubeAnydeskNumarasi,SubeAnydeskParolasi,BilgisayarYetkisi,OnlineStatus FROM Kofteci";
+                string selectMaydonozAll = "SELECT SubeAdi,SubeAnydeskNumarasi,SubeAnydeskParolasi,BilgisayarYetkisi FROM Kofteci";
                 SqlConnection sqlConnection;
                 sqlConnection = new SqlConnection(ConnectionString);
                 sqlConnection.Open();
@@ -115,7 +114,6 @@ namespace AnydeskEasyConnect
                             SubeAnydeskNumarasi = reader.IsDBNull(1) ? "null" : reader.GetString(1),
                             SubeAnydeskParolasi = reader.IsDBNull(2) ? "null" : reader.GetString(2),
                             BilgisayarYetkisi = reader.IsDBNull(3) ? "null" : reader.GetString(3),
-                            OnlineStatus = reader.IsDBNull(4) ? "null" : reader.GetString(4)
                         };
                         returnThese.Add(a);
                     }
@@ -133,7 +131,7 @@ namespace AnydeskEasyConnect
             try
             {
                 ConnectionString = CreateConnectionString();
-                string selectMaydonozAll = "SELECT SubeAdi,SubeAnydeskNumarasi,SubeAnydeskParolasi,BilgisayarYetkisi,OnlineStatus FROM Cajun";
+                string selectMaydonozAll = "SELECT SubeAdi,SubeAnydeskNumarasi,SubeAnydeskParolasi,BilgisayarYetkisi FROM Cajun";
                 SqlConnection sqlConnection;
                 sqlConnection = new SqlConnection(ConnectionString);
                 sqlConnection.Open();
@@ -148,7 +146,6 @@ namespace AnydeskEasyConnect
                             SubeAnydeskNumarasi = reader.IsDBNull(1) ? "null" : reader.GetString(1),
                             SubeAnydeskParolasi = reader.IsDBNull(2) ? "null" : reader.GetString(2),
                             BilgisayarYetkisi = reader.IsDBNull(3) ? "null" : reader.GetString(3),
-                            OnlineStatus = reader.IsDBNull(4) ? "null" : reader.GetString(4)
                         };
                         returnThese.Add(a);
                     }
@@ -166,7 +163,7 @@ namespace AnydeskEasyConnect
             try
             {
                 ConnectionString = CreateConnectionString();
-                string selectMaydonozAll = "SELECT SubeAdi,SubeAnydeskNumarasi,SubeAnydeskParolasi,BilgisayarYetkisi,OnlineStatus FROM Hot";
+                string selectMaydonozAll = "SELECT SubeAdi,SubeAnydeskNumarasi,SubeAnydeskParolasi,BilgisayarYetkisi FROM Hot";
                 SqlConnection sqlConnection;
                 sqlConnection = new SqlConnection(ConnectionString);
                 sqlConnection.Open();
@@ -181,7 +178,6 @@ namespace AnydeskEasyConnect
                             SubeAnydeskNumarasi = reader.IsDBNull(1) ? "null" : reader.GetString(1),
                             SubeAnydeskParolasi = reader.IsDBNull(2) ? "null" : reader.GetString(2),
                             BilgisayarYetkisi = reader.IsDBNull(3) ? "null" : reader.GetString(3),
-                            OnlineStatus = reader.IsDBNull(4) ? "null" : reader.GetString(4)
                         };
                         returnThese.Add(a);
                     }
@@ -199,7 +195,7 @@ namespace AnydeskEasyConnect
             try
             {
                 ConnectionString = CreateConnectionString();
-                string selectMaydonozAll = "SELECT SubeAdi,SubeAnydeskNumarasi,SubeAnydeskParolasi,BilgisayarYetkisi,OnlineStatus FROM Bereket";
+                string selectMaydonozAll = "SELECT SubeAdi,SubeAnydeskNumarasi,SubeAnydeskParolasi,BilgisayarYetkisi FROM Bereket";
                 SqlConnection sqlConnection;
                 sqlConnection = new SqlConnection(ConnectionString);
                 sqlConnection.Open();
@@ -214,7 +210,6 @@ namespace AnydeskEasyConnect
                             SubeAnydeskNumarasi = reader.IsDBNull(1) ? "null" : reader.GetString(1),
                             SubeAnydeskParolasi = reader.IsDBNull(2) ? "null" : reader.GetString(2),
                             BilgisayarYetkisi = reader.IsDBNull(3) ? "null" : reader.GetString(3),
-                            OnlineStatus = reader.IsDBNull(4) ? "null" : reader.GetString(4)
                         };
                         returnThese.Add(a);
                     }
@@ -232,7 +227,7 @@ namespace AnydeskEasyConnect
             try
             {
                 ConnectionString = CreateConnectionString();
-                string selectMaydonozAll = "SELECT SubeAdi,SubeAnydeskNumarasi,SubeAnydeskParolasi,BilgisayarYetkisi,OnlineStatus FROM Adile";
+                string selectMaydonozAll = "SELECT SubeAdi,SubeAnydeskNumarasi,SubeAnydeskParolasi,BilgisayarYetkisi FROM Adile";
                 SqlConnection sqlConnection;
                 sqlConnection = new SqlConnection(ConnectionString);
                 sqlConnection.Open();
@@ -247,7 +242,6 @@ namespace AnydeskEasyConnect
                             SubeAnydeskNumarasi = reader.IsDBNull(1) ? "null" : reader.GetString(1),
                             SubeAnydeskParolasi = reader.IsDBNull(2) ? "null" : reader.GetString(2),
                             BilgisayarYetkisi = reader.IsDBNull(3) ? "null" : reader.GetString(3),
-                            OnlineStatus = reader.IsDBNull(4) ? "null" : reader.GetString(4)
                         };
                         returnThese.Add(a);
                     }
@@ -265,7 +259,7 @@ namespace AnydeskEasyConnect
             try
             {
                 ConnectionString = CreateConnectionString();
-                string selectMaydonozAll = "SELECT SubeAdi,SubeAnydeskNumarasi,SubeAnydeskParolasi,BilgisayarYetkisi,OnlineStatus FROM Diger";
+                string selectMaydonozAll = "SELECT SubeAdi,SubeAnydeskNumarasi,SubeAnydeskParolasi,BilgisayarYetkisi FROM Diger";
                 SqlConnection sqlConnection;
                 sqlConnection = new SqlConnection(ConnectionString);
                 sqlConnection.Open();
@@ -280,7 +274,6 @@ namespace AnydeskEasyConnect
                             SubeAnydeskNumarasi = reader.IsDBNull(1) ? "null" : reader.GetString(1),
                             SubeAnydeskParolasi = reader.IsDBNull(2) ? "null" : reader.GetString(2),
                             BilgisayarYetkisi = reader.IsDBNull(3) ? "null" : reader.GetString(3),
-                            OnlineStatus = reader.IsDBNull(4) ? "null" : reader.GetString(4)
                         };
                         returnThese.Add(a);
                     }

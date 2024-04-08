@@ -42,11 +42,39 @@ namespace AnydeskEasyConnect
 
         private void KomageneDataGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0 && e.ColumnIndex == KomageneDataGrid.Columns["KomageneBaglanTusu"].Index)
+            if (e.RowIndex >= 0 && e.ColumnIndex == KomageneDataGrid.Columns["KomageneBaglanButonu"].Index)
             {
-                MessageBox.Show("Basarili " + e.RowIndex);
+                object anydeskNumarasi = KomageneDataGrid.Rows[e.RowIndex].Cells["SubeAnydeskNumarasi"].Value;
+                if (anydeskNumarasi != null)
+                {
+                    string anydeskConnectCommand = $"\"C:\\Program Files (x86)\\AnyDesk\\AnyDesk.exe\" {anydeskNumarasi}";
+                    System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo
+                    {
+                        FileName = "cmd.exe",
+                        Arguments = "/c " + anydeskConnectCommand,
+                        CreateNoWindow = true,
+                        UseShellExecute = false
+                    };
+                    System.Diagnostics.Process.Start(startInfo);
+                }
+            }
+            else if (e.RowIndex >= 0 && e.ColumnIndex == KomageneDataGrid.Columns["KomageneSifreyleBaglanButonu"].Index)
+            {
+                object anydeskNumarasi = KomageneDataGrid.Rows[e.RowIndex].Cells["SubeAnydeskNumarasi"].Value;
+                object anydeskParolasi = KomageneDataGrid.Rows[e.RowIndex].Cells["SubeAnydeskParolasi"].Value;
+                if (anydeskNumarasi != null) 
+                {
+                    string anydeskConnectCommand = $"echo {anydeskParolasi} | \"C:\\Program Files (x86)\\AnyDesk\\AnyDesk.exe\" {anydeskNumarasi} --with-password";
+                    System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo
+                    {
+                        FileName = "cmd.exe",
+                        Arguments = "/c " + anydeskConnectCommand,
+                        CreateNoWindow = true,
+                        UseShellExecute = false
+                    };
+                    System.Diagnostics.Process.Start(startInfo);
+                }
             }
         }
-
     }
 }

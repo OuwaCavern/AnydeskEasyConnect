@@ -31,6 +31,9 @@ namespace AnydeskEasyConnect
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainScreen));
             tabControl = new TabControl();
             MaydonozTab = new TabPage();
@@ -38,6 +41,8 @@ namespace AnydeskEasyConnect
             MaydonozBaglanTusu = new DataGridViewButtonColumn();
             KomageneTab = new TabPage();
             KomageneDataGrid = new DataGridView();
+            KomageneBaglanButonu = new DataGridViewButtonColumn();
+            KomageneSifreyleBaglanButonu = new DataGridViewButtonColumn();
             KofteciYusufTab = new TabPage();
             KofteciDataGrid = new DataGridView();
             CajunCornerTab = new TabPage();
@@ -51,7 +56,6 @@ namespace AnydeskEasyConnect
             DigerTab = new TabPage();
             DigerDataGrid = new DataGridView();
             icons = new ImageList(components);
-            KomageneBaglanTusu = new DataGridViewButtonColumn();
             tabControl.SuspendLayout();
             MaydonozTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)MaydonozDataGrid).BeginInit();
@@ -116,9 +120,14 @@ namespace AnydeskEasyConnect
             // 
             // MaydonozBaglanTusu
             // 
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            MaydonozBaglanTusu.DefaultCellStyle = dataGridViewCellStyle1;
             MaydonozBaglanTusu.HeaderText = "";
             MaydonozBaglanTusu.Name = "MaydonozBaglanTusu";
             MaydonozBaglanTusu.ReadOnly = true;
+            MaydonozBaglanTusu.Text = "BAĞLAN";
+            MaydonozBaglanTusu.UseColumnTextForButtonValue = true;
             // 
             // KomageneTab
             // 
@@ -139,7 +148,7 @@ namespace AnydeskEasyConnect
             KomageneDataGrid.ClipboardCopyMode = DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
             KomageneDataGrid.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
             KomageneDataGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            KomageneDataGrid.Columns.AddRange(new DataGridViewColumn[] { KomageneBaglanTusu });
+            KomageneDataGrid.Columns.AddRange(new DataGridViewColumn[] { KomageneBaglanButonu, KomageneSifreyleBaglanButonu });
             KomageneDataGrid.Dock = DockStyle.Bottom;
             KomageneDataGrid.Location = new Point(3, 3);
             KomageneDataGrid.Name = "KomageneDataGrid";
@@ -147,6 +156,30 @@ namespace AnydeskEasyConnect
             KomageneDataGrid.Size = new Size(786, 416);
             KomageneDataGrid.TabIndex = 0;
             KomageneDataGrid.CellContentClick += KomageneDataGrid_CellContentClick;
+            // 
+            // KomageneBaglanButonu
+            // 
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            KomageneBaglanButonu.DefaultCellStyle = dataGridViewCellStyle2;
+            KomageneBaglanButonu.HeaderText = "";
+            KomageneBaglanButonu.MinimumWidth = 51;
+            KomageneBaglanButonu.Name = "KomageneBaglanButonu";
+            KomageneBaglanButonu.ReadOnly = true;
+            KomageneBaglanButonu.Text = "BAĞLAN";
+            KomageneBaglanButonu.UseColumnTextForButtonValue = true;
+            KomageneBaglanButonu.Width = 51;
+            // 
+            // KomageneSifreyleBaglanButonu
+            // 
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            KomageneSifreyleBaglanButonu.DefaultCellStyle = dataGridViewCellStyle3;
+            KomageneSifreyleBaglanButonu.HeaderText = "";
+            KomageneSifreyleBaglanButonu.Name = "KomageneSifreyleBaglanButonu";
+            KomageneSifreyleBaglanButonu.Text = "ŞIFREYLE BAĞLAN";
+            KomageneSifreyleBaglanButonu.UseColumnTextForButtonValue = true;
+            KomageneSifreyleBaglanButonu.Width = 21;
             // 
             // KofteciYusufTab
             // 
@@ -282,15 +315,6 @@ namespace AnydeskEasyConnect
             icons.Images.SetKeyName(6, "k_red.ico");
             icons.Images.SetKeyName(7, "Mercan.ico");
             // 
-            // KomageneBaglanTusu
-            // 
-            KomageneBaglanTusu.HeaderText = "some";
-            KomageneBaglanTusu.Text = "BAĞLAN";
-            KomageneBaglanTusu.MinimumWidth = 51;
-            KomageneBaglanTusu.Name = "KomageneBaglanTusu";
-            KomageneBaglanTusu.ReadOnly = true;
-            KomageneBaglanTusu.Width = 63;
-            // 
             // MainScreen
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -341,6 +365,7 @@ namespace AnydeskEasyConnect
         private DataGridView AdileDataGrid;
         private DataGridView DigerDataGrid;
         private DataGridViewButtonColumn MaydonozBaglanTusu;
-        private DataGridViewButtonColumn KomageneBaglanTusu;
+        private DataGridViewButtonColumn KomageneBaglanButonu;
+        private DataGridViewButtonColumn KomageneSifreyleBaglanButonu;
     }
 }

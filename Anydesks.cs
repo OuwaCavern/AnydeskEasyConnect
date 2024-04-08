@@ -12,6 +12,5 @@ namespace AnydeskEasyConnect
         public string SubeAnydeskNumarasi { get; set; }
         public string SubeAnydeskParolasi { get; set; }
         public string BilgisayarYetkisi {  get; set; }
-        public string OnlineStatus { get; set; }
     }
 }
