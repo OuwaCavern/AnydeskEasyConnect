@@ -21,7 +21,7 @@ namespace AnydeskEasyConnect
             BindingSource AdileSultanBindingSource = new BindingSource();
             BindingSource DigerBindingSource = new BindingSource();
 
-            MaydonozBindingSource.DataSource = anydeskDAO.KofteciYusufAnydeskleriniGetir();
+            MaydonozBindingSource.DataSource = anydeskDAO.MaydonozAnydeskleriniGetir();
             KofteciYusufBindingSource.DataSource = anydeskDAO.KofteciYusufAnydeskleriniGetir();
             KomageneBindingSource.DataSource = anydeskDAO.KomageneAnydeskleriniGetir();
             CajunCornerBindingSource.DataSource = anydeskDAO.CajunCornerAnydeskleriniGetir();
@@ -39,5 +39,14 @@ namespace AnydeskEasyConnect
             AdileDataGrid.DataSource = AdileSultanBindingSource;
             DigerDataGrid.DataSource = DigerBindingSource;
         }
+
+        private void KomageneDataGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex == KomageneDataGrid.Columns["KomageneBaglanTusu"].Index)
+            {
+                MessageBox.Show("Basarili " + e.RowIndex);
+            }
+        }
+
     }
 }

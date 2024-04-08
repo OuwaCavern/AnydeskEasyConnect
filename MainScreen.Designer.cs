@@ -35,37 +35,39 @@ namespace AnydeskEasyConnect
             tabControl = new TabControl();
             MaydonozTab = new TabPage();
             MaydonozDataGrid = new DataGridView();
+            MaydonozBaglanTusu = new DataGridViewButtonColumn();
             KomageneTab = new TabPage();
-            KofteciYusufTab = new TabPage();
-            CajunCornerTab = new TabPage();
-            HotTab = new TabPage();
-            BereketTab = new TabPage();
-            AdileTab = new TabPage();
-            DigerTab = new TabPage();
-            icons = new ImageList(components);
             KomageneDataGrid = new DataGridView();
+            KofteciYusufTab = new TabPage();
             KofteciDataGrid = new DataGridView();
+            CajunCornerTab = new TabPage();
             CajunDataGrid = new DataGridView();
+            HotTab = new TabPage();
             HotDataGrid = new DataGridView();
+            BereketTab = new TabPage();
             BereketDataGrid = new DataGridView();
+            AdileTab = new TabPage();
             AdileDataGrid = new DataGridView();
+            DigerTab = new TabPage();
             DigerDataGrid = new DataGridView();
+            icons = new ImageList(components);
+            KomageneBaglanTusu = new DataGridViewButtonColumn();
             tabControl.SuspendLayout();
             MaydonozTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)MaydonozDataGrid).BeginInit();
             KomageneTab.SuspendLayout();
-            KofteciYusufTab.SuspendLayout();
-            CajunCornerTab.SuspendLayout();
-            HotTab.SuspendLayout();
-            BereketTab.SuspendLayout();
-            AdileTab.SuspendLayout();
-            DigerTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)KomageneDataGrid).BeginInit();
+            KofteciYusufTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)KofteciDataGrid).BeginInit();
+            CajunCornerTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)CajunDataGrid).BeginInit();
+            HotTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)HotDataGrid).BeginInit();
+            BereketTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)BereketDataGrid).BeginInit();
+            AdileTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)AdileDataGrid).BeginInit();
+            DigerTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)DigerDataGrid).BeginInit();
             SuspendLayout();
             // 
@@ -104,12 +106,19 @@ namespace AnydeskEasyConnect
             MaydonozDataGrid.AllowUserToAddRows = false;
             MaydonozDataGrid.AllowUserToDeleteRows = false;
             MaydonozDataGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            MaydonozDataGrid.Columns.AddRange(new DataGridViewColumn[] { MaydonozBaglanTusu });
             MaydonozDataGrid.Dock = DockStyle.Fill;
             MaydonozDataGrid.Location = new Point(3, 3);
             MaydonozDataGrid.Name = "MaydonozDataGrid";
             MaydonozDataGrid.ReadOnly = true;
             MaydonozDataGrid.Size = new Size(786, 416);
             MaydonozDataGrid.TabIndex = 0;
+            // 
+            // MaydonozBaglanTusu
+            // 
+            MaydonozBaglanTusu.HeaderText = "";
+            MaydonozBaglanTusu.Name = "MaydonozBaglanTusu";
+            MaydonozBaglanTusu.ReadOnly = true;
             // 
             // KomageneTab
             // 
@@ -123,6 +132,22 @@ namespace AnydeskEasyConnect
             KomageneTab.Text = "Komagene";
             KomageneTab.UseVisualStyleBackColor = true;
             // 
+            // KomageneDataGrid
+            // 
+            KomageneDataGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            KomageneDataGrid.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            KomageneDataGrid.ClipboardCopyMode = DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
+            KomageneDataGrid.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            KomageneDataGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            KomageneDataGrid.Columns.AddRange(new DataGridViewColumn[] { KomageneBaglanTusu });
+            KomageneDataGrid.Dock = DockStyle.Bottom;
+            KomageneDataGrid.Location = new Point(3, 3);
+            KomageneDataGrid.Name = "KomageneDataGrid";
+            KomageneDataGrid.RowHeadersVisible = false;
+            KomageneDataGrid.Size = new Size(786, 416);
+            KomageneDataGrid.TabIndex = 0;
+            KomageneDataGrid.CellContentClick += KomageneDataGrid_CellContentClick;
+            // 
             // KofteciYusufTab
             // 
             KofteciYusufTab.Controls.Add(KofteciDataGrid);
@@ -133,6 +158,15 @@ namespace AnydeskEasyConnect
             KofteciYusufTab.TabIndex = 2;
             KofteciYusufTab.Text = "Köfteci Yusuf";
             KofteciYusufTab.UseVisualStyleBackColor = true;
+            // 
+            // KofteciDataGrid
+            // 
+            KofteciDataGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            KofteciDataGrid.Dock = DockStyle.Fill;
+            KofteciDataGrid.Location = new Point(0, 0);
+            KofteciDataGrid.Name = "KofteciDataGrid";
+            KofteciDataGrid.Size = new Size(792, 422);
+            KofteciDataGrid.TabIndex = 0;
             // 
             // CajunCornerTab
             // 
@@ -145,6 +179,15 @@ namespace AnydeskEasyConnect
             CajunCornerTab.Text = "Cajun Corner";
             CajunCornerTab.UseVisualStyleBackColor = true;
             // 
+            // CajunDataGrid
+            // 
+            CajunDataGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            CajunDataGrid.Dock = DockStyle.Fill;
+            CajunDataGrid.Location = new Point(0, 0);
+            CajunDataGrid.Name = "CajunDataGrid";
+            CajunDataGrid.Size = new Size(792, 422);
+            CajunDataGrid.TabIndex = 0;
+            // 
             // HotTab
             // 
             HotTab.Controls.Add(HotDataGrid);
@@ -155,6 +198,15 @@ namespace AnydeskEasyConnect
             HotTab.TabIndex = 4;
             HotTab.Text = "Hot Döner";
             HotTab.UseVisualStyleBackColor = true;
+            // 
+            // HotDataGrid
+            // 
+            HotDataGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            HotDataGrid.Dock = DockStyle.Fill;
+            HotDataGrid.Location = new Point(0, 0);
+            HotDataGrid.Name = "HotDataGrid";
+            HotDataGrid.Size = new Size(792, 422);
+            HotDataGrid.TabIndex = 0;
             // 
             // BereketTab
             // 
@@ -167,6 +219,15 @@ namespace AnydeskEasyConnect
             BereketTab.Text = "Bereket Döner";
             BereketTab.UseVisualStyleBackColor = true;
             // 
+            // BereketDataGrid
+            // 
+            BereketDataGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            BereketDataGrid.Dock = DockStyle.Fill;
+            BereketDataGrid.Location = new Point(0, 0);
+            BereketDataGrid.Name = "BereketDataGrid";
+            BereketDataGrid.Size = new Size(792, 422);
+            BereketDataGrid.TabIndex = 0;
+            // 
             // AdileTab
             // 
             AdileTab.Controls.Add(AdileDataGrid);
@@ -178,6 +239,15 @@ namespace AnydeskEasyConnect
             AdileTab.Text = "Adile Sultan";
             AdileTab.UseVisualStyleBackColor = true;
             // 
+            // AdileDataGrid
+            // 
+            AdileDataGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            AdileDataGrid.Dock = DockStyle.Fill;
+            AdileDataGrid.Location = new Point(0, 0);
+            AdileDataGrid.Name = "AdileDataGrid";
+            AdileDataGrid.Size = new Size(792, 422);
+            AdileDataGrid.TabIndex = 0;
+            // 
             // DigerTab
             // 
             DigerTab.Controls.Add(DigerDataGrid);
@@ -188,6 +258,15 @@ namespace AnydeskEasyConnect
             DigerTab.TabIndex = 7;
             DigerTab.Text = "Diğer";
             DigerTab.UseVisualStyleBackColor = true;
+            // 
+            // DigerDataGrid
+            // 
+            DigerDataGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            DigerDataGrid.Dock = DockStyle.Fill;
+            DigerDataGrid.Location = new Point(0, 0);
+            DigerDataGrid.Name = "DigerDataGrid";
+            DigerDataGrid.Size = new Size(792, 422);
+            DigerDataGrid.TabIndex = 0;
             // 
             // icons
             // 
@@ -203,68 +282,14 @@ namespace AnydeskEasyConnect
             icons.Images.SetKeyName(6, "k_red.ico");
             icons.Images.SetKeyName(7, "Mercan.ico");
             // 
-            // KomageneDataGrid
+            // KomageneBaglanTusu
             // 
-            KomageneDataGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            KomageneDataGrid.Dock = DockStyle.Fill;
-            KomageneDataGrid.Location = new Point(3, 3);
-            KomageneDataGrid.Name = "KomageneDataGrid";
-            KomageneDataGrid.Size = new Size(786, 416);
-            KomageneDataGrid.TabIndex = 0;
-            // 
-            // KofteciDataGrid
-            // 
-            KofteciDataGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            KofteciDataGrid.Dock = DockStyle.Fill;
-            KofteciDataGrid.Location = new Point(0, 0);
-            KofteciDataGrid.Name = "KofteciDataGrid";
-            KofteciDataGrid.Size = new Size(792, 422);
-            KofteciDataGrid.TabIndex = 0;
-            // 
-            // CajunDataGrid
-            // 
-            CajunDataGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            CajunDataGrid.Dock = DockStyle.Fill;
-            CajunDataGrid.Location = new Point(0, 0);
-            CajunDataGrid.Name = "CajunDataGrid";
-            CajunDataGrid.Size = new Size(792, 422);
-            CajunDataGrid.TabIndex = 0;
-            // 
-            // HotDataGrid
-            // 
-            HotDataGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            HotDataGrid.Dock = DockStyle.Fill;
-            HotDataGrid.Location = new Point(0, 0);
-            HotDataGrid.Name = "HotDataGrid";
-            HotDataGrid.Size = new Size(792, 422);
-            HotDataGrid.TabIndex = 0;
-            // 
-            // BereketDataGrid
-            // 
-            BereketDataGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            BereketDataGrid.Dock = DockStyle.Fill;
-            BereketDataGrid.Location = new Point(0, 0);
-            BereketDataGrid.Name = "BereketDataGrid";
-            BereketDataGrid.Size = new Size(792, 422);
-            BereketDataGrid.TabIndex = 0;
-            // 
-            // AdileDataGrid
-            // 
-            AdileDataGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            AdileDataGrid.Dock = DockStyle.Fill;
-            AdileDataGrid.Location = new Point(0, 0);
-            AdileDataGrid.Name = "AdileDataGrid";
-            AdileDataGrid.Size = new Size(792, 422);
-            AdileDataGrid.TabIndex = 0;
-            // 
-            // DigerDataGrid
-            // 
-            DigerDataGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            DigerDataGrid.Dock = DockStyle.Fill;
-            DigerDataGrid.Location = new Point(0, 0);
-            DigerDataGrid.Name = "DigerDataGrid";
-            DigerDataGrid.Size = new Size(792, 422);
-            DigerDataGrid.TabIndex = 0;
+            KomageneBaglanTusu.HeaderText = "some";
+            KomageneBaglanTusu.Text = "BAĞLAN";
+            KomageneBaglanTusu.MinimumWidth = 51;
+            KomageneBaglanTusu.Name = "KomageneBaglanTusu";
+            KomageneBaglanTusu.ReadOnly = true;
+            KomageneBaglanTusu.Width = 63;
             // 
             // MainScreen
             // 
@@ -279,18 +304,18 @@ namespace AnydeskEasyConnect
             MaydonozTab.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)MaydonozDataGrid).EndInit();
             KomageneTab.ResumeLayout(false);
-            KofteciYusufTab.ResumeLayout(false);
-            CajunCornerTab.ResumeLayout(false);
-            HotTab.ResumeLayout(false);
-            BereketTab.ResumeLayout(false);
-            AdileTab.ResumeLayout(false);
-            DigerTab.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)KomageneDataGrid).EndInit();
+            KofteciYusufTab.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)KofteciDataGrid).EndInit();
+            CajunCornerTab.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)CajunDataGrid).EndInit();
+            HotTab.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)HotDataGrid).EndInit();
+            BereketTab.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)BereketDataGrid).EndInit();
+            AdileTab.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)AdileDataGrid).EndInit();
+            DigerTab.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)DigerDataGrid).EndInit();
             ResumeLayout(false);
         }
@@ -315,5 +340,7 @@ namespace AnydeskEasyConnect
         private DataGridView BereketDataGrid;
         private DataGridView AdileDataGrid;
         private DataGridView DigerDataGrid;
+        private DataGridViewButtonColumn MaydonozBaglanTusu;
+        private DataGridViewButtonColumn KomageneBaglanTusu;
     }
 }
