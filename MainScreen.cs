@@ -1,3 +1,4 @@
+using Microsoft.Identity.Client;
 using System.Drawing.Text;
 
 namespace AnydeskEasyConnect
@@ -39,8 +40,7 @@ namespace AnydeskEasyConnect
             AdileDataGrid.DataSource = AdileSultanBindingSource;
             DigerDataGrid.DataSource = DigerBindingSource;
         }
-
-        private void KomageneDataGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        internal void KomageneDataGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0 && e.ColumnIndex == KomageneDataGrid.Columns["KomageneBaglanButonu"].Index)
             {
@@ -75,11 +75,40 @@ namespace AnydeskEasyConnect
                     System.Diagnostics.Process.Start(startInfo);
                 }
             }
+            else if (e.RowIndex >= 0 && e.ColumnIndex == KomageneDataGrid.Columns["KomageneDuzenleButonu"].Index)
+            {
+                object bilgisayarYetkisi = KomageneDataGrid.Rows[e.RowIndex].Cells["BilgisayarYetkisi"].Value;
+                object subeAdi = KomageneDataGrid.Rows[e.RowIndex].Cells["SubeAdi"].Value;
+                object anydeskNumarasi = KomageneDataGrid.Rows[e.RowIndex].Cells["SubeAnydeskNumarasi"].Value;
+                object anydeskParolasi = KomageneDataGrid.Rows[e.RowIndex].Cells["SubeAnydeskParolasi"].Value;
+                if (anydeskNumarasi != null)
+                {
+                    string anydeskNumarasiString = "";
+                    string anydeskParolasiString = "";
+                    string subeAdiString = "";
+                    string bilgisayarYetkisiString = "";
+                    if (anydeskParolasi != null)
+                    {
+                        anydeskParolasiString = anydeskParolasi.ToString();
+                    }
+                    if (subeAdi != null)
+                    {
+                         subeAdiString = subeAdi.ToString();
+                    }
+                    if (bilgisayarYetkisi != null)
+                    {
+                        bilgisayarYetkisiString = bilgisayarYetkisi.ToString();
+                    }
+                    anydeskNumarasiString = anydeskNumarasi.ToString();
+                    EditExistingAnydeskKomagene editExistingAnydeskKomagene = new EditExistingAnydeskKomagene();
+                    editExistingAnydeskKomagene.SatirinBilgileriniAl(subeAdiString, anydeskNumarasiString, anydeskParolasiString, bilgisayarYetkisiString);
+                    editExistingAnydeskKomagene.Show();
+                }
+            }
         }
-
         private void AnydeskEkleButonu_Click(object sender, EventArgs e)
         {
-            AddNewAnydesk addNewAnydesk = new AddNewAnydesk();
+            AddNewAnydeskKomagene addNewAnydesk = new AddNewAnydeskKomagene();
             addNewAnydesk.Show();
         }
     }

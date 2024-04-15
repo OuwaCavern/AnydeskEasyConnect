@@ -127,7 +127,7 @@ namespace AnydeskEasyConnect
         }
         public List<Anydesks> CajunCornerAnydeskleriniGetir()
         {
-            List<Anydesks> returnThese = new List<Anydesks>();
+            List<Anydesks> returnThese = new();
             try
             {
                 ConnectionString = CreateConnectionString();
