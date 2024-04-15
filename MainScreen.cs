@@ -62,7 +62,7 @@ namespace AnydeskEasyConnect
             {
                 object anydeskNumarasi = KomageneDataGrid.Rows[e.RowIndex].Cells["SubeAnydeskNumarasi"].Value;
                 object anydeskParolasi = KomageneDataGrid.Rows[e.RowIndex].Cells["SubeAnydeskParolasi"].Value;
-                if (anydeskNumarasi != null) 
+                if (anydeskNumarasi != null)
                 {
                     string anydeskConnectCommand = $"echo {anydeskParolasi} | \"C:\\Program Files (x86)\\AnyDesk\\AnyDesk.exe\" {anydeskNumarasi} --with-password";
                     System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo
@@ -75,6 +75,12 @@ namespace AnydeskEasyConnect
                     System.Diagnostics.Process.Start(startInfo);
                 }
             }
+        }
+
+        private void AnydeskEkleButonu_Click(object sender, EventArgs e)
+        {
+            AddNewAnydesk addNewAnydesk = new AddNewAnydesk();
+            addNewAnydesk.Show();
         }
     }
 }

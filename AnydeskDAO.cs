@@ -6,11 +6,11 @@ using System.Windows.Forms;
 
 namespace AnydeskEasyConnect
 {
-    internal class AnydeskDAO
+    public class AnydeskDAO
     {
         private string ConnectionString = "";
 
-        static string CreateConnectionString()
+        public static string CreateConnectionString()
         {
             try
             {
