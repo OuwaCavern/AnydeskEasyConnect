@@ -44,9 +44,9 @@ namespace AnydeskEasyConnect
                     {
                         Anydesks a = new Anydesks
                         {
-                            SubeAdi = reader.IsDBNull(0) ? "null" : reader.GetString(0),
-                            SubeAnydeskNumarasi = reader.IsDBNull(1) ? "null" : reader.GetString(1),
-                            SubeAnydeskParolasi = reader.IsDBNull(2) ? "null" : reader.GetString(2),
+                            ŞubeninAdı = reader.IsDBNull(0) ? "null" : reader.GetString(0),
+                            ŞubeninAnydeskNumarası = reader.IsDBNull(1) ? "null" : reader.GetString(1),
+                            ŞubeninAnydeskParolası = reader.IsDBNull(2) ? "null" : reader.GetString(2),
                             BilgisayarYetkisi = reader.IsDBNull(3) ? "null" : reader.GetString(3),
                         };
                         returnThese.Add(a);
@@ -77,9 +77,9 @@ namespace AnydeskEasyConnect
                     {
                         Anydesks a = new Anydesks
                         {
-                            SubeAdi = reader.IsDBNull(0) ? "null" : reader.GetString(0),
-                            SubeAnydeskNumarasi = reader.IsDBNull(1) ? "null" : reader.GetString(1),
-                            SubeAnydeskParolasi = reader.IsDBNull(2) ? "null" : reader.GetString(2),
+                            ŞubeninAdı = reader.IsDBNull(0) ? "null" : reader.GetString(0),
+                            ŞubeninAnydeskNumarası = reader.IsDBNull(1) ? "null" : reader.GetString(1),
+                            ŞubeninAnydeskParolası = reader.IsDBNull(2) ? "null" : reader.GetString(2),
                             BilgisayarYetkisi = reader.IsDBNull(3) ? "null" : reader.GetString(3),
                         };
                         returnThese.Add(a);
@@ -110,9 +110,9 @@ namespace AnydeskEasyConnect
                     {
                         Anydesks a = new Anydesks
                         {
-                            SubeAdi = reader.IsDBNull(0) ? "null" : reader.GetString(0),
-                            SubeAnydeskNumarasi = reader.IsDBNull(1) ? "null" : reader.GetString(1),
-                            SubeAnydeskParolasi = reader.IsDBNull(2) ? "null" : reader.GetString(2),
+                            ŞubeninAdı = reader.IsDBNull(0) ? "null" : reader.GetString(0),
+                            ŞubeninAnydeskNumarası = reader.IsDBNull(1) ? "null" : reader.GetString(1),
+                            ŞubeninAnydeskParolası = reader.IsDBNull(2) ? "null" : reader.GetString(2),
                             BilgisayarYetkisi = reader.IsDBNull(3) ? "null" : reader.GetString(3),
                         };
                         returnThese.Add(a);
@@ -142,9 +142,9 @@ namespace AnydeskEasyConnect
                     {
                         Anydesks a = new Anydesks
                         {
-                            SubeAdi = reader.IsDBNull(0) ? "null" : reader.GetString(0),
-                            SubeAnydeskNumarasi = reader.IsDBNull(1) ? "null" : reader.GetString(1),
-                            SubeAnydeskParolasi = reader.IsDBNull(2) ? "null" : reader.GetString(2),
+                            ŞubeninAdı = reader.IsDBNull(0) ? "null" : reader.GetString(0),
+                            ŞubeninAnydeskNumarası = reader.IsDBNull(1) ? "null" : reader.GetString(1),
+                            ŞubeninAnydeskParolası = reader.IsDBNull(2) ? "null" : reader.GetString(2),
                             BilgisayarYetkisi = reader.IsDBNull(3) ? "null" : reader.GetString(3),
                         };
                         returnThese.Add(a);
@@ -174,9 +174,9 @@ namespace AnydeskEasyConnect
                     {
                         Anydesks a = new Anydesks
                         {
-                            SubeAdi = reader.IsDBNull(0) ? "null" : reader.GetString(0),
-                            SubeAnydeskNumarasi = reader.IsDBNull(1) ? "null" : reader.GetString(1),
-                            SubeAnydeskParolasi = reader.IsDBNull(2) ? "null" : reader.GetString(2),
+                            ŞubeninAdı = reader.IsDBNull(0) ? "null" : reader.GetString(0),
+                            ŞubeninAnydeskNumarası = reader.IsDBNull(1) ? "null" : reader.GetString(1),
+                            ŞubeninAnydeskParolası = reader.IsDBNull(2) ? "null" : reader.GetString(2),
                             BilgisayarYetkisi = reader.IsDBNull(3) ? "null" : reader.GetString(3),
                         };
                         returnThese.Add(a);
@@ -206,9 +206,9 @@ namespace AnydeskEasyConnect
                     {
                         Anydesks a = new Anydesks
                         {
-                            SubeAdi = reader.IsDBNull(0) ? "null" : reader.GetString(0),
-                            SubeAnydeskNumarasi = reader.IsDBNull(1) ? "null" : reader.GetString(1),
-                            SubeAnydeskParolasi = reader.IsDBNull(2) ? "null" : reader.GetString(2),
+                            ŞubeninAdı = reader.IsDBNull(0) ? "null" : reader.GetString(0),
+                            ŞubeninAnydeskNumarası = reader.IsDBNull(1) ? "null" : reader.GetString(1),
+                            ŞubeninAnydeskParolası = reader.IsDBNull(2) ? "null" : reader.GetString(2),
                             BilgisayarYetkisi = reader.IsDBNull(3) ? "null" : reader.GetString(3),
                         };
                         returnThese.Add(a);
@@ -238,9 +238,9 @@ namespace AnydeskEasyConnect
                     {
                         Anydesks a = new Anydesks
                         {
-                            SubeAdi = reader.IsDBNull(0) ? "null" : reader.GetString(0),
-                            SubeAnydeskNumarasi = reader.IsDBNull(1) ? "null" : reader.GetString(1),
-                            SubeAnydeskParolasi = reader.IsDBNull(2) ? "null" : reader.GetString(2),
+                            ŞubeninAdı = reader.IsDBNull(0) ? "null" : reader.GetString(0),
+                            ŞubeninAnydeskNumarası = reader.IsDBNull(1) ? "null" : reader.GetString(1),
+                            ŞubeninAnydeskParolası = reader.IsDBNull(2) ? "null" : reader.GetString(2),
                             BilgisayarYetkisi = reader.IsDBNull(3) ? "null" : reader.GetString(3),
                         };
                         returnThese.Add(a);
@@ -270,9 +270,9 @@ namespace AnydeskEasyConnect
                     {
                         Anydesks a = new Anydesks
                         {
-                            SubeAdi = reader.IsDBNull(0) ? "null" : reader.GetString(0),
-                            SubeAnydeskNumarasi = reader.IsDBNull(1) ? "null" : reader.GetString(1),
-                            SubeAnydeskParolasi = reader.IsDBNull(2) ? "null" : reader.GetString(2),
+                            ŞubeninAdı = reader.IsDBNull(0) ? "null" : reader.GetString(0),
+                            ŞubeninAnydeskNumarası = reader.IsDBNull(1) ? "null" : reader.GetString(1),
+                            ŞubeninAnydeskParolası = reader.IsDBNull(2) ? "null" : reader.GetString(2),
                             BilgisayarYetkisi = reader.IsDBNull(3) ? "null" : reader.GetString(3),
                         };
                         returnThese.Add(a);
@@ -287,3 +287,4 @@ namespace AnydeskEasyConnect
         }
     }
 }
+

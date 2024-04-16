@@ -8,9 +8,9 @@ namespace AnydeskEasyConnect
 {
     public class Anydesks
     {
-        public string? SubeAdi { get; set; }
-        public string? SubeAnydeskNumarasi { get; set; }
-        public string? SubeAnydeskParolasi { get; set; }
+        public string? ŞubeninAdı { get; set; }
+        public string? ŞubeninAnydeskNumarası { get; set; }
+        public string? ŞubeninAnydeskParolası { get; set; }
         public string? BilgisayarYetkisi {  get; set; }
     }
 }

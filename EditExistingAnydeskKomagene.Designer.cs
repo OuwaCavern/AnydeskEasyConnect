@@ -130,6 +130,8 @@
             // 
             // BilgisayarYetkisiComboBox
             // 
+            BilgisayarYetkisiComboBox.BackColor = SystemColors.Info;
+            BilgisayarYetkisiComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             BilgisayarYetkisiComboBox.FormattingEnabled = true;
             BilgisayarYetkisiComboBox.Items.AddRange(new object[] { "Ana Bilgisayar", "Garson Bilgisayar" });
             BilgisayarYetkisiComboBox.Location = new Point(3, 236);
@@ -141,8 +143,8 @@
             // KaydetButonu
             // 
             KaydetButonu.Font = new Font("Segoe UI", 13F);
-            KaydetButonu.Location = new Point(20, 282);
-            KaydetButonu.Margin = new Padding(20);
+            KaydetButonu.Location = new Point(135, 282);
+            KaydetButonu.Margin = new Padding(135, 20, 20, 20);
             KaydetButonu.Name = "KaydetButonu";
             KaydetButonu.Size = new Size(166, 37);
             KaydetButonu.TabIndex = 10;

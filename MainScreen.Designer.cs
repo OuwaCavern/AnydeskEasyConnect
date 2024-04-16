@@ -32,10 +32,10 @@ namespace AnydeskEasyConnect
         {
             components = new System.ComponentModel.Container();
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainScreen));
             DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainScreen));
             tabControl = new TabControl();
             MaydonozTab = new TabPage();
             MaydonozDataGrid = new DataGridView();
@@ -43,6 +43,10 @@ namespace AnydeskEasyConnect
             KomageneTab = new TabPage();
             AnydeskEkleButonu = new Button();
             KomageneDataGrid = new DataGridView();
+            KomageneBaglanButonu = new DataGridViewButtonColumn();
+            KomageneSifreyleBaglanButonu = new DataGridViewButtonColumn();
+            KomageneDuzenleButonu = new DataGridViewButtonColumn();
+            anydesksBindingSource1 = new BindingSource(components);
             KofteciYusufTab = new TabPage();
             KofteciDataGrid = new DataGridView();
             CajunCornerTab = new TabPage();
@@ -56,14 +60,13 @@ namespace AnydeskEasyConnect
             DigerTab = new TabPage();
             DigerDataGrid = new DataGridView();
             icons = new ImageList(components);
-            KomageneBaglanButonu = new DataGridViewButtonColumn();
-            KomageneSifreyleBaglanButonu = new DataGridViewButtonColumn();
-            KomageneDuzenleButonu = new DataGridViewButtonColumn();
+            anydesksBindingSource = new BindingSource(components);
             tabControl.SuspendLayout();
             MaydonozTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)MaydonozDataGrid).BeginInit();
             KomageneTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)KomageneDataGrid).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)anydesksBindingSource1).BeginInit();
             KofteciYusufTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)KofteciDataGrid).BeginInit();
             CajunCornerTab.SuspendLayout();
@@ -76,6 +79,7 @@ namespace AnydeskEasyConnect
             ((System.ComponentModel.ISupportInitialize)AdileDataGrid).BeginInit();
             DigerTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)DigerDataGrid).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)anydesksBindingSource).BeginInit();
             SuspendLayout();
             // 
             // tabControl
@@ -161,6 +165,7 @@ namespace AnydeskEasyConnect
             // 
             // KomageneDataGrid
             // 
+            KomageneDataGrid.AllowUserToAddRows = false;
             KomageneDataGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             KomageneDataGrid.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             KomageneDataGrid.ClipboardCopyMode = DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
@@ -170,10 +175,49 @@ namespace AnydeskEasyConnect
             KomageneDataGrid.Dock = DockStyle.Fill;
             KomageneDataGrid.Location = new Point(3, 3);
             KomageneDataGrid.Name = "KomageneDataGrid";
+            KomageneDataGrid.ReadOnly = true;
             KomageneDataGrid.RowHeadersVisible = false;
             KomageneDataGrid.Size = new Size(786, 416);
             KomageneDataGrid.TabIndex = 0;
             KomageneDataGrid.CellContentClick += KomageneDataGrid_CellContentClick;
+            // 
+            // KomageneBaglanButonu
+            // 
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            KomageneBaglanButonu.DefaultCellStyle = dataGridViewCellStyle2;
+            KomageneBaglanButonu.HeaderText = "";
+            KomageneBaglanButonu.MinimumWidth = 51;
+            KomageneBaglanButonu.Name = "KomageneBaglanButonu";
+            KomageneBaglanButonu.ReadOnly = true;
+            KomageneBaglanButonu.Text = "BAĞLAN";
+            KomageneBaglanButonu.UseColumnTextForButtonValue = true;
+            KomageneBaglanButonu.Width = 51;
+            // 
+            // KomageneSifreyleBaglanButonu
+            // 
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            KomageneSifreyleBaglanButonu.DefaultCellStyle = dataGridViewCellStyle3;
+            KomageneSifreyleBaglanButonu.HeaderText = "";
+            KomageneSifreyleBaglanButonu.Name = "KomageneSifreyleBaglanButonu";
+            KomageneSifreyleBaglanButonu.ReadOnly = true;
+            KomageneSifreyleBaglanButonu.Text = "ŞIFREYLE BAĞLAN";
+            KomageneSifreyleBaglanButonu.UseColumnTextForButtonValue = true;
+            KomageneSifreyleBaglanButonu.Width = 5;
+            // 
+            // KomageneDuzenleButonu
+            // 
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            KomageneDuzenleButonu.DefaultCellStyle = dataGridViewCellStyle4;
+            KomageneDuzenleButonu.HeaderText = "";
+            KomageneDuzenleButonu.Name = "KomageneDuzenleButonu";
+            KomageneDuzenleButonu.ReadOnly = true;
+            KomageneDuzenleButonu.Resizable = DataGridViewTriState.True;
+            KomageneDuzenleButonu.Text = "DÜZENLE";
+            KomageneDuzenleButonu.UseColumnTextForButtonValue = true;
+            KomageneDuzenleButonu.Width = 5;
             // 
             // KofteciYusufTab
             // 
@@ -309,40 +353,9 @@ namespace AnydeskEasyConnect
             icons.Images.SetKeyName(6, "k_red.ico");
             icons.Images.SetKeyName(7, "Mercan.ico");
             // 
-            // KomageneBaglanButonu
+            // anydesksBindingSource
             // 
-            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            KomageneBaglanButonu.DefaultCellStyle = dataGridViewCellStyle2;
-            KomageneBaglanButonu.HeaderText = "";
-            KomageneBaglanButonu.MinimumWidth = 51;
-            KomageneBaglanButonu.Name = "KomageneBaglanButonu";
-            KomageneBaglanButonu.ReadOnly = true;
-            KomageneBaglanButonu.Text = "BAĞLAN";
-            KomageneBaglanButonu.UseColumnTextForButtonValue = true;
-            KomageneBaglanButonu.Width = 51;
-            // 
-            // KomageneSifreyleBaglanButonu
-            // 
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            KomageneSifreyleBaglanButonu.DefaultCellStyle = dataGridViewCellStyle3;
-            KomageneSifreyleBaglanButonu.HeaderText = "";
-            KomageneSifreyleBaglanButonu.Name = "KomageneSifreyleBaglanButonu";
-            KomageneSifreyleBaglanButonu.Text = "ŞIFREYLE BAĞLAN";
-            KomageneSifreyleBaglanButonu.UseColumnTextForButtonValue = true;
-            KomageneSifreyleBaglanButonu.Width = 21;
-            // 
-            // KomageneDuzenleButonu
-            // 
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.Font = new Font("Microsoft Sans Serif", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            KomageneDuzenleButonu.DefaultCellStyle = dataGridViewCellStyle4;
-            KomageneDuzenleButonu.HeaderText = "";
-            KomageneDuzenleButonu.Name = "KomageneDuzenleButonu";
-            KomageneDuzenleButonu.Text = "DÜZENLE";
-            KomageneDuzenleButonu.UseColumnTextForButtonValue = true;
-            KomageneDuzenleButonu.Width = 21;
+            anydesksBindingSource.DataSource = typeof(Anydesks);
             // 
             // MainScreen
             // 
@@ -359,6 +372,7 @@ namespace AnydeskEasyConnect
             KomageneTab.ResumeLayout(false);
             KomageneTab.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)KomageneDataGrid).EndInit();
+            ((System.ComponentModel.ISupportInitialize)anydesksBindingSource1).EndInit();
             KofteciYusufTab.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)KofteciDataGrid).EndInit();
             CajunCornerTab.ResumeLayout(false);
@@ -371,6 +385,7 @@ namespace AnydeskEasyConnect
             ((System.ComponentModel.ISupportInitialize)AdileDataGrid).EndInit();
             DigerTab.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)DigerDataGrid).EndInit();
+            ((System.ComponentModel.ISupportInitialize)anydesksBindingSource).EndInit();
             ResumeLayout(false);
         }
 
@@ -396,8 +411,13 @@ namespace AnydeskEasyConnect
         private DataGridView DigerDataGrid;
         private DataGridViewButtonColumn MaydonozBaglanTusu;
         private Button AnydeskEkleButonu;
+        private BindingSource anydesksBindingSource;
         private DataGridViewButtonColumn KomageneBaglanButonu;
         private DataGridViewButtonColumn KomageneSifreyleBaglanButonu;
+        private DataGridViewTextBoxColumn subeAdiDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn subeAnydeskNumarasiDataGridViewTextBoxColumn;
+        private DataGridViewTextBoxColumn subeAnydeskParolasiDataGridViewTextBoxColumn;
         private DataGridViewButtonColumn KomageneDuzenleButonu;
+        private BindingSource anydesksBindingSource1;
     }
 }

@@ -21,6 +21,7 @@ namespace AnydeskEasyConnect
         string? duzenlenenAnydeskNumarasi;
         string? duzenlenenAnydeskParolasi;
         string? duzenlenenBilgisayarYetkisi;
+        string? eskiAnydeskNumarasi;
         internal void SatirinBilgileriniAl(string subeAdi, string anydeskNumarasi, string anydeskParolasi, string bilgisayarYetkisi)
         {
             AnydeskNumarasıGirdisi.Text = anydeskNumarasi;
@@ -32,6 +33,8 @@ namespace AnydeskEasyConnect
             duzenlenenAnydeskParolasi = anydeskParolasi;
             duzenlenenSubeAdi = subeAdi;
             duzenlenenBilgisayarYetkisi = bilgisayarYetkisi;
+
+            eskiAnydeskNumarasi = AnydeskNumarasıGirdisi.Text;
         }
 
         private void ŞubeAdıGirdisi_TextChanged(object sender, EventArgs e)
@@ -78,7 +81,7 @@ namespace AnydeskEasyConnect
                 MessageBox.Show("Bu Anydesk numarasına ait bir girdi bulundu. Lütfen numarayı yeniden kontrol edin veya uygulamada halihazırda bulunan girdiyi düzenleyin.");
                 return;
             }
-            string updateQuery = $"UPDATE Komagene SET SubeAdi={duzenlenenSubeAdi},SubeAnydeskNumarasi={duzenlenenAnydeskNumarasi},SubeAnydeskParolasi={duzenlenenAnydeskParolasi},BilgisayarYetkisi='{duzenlenenBilgisayarYetkisi}' WHERE SubeAnydeskNumarasi='{duzenlenenAnydeskNumarasi}'";
+            string updateQuery = $"UPDATE Komagene SET SubeAdi='{duzenlenenSubeAdi}',SubeAnydeskNumarasi='{duzenlenenAnydeskNumarasi}',SubeAnydeskParolasi='{duzenlenenAnydeskParolasi}',BilgisayarYetkisi='{duzenlenenBilgisayarYetkisi}' WHERE SubeAnydeskNumarasi='{eskiAnydeskNumarasi}'";
             SqlCommand insertCommand = new SqlCommand(updateQuery, sqlConnection);
             insertCommand.ExecuteNonQuery();
             sqlConnection.Close();
