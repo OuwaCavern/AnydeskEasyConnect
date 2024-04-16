@@ -77,6 +77,7 @@
             ŞubeAdıGirdisi.Name = "ŞubeAdıGirdisi";
             ŞubeAdıGirdisi.Size = new Size(425, 23);
             ŞubeAdıGirdisi.TabIndex = 1;
+            ŞubeAdıGirdisi.TextChanged += ŞubeAdıGirdisi_TextChanged;
             // 
             // NumaraGirinizLabel
             // 
@@ -95,6 +96,7 @@
             AnydeskNumarasıGirdisi.Name = "AnydeskNumarasıGirdisi";
             AnydeskNumarasıGirdisi.Size = new Size(425, 23);
             AnydeskNumarasıGirdisi.TabIndex = 3;
+            AnydeskNumarasıGirdisi.TextChanged += AnydeskNumarasıGirdisi_TextChanged;
             // 
             // ParolaGirinizLabel
             // 
@@ -113,6 +115,7 @@
             AnydeskParolasıGirdisi.Name = "AnydeskParolasıGirdisi";
             AnydeskParolasıGirdisi.Size = new Size(425, 23);
             AnydeskParolasıGirdisi.TabIndex = 5;
+            AnydeskParolasıGirdisi.TextChanged += AnydeskParolasıGirdisi_TextChanged;
             // 
             // BilgisayarYetkiLabel
             // 
@@ -134,6 +137,7 @@
             BilgisayarYetkisiComboBox.Name = "BilgisayarYetkisiComboBox";
             BilgisayarYetkisiComboBox.Size = new Size(121, 23);
             BilgisayarYetkisiComboBox.TabIndex = 8;
+            BilgisayarYetkisiComboBox.SelectedIndexChanged += BilgisayarYetkisiComboBox_SelectedIndexChanged;
             // 
             // KaydetButonu
             // 

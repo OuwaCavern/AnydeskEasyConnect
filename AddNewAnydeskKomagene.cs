@@ -22,19 +22,19 @@ namespace AnydeskEasyConnect
         internal string? subeAnydeskNumarasi;
         internal string? subeAnydeskParolasi;
         internal string? subeBilgisayarYetkisi;
-        public void ŞubeAdıGirdisi_TextChanged(object sender, EventArgs e)
+        private void ŞubeAdıGirdisi_TextChanged(object sender, EventArgs e)
         {
             subeAdi = ŞubeAdıGirdisi.Text;
         }
-        public void AnydeskNumarasıGirdisi_TextChanged(object sender, EventArgs e)
+        private void AnydeskNumarasıGirdisi_TextChanged(object sender, EventArgs e)
         {
             subeAnydeskNumarasi = AnydeskNumarasıGirdisi.Text;
         }
-        public void AnydeskParolasıGirdisi_TextChanged(object sender, EventArgs e)
+        private void AnydeskParolasıGirdisi_TextChanged(object sender, EventArgs e)
         {
             subeAnydeskParolasi = AnydeskParolasıGirdisi.Text;
         }
-        public void BilgisayarYetkisiComboBox_TextChanged(object sender, EventArgs e)
+        private void BilgisayarYetkisiComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             subeBilgisayarYetkisi = BilgisayarYetkisiComboBox.Text;
         }
@@ -46,19 +46,21 @@ namespace AnydeskEasyConnect
             sqlConnection = new SqlConnection(connectionString);
             sqlConnection.Open();
             // Check if an Anydesk entry with the same number already exists in the database
-            string duplicateAnydeskNo = "";
-            string checkAnydeskNoCommand = $"SELECT SubeAnydeskNumarasi FROM Komagene WHERE SubeAnydeskNumarasi='{subeAnydeskNumarasi}'";
+            string duplicateAnydeskNo = "null";
+            string duplicateSubeAdi = "null";
+            string checkAnydeskNoCommand = $"SELECT SubeAnydeskNumarasi,SubeAdi FROM Komagene WHERE SubeAnydeskNumarasi='{subeAnydeskNumarasi}'";
             SqlCommand sqlCheckAnydeskNoCommand = new SqlCommand(checkAnydeskNoCommand, sqlConnection);
             using (SqlDataReader reader = sqlCheckAnydeskNoCommand.ExecuteReader())
             {
                 while (reader.Read())
                 {
                     duplicateAnydeskNo = reader.GetString(0);
+                    duplicateSubeAdi = reader.GetString(1);
                 }
             }
             if (duplicateAnydeskNo != "null")
             {
-                MessageBox.Show("Bu Anydesk numarasına ait bir girdi bulundu. Lütfen numarayı yeniden kontrol edin veya uygulamada halihazırda bulunan girdiyi düzenleyin.");
+                MessageBox.Show($"Bu Anydesk numarasına ait bir girdi bulundu: {duplicateSubeAdi}. Lütfen numarayı yeniden kontrol edin veya uygulamada halihazırda bulunan girdiyi düzenleyin.");
                 return;
             }
 
@@ -70,13 +72,16 @@ namespace AnydeskEasyConnect
             {
                 while (reader.Read())
                 {
-                     countOfEntries = reader.GetInt32(0);
+                    countOfEntries = reader.GetInt32(0);
                 }
             }
             int assignedId = countOfEntries + 1;
             if (subeAnydeskNumarasi != null)
             {
-                string insertCommand = $"INSERT INTO Komagene (Id,SubeAdi,SubeAnydeskNumarasi,SubeAnydeskParolasi,BilgisayarYetkisi) VALUES ({assignedId},'{subeAdi}','{subeAnydeskNumarasi}','{subeAnydeskParolasi}','{subeBilgisayarYetkisi}')";
+                string insertQuery = $"INSERT INTO Komagene (Id,SubeAdi,SubeAnydeskNumarasi,SubeAnydeskParolasi,BilgisayarYetkisi) VALUES ({assignedId},'{subeAdi}','{subeAnydeskNumarasi}','{subeAnydeskParolasi}','{subeBilgisayarYetkisi}')";
+                SqlCommand insertCommand = new SqlCommand(insertQuery, sqlConnection);
+                insertCommand.ExecuteNonQuery();
+                this.Close();
             }
             else
             {

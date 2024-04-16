@@ -78,14 +78,17 @@ namespace AnydeskEasyConnect
             }
             if (duplicateAnydeskNo != "null")
             {
-                MessageBox.Show("Bu Anydesk numarasına ait bir girdi bulundu. Lütfen numarayı yeniden kontrol edin veya uygulamada halihazırda bulunan girdiyi düzenleyin.");
+                MessageBox.Show($"Bu Anydesk numarasına ait bir girdi bulundu: {duplicateSubeAdi}. Lütfen numarayı yeniden kontrol edin veya uygulamada halihazırda bulunan girdiyi düzenleyin.");
                 return;
             }
-            string updateQuery = $"UPDATE Komagene SET SubeAdi='{duzenlenenSubeAdi}',SubeAnydeskNumarasi='{duzenlenenAnydeskNumarasi}',SubeAnydeskParolasi='{duzenlenenAnydeskParolasi}',BilgisayarYetkisi='{duzenlenenBilgisayarYetkisi}' WHERE SubeAnydeskNumarasi='{eskiAnydeskNumarasi}'";
-            SqlCommand insertCommand = new SqlCommand(updateQuery, sqlConnection);
-            insertCommand.ExecuteNonQuery();
-            sqlConnection.Close();
-            
+            else
+            {
+                string updateQuery = $"UPDATE Komagene SET SubeAdi='{duzenlenenSubeAdi}',SubeAnydeskNumarasi='{duzenlenenAnydeskNumarasi}',SubeAnydeskParolasi='{duzenlenenAnydeskParolasi}',BilgisayarYetkisi='{duzenlenenBilgisayarYetkisi}' WHERE SubeAnydeskNumarasi='{eskiAnydeskNumarasi}'";
+                SqlCommand updateCommand = new SqlCommand(updateQuery, sqlConnection);
+                updateCommand.ExecuteNonQuery();
+                sqlConnection.Close();
+                this.Close();
+            }
         }
     }
 }
