@@ -9,36 +9,35 @@ namespace AnydeskEasyConnect
 {
     internal class SearchFunctionKomagene
     {
-        public SearchFunctionKomagene(string subeAdiylaAramaGirdisi, string connectionString) 
+        public List<Anydesks> AramaSonucunuGetir()
         {
-            string searchQuery = $"SELECT SubeAdi FROM KOMAGENE WHERE SubeAdi LIKE %{subeAdiylaAramaGirdisi}%";
-            try
+            public SearchFunctionKomagene(string subeAdiylaAramaGirdisi, string connectionString)
             {
-                SqlConnection sqlConnection;
-                sqlConnection = new SqlConnection(connectionString);
-                sqlConnection.Open();
-                SqlCommand sqlCommand = new SqlCommand(searchQuery, sqlConnection);
-                using (SqlDataReader reader = sqlCommand.ExecuteReader())
+                string searchQuery = $"SELECT SubeAdi FROM Komagene WHERE SubeAdi LIKE '%{subeAdiylaAramaGirdisi}%'";
+                try
                 {
-                    while (reader.Read())
+                    SqlConnection sqlConnection;
+                    sqlConnection = new SqlConnection(connectionString);
+                    sqlConnection.Open();
+                    SqlCommand sqlCommand = new SqlCommand(searchQuery, sqlConnection);
+                    using (SqlDataReader reader = sqlCommand.ExecuteReader())
                     {
-                        Anydesks a = new Anydesks
+                        while (reader.Read())
                         {
-                            ŞubeninAdı = reader.IsDBNull(0) ? "null" : reader.GetString(0),
-                            ŞubeninAnydeskNumarası = reader.IsDBNull(1) ? "null" : reader.GetString(1),
-                            ŞubeninAnydeskParolası = reader.IsDBNull(2) ? "null" : reader.GetString(2),
-                            BilgisayarYetkisi = reader.IsDBNull(3) ? "null" : reader.GetString(3),
-                        };
-                        returnThese.Add(a);
+                            Anydesks a = new Anydesks
+                            {
+                                ŞubeninAdı = reader.IsDBNull(0) ? "null" : reader.GetString(0),
+                            };
+                        }
                     }
+                    sqlConnection.Close();
                 }
-                sqlConnection.Close();
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            return returnThese;
         }
     }
 }
+
