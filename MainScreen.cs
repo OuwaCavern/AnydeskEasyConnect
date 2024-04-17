@@ -5,10 +5,41 @@ namespace AnydeskEasyConnect
 {
     public partial class MainScreen : Form
     {
+
         public MainScreen()
         {
             InitializeComponent();
             this.Load += MainScreen_Load;
+            this.Resize += MainScreen_Resiz;
+            formOriginalSize = this.Size;
+            recAnydeskEKleButonu = new Rectangle(KomageneAnydeskEkleButonu.Location, KomageneAnydeskEkleButonu.Size);
+            recKomageneDataGrid = new Rectangle(KomageneDataGrid.Location, KomageneDataGrid.Size);
+            recAraVeyYenileFlow = new Rectangle(KomageneAraVeYenileFlow.Location, KomageneAraVeYenileFlow.Size);
+        }
+        private Size formOriginalSize;
+        private Rectangle recAnydeskEKleButonu;
+        private Rectangle recKomageneDataGrid;
+        private Rectangle recAraVeyYenileFlow;
+
+        private void MainScreen_Resiz(object sender, EventArgs e)
+        {
+            ResizeControl(KomageneAnydeskEkleButonu, recAnydeskEKleButonu);
+            ResizeControl(KomageneDataGrid, recKomageneDataGrid);
+            ResizeControl(KomageneAraVeYenileFlow, recAraVeyYenileFlow);
+        }
+
+        private void ResizeControl(Control control, Rectangle rect)
+        {
+            float xRatio = (float)(this.Width) / (float)(formOriginalSize.Width);
+            float yRatio = (float)(this.Height) / (float)(formOriginalSize.Height);
+            int newX = (int)(rect.X * xRatio);
+            int newY = (int)(rect.Y * yRatio);
+
+            int newWidth = (int)(rect.Width * xRatio);
+            int newHeight = (int)(rect.Height * yRatio);
+
+            control.Location = new Point(newX, newY);
+            control.Size = new Size(newWidth, newHeight);
         }
         private void MainScreen_Load(object sender, EventArgs e)
         {
@@ -83,7 +114,6 @@ namespace AnydeskEasyConnect
                 object anydeskParolasi = KomageneDataGrid.Rows[e.RowIndex].Cells["ŞubeninAnydeskParolası"].Value;
                 if (anydeskNumarasi != null)
                 {
-                    string anydeskNumarasiString = "";
                     string anydeskParolasiString = "";
                     string subeAdiString = "";
                     string bilgisayarYetkisiString = "";
@@ -93,23 +123,35 @@ namespace AnydeskEasyConnect
                     }
                     if (subeAdi != null)
                     {
-                         subeAdiString = subeAdi.ToString();
+                        subeAdiString = subeAdi.ToString();
                     }
                     if (bilgisayarYetkisi != null)
                     {
                         bilgisayarYetkisiString = bilgisayarYetkisi.ToString();
                     }
-                    anydeskNumarasiString = anydeskNumarasi.ToString();
+                    string anydeskNumarasiString = anydeskNumarasi.ToString();
                     EditExistingAnydeskKomagene editExistingAnydeskKomagene = new EditExistingAnydeskKomagene();
                     editExistingAnydeskKomagene.SatirinBilgileriniAl(subeAdiString, anydeskNumarasiString, anydeskParolasiString, bilgisayarYetkisiString);
                     editExistingAnydeskKomagene.Show();
                 }
             }
         }
-        private void AnydeskEkleButonu_Click(object sender, EventArgs e)
+        private void KomageneAnydeskEkleButonu_Click(object sender, EventArgs e)
         {
             AddNewAnydeskKomagene addNewAnydesk = new AddNewAnydeskKomagene();
             addNewAnydesk.Show();
+        }
+
+        private void KomageneYenilemeButonu_Click(object sender, EventArgs e)
+        {
+            MainScreen_Load(sender, e);
+            KomageneDataGrid.Refresh();
+        }
+
+        string? subeAdiylaAramaGirdisi;
+        private void KomageneSubeAdiTextBox_TextChanged(object sender, EventArgs e)
+        {
+            subeAdiylaAramaGirdisi = KomageneSubeAdiTextBox.Text;
         }
     }
 }

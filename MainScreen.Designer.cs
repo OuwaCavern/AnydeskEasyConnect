@@ -42,15 +42,15 @@ namespace AnydeskEasyConnect
             MaydonozBaglanTusu = new DataGridViewButtonColumn();
             KomageneTab = new TabPage();
             KomageneMainFlowLayout = new FlowLayoutPanel();
-            AraVeYenileFlow = new FlowLayoutPanel();
-            SubeAdiTextBox = new TextBox();
-            AramaButonu = new Button();
-            YenilemeButonu = new Button();
+            KomageneAraVeYenileFlow = new FlowLayoutPanel();
+            KomageneSubeAdiTextBox = new TextBox();
+            KomageneAramaButonu = new Button();
+            KomageneYenilemeButonu = new Button();
             KomageneDataGrid = new DataGridView();
             KomageneBaglanButonu = new DataGridViewButtonColumn();
             KomageneSifreyleBaglanButonu = new DataGridViewButtonColumn();
             KomageneDuzenleButonu = new DataGridViewButtonColumn();
-            AnydeskEkleButonu = new Button();
+            KomageneAnydeskEkleButonu = new Button();
             KofteciYusufTab = new TabPage();
             KofteciDataGrid = new DataGridView();
             CajunCornerTab = new TabPage();
@@ -69,7 +69,7 @@ namespace AnydeskEasyConnect
             ((System.ComponentModel.ISupportInitialize)MaydonozDataGrid).BeginInit();
             KomageneTab.SuspendLayout();
             KomageneMainFlowLayout.SuspendLayout();
-            AraVeYenileFlow.SuspendLayout();
+            KomageneAraVeYenileFlow.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)KomageneDataGrid).BeginInit();
             KofteciYusufTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)KofteciDataGrid).BeginInit();
@@ -154,75 +154,77 @@ namespace AnydeskEasyConnect
             // KomageneMainFlowLayout
             // 
             KomageneMainFlowLayout.AutoSize = true;
-            KomageneMainFlowLayout.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            KomageneMainFlowLayout.Controls.Add(AraVeYenileFlow);
+            KomageneMainFlowLayout.Controls.Add(KomageneAraVeYenileFlow);
             KomageneMainFlowLayout.Controls.Add(KomageneDataGrid);
-            KomageneMainFlowLayout.Controls.Add(AnydeskEkleButonu);
+            KomageneMainFlowLayout.Controls.Add(KomageneAnydeskEkleButonu);
             KomageneMainFlowLayout.Dock = DockStyle.Fill;
             KomageneMainFlowLayout.FlowDirection = FlowDirection.TopDown;
             KomageneMainFlowLayout.Location = new Point(3, 3);
+            KomageneMainFlowLayout.MaximumSize = new Size(817, 417);
+            KomageneMainFlowLayout.MinimumSize = new Size(1200, 700);
             KomageneMainFlowLayout.Name = "KomageneMainFlowLayout";
-            KomageneMainFlowLayout.Size = new Size(811, 421);
+            KomageneMainFlowLayout.Size = new Size(1200, 700);
             KomageneMainFlowLayout.TabIndex = 3;
             // 
-            // AraVeYenileFlow
+            // KomageneAraVeYenileFlow
             // 
-            AraVeYenileFlow.AutoSize = true;
-            AraVeYenileFlow.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            AraVeYenileFlow.Controls.Add(SubeAdiTextBox);
-            AraVeYenileFlow.Controls.Add(AramaButonu);
-            AraVeYenileFlow.Controls.Add(YenilemeButonu);
-            AraVeYenileFlow.Dock = DockStyle.Fill;
-            AraVeYenileFlow.Location = new Point(3, 3);
-            AraVeYenileFlow.Name = "AraVeYenileFlow";
-            AraVeYenileFlow.Size = new Size(811, 31);
-            AraVeYenileFlow.TabIndex = 3;
+            KomageneAraVeYenileFlow.AutoSize = true;
+            KomageneAraVeYenileFlow.Controls.Add(KomageneSubeAdiTextBox);
+            KomageneAraVeYenileFlow.Controls.Add(KomageneAramaButonu);
+            KomageneAraVeYenileFlow.Controls.Add(KomageneYenilemeButonu);
+            KomageneAraVeYenileFlow.Dock = DockStyle.Top;
+            KomageneAraVeYenileFlow.Location = new Point(3, 3);
+            KomageneAraVeYenileFlow.Name = "KomageneAraVeYenileFlow";
+            KomageneAraVeYenileFlow.Size = new Size(810, 31);
+            KomageneAraVeYenileFlow.TabIndex = 3;
             // 
-            // SubeAdiTextBox
+            // KomageneSubeAdiTextBox
             // 
-            SubeAdiTextBox.Dock = DockStyle.Left;
-            SubeAdiTextBox.Location = new Point(3, 3);
-            SubeAdiTextBox.Name = "SubeAdiTextBox";
-            SubeAdiTextBox.PlaceholderText = "Buraya Şube Adını Giriniz (Wildcard Kullanabilirsiniz)";
-            SubeAdiTextBox.Size = new Size(449, 23);
-            SubeAdiTextBox.TabIndex = 0;
+            KomageneSubeAdiTextBox.Dock = DockStyle.Left;
+            KomageneSubeAdiTextBox.Location = new Point(3, 3);
+            KomageneSubeAdiTextBox.Name = "KomageneSubeAdiTextBox";
+            KomageneSubeAdiTextBox.PlaceholderText = "Buraya Şube Adını Giriniz (Wildcard Kullanabilirsiniz)";
+            KomageneSubeAdiTextBox.Size = new Size(449, 23);
+            KomageneSubeAdiTextBox.TabIndex = 0;
+            KomageneSubeAdiTextBox.TextChanged += KomageneSubeAdiTextBox_TextChanged;
             // 
-            // AramaButonu
+            // KomageneAramaButonu
             // 
-            AramaButonu.AutoSize = true;
-            AramaButonu.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            AramaButonu.Dock = DockStyle.Fill;
-            AramaButonu.Location = new Point(458, 3);
-            AramaButonu.MinimumSize = new Size(100, 25);
-            AramaButonu.Name = "AramaButonu";
-            AramaButonu.Size = new Size(100, 25);
-            AramaButonu.TabIndex = 1;
-            AramaButonu.Text = "Ara";
-            AramaButonu.UseVisualStyleBackColor = true;
+            KomageneAramaButonu.AutoSize = true;
+            KomageneAramaButonu.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            KomageneAramaButonu.Dock = DockStyle.Fill;
+            KomageneAramaButonu.Location = new Point(458, 3);
+            KomageneAramaButonu.MinimumSize = new Size(100, 25);
+            KomageneAramaButonu.Name = "KomageneAramaButonu";
+            KomageneAramaButonu.Size = new Size(100, 25);
+            KomageneAramaButonu.TabIndex = 1;
+            KomageneAramaButonu.Text = "Ara";
+            KomageneAramaButonu.UseVisualStyleBackColor = true;
             // 
-            // YenilemeButonu
+            // KomageneYenilemeButonu
             // 
-            YenilemeButonu.AutoSize = true;
-            YenilemeButonu.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            YenilemeButonu.Dock = DockStyle.Right;
-            YenilemeButonu.Location = new Point(564, 3);
-            YenilemeButonu.MinimumSize = new Size(100, 25);
-            YenilemeButonu.Name = "YenilemeButonu";
-            YenilemeButonu.Size = new Size(100, 25);
-            YenilemeButonu.TabIndex = 2;
-            YenilemeButonu.Text = "Yenile (F5)";
-            YenilemeButonu.UseVisualStyleBackColor = true;
+            KomageneYenilemeButonu.AutoSize = true;
+            KomageneYenilemeButonu.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            KomageneYenilemeButonu.Dock = DockStyle.Right;
+            KomageneYenilemeButonu.Location = new Point(564, 3);
+            KomageneYenilemeButonu.MinimumSize = new Size(100, 25);
+            KomageneYenilemeButonu.Name = "KomageneYenilemeButonu";
+            KomageneYenilemeButonu.Size = new Size(100, 25);
+            KomageneYenilemeButonu.TabIndex = 2;
+            KomageneYenilemeButonu.Text = "Yenile (F5)";
+            KomageneYenilemeButonu.UseVisualStyleBackColor = true;
+            KomageneYenilemeButonu.Click += KomageneYenilemeButonu_Click;
             // 
             // KomageneDataGrid
             // 
             KomageneDataGrid.AllowUserToAddRows = false;
-            KomageneDataGrid.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
             KomageneDataGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             KomageneDataGrid.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             KomageneDataGrid.ClipboardCopyMode = DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
             KomageneDataGrid.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
             KomageneDataGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             KomageneDataGrid.Columns.AddRange(new DataGridViewColumn[] { KomageneBaglanButonu, KomageneSifreyleBaglanButonu, KomageneDuzenleButonu });
+            KomageneDataGrid.Dock = DockStyle.Fill;
             KomageneDataGrid.Location = new Point(3, 40);
             KomageneDataGrid.Name = "KomageneDataGrid";
             KomageneDataGrid.ReadOnly = true;
@@ -233,8 +235,9 @@ namespace AnydeskEasyConnect
             KomageneDataGrid.ShowCellToolTips = false;
             KomageneDataGrid.ShowEditingIcon = false;
             KomageneDataGrid.ShowRowErrors = false;
-            KomageneDataGrid.Size = new Size(811, 340);
+            KomageneDataGrid.Size = new Size(810, 340);
             KomageneDataGrid.TabIndex = 5;
+            KomageneDataGrid.CellContentClick += KomageneDataGrid_CellContentClick;
             // 
             // KomageneBaglanButonu
             // 
@@ -274,18 +277,18 @@ namespace AnydeskEasyConnect
             KomageneDuzenleButonu.UseColumnTextForButtonValue = true;
             KomageneDuzenleButonu.Width = 5;
             // 
-            // AnydeskEkleButonu
+            // KomageneAnydeskEkleButonu
             // 
-            AnydeskEkleButonu.AutoSize = true;
-            AnydeskEkleButonu.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            AnydeskEkleButonu.Dock = DockStyle.Fill;
-            AnydeskEkleButonu.Font = new Font("Verdana", 11F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            AnydeskEkleButonu.Location = new Point(3, 386);
-            AnydeskEkleButonu.Name = "AnydeskEkleButonu";
-            AnydeskEkleButonu.Size = new Size(811, 28);
-            AnydeskEkleButonu.TabIndex = 6;
-            AnydeskEkleButonu.Text = "Yeni Anydesk Ekle";
-            AnydeskEkleButonu.UseVisualStyleBackColor = true;
+            KomageneAnydeskEkleButonu.AutoSize = true;
+            KomageneAnydeskEkleButonu.Dock = DockStyle.Fill;
+            KomageneAnydeskEkleButonu.Font = new Font("Verdana", 11F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            KomageneAnydeskEkleButonu.Location = new Point(3, 386);
+            KomageneAnydeskEkleButonu.Name = "KomageneAnydeskEkleButonu";
+            KomageneAnydeskEkleButonu.Size = new Size(810, 28);
+            KomageneAnydeskEkleButonu.TabIndex = 6;
+            KomageneAnydeskEkleButonu.Text = "Yeni Anydesk Ekle";
+            KomageneAnydeskEkleButonu.UseVisualStyleBackColor = true;
+            KomageneAnydeskEkleButonu.Click += KomageneAnydeskEkleButonu_Click;
             // 
             // KofteciYusufTab
             // 
@@ -437,8 +440,8 @@ namespace AnydeskEasyConnect
             KomageneTab.PerformLayout();
             KomageneMainFlowLayout.ResumeLayout(false);
             KomageneMainFlowLayout.PerformLayout();
-            AraVeYenileFlow.ResumeLayout(false);
-            AraVeYenileFlow.PerformLayout();
+            KomageneAraVeYenileFlow.ResumeLayout(false);
+            KomageneAraVeYenileFlow.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)KomageneDataGrid).EndInit();
             KofteciYusufTab.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)KofteciDataGrid).EndInit();
@@ -479,14 +482,14 @@ namespace AnydeskEasyConnect
         private DataGridViewTextBoxColumn subeAnydeskNumarasiDataGridViewTextBoxColumn;
         private DataGridViewTextBoxColumn subeAnydeskParolasiDataGridViewTextBoxColumn;
         private FlowLayoutPanel KomageneMainFlowLayout;
-        private FlowLayoutPanel AraVeYenileFlow;
-        private TextBox SubeAdiTextBox;
-        private Button AramaButonu;
-        private Button YenilemeButonu;
+        private FlowLayoutPanel KomageneAraVeYenileFlow;
+        private TextBox KomageneSubeAdiTextBox;
+        private Button KomageneAramaButonu;
+        private Button KomageneYenilemeButonu;
         private DataGridView KomageneDataGrid;
         private DataGridViewButtonColumn KomageneBaglanButonu;
         private DataGridViewButtonColumn KomageneSifreyleBaglanButonu;
         private DataGridViewButtonColumn KomageneDuzenleButonu;
-        private Button AnydeskEkleButonu;
+        private Button KomageneAnydeskEkleButonu;
     }
 }

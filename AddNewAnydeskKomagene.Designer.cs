@@ -132,7 +132,7 @@
             // 
             BilgisayarYetkisiComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             BilgisayarYetkisiComboBox.FormattingEnabled = true;
-            BilgisayarYetkisiComboBox.Items.AddRange(new object[] { "Ana Bilgisayar", "Garson Bilgisayar" });
+            BilgisayarYetkisiComboBox.Items.AddRange(new object[] { "Ana Bilgisayar", "Garson Bilgisayar", "Belirtilmedi" });
             BilgisayarYetkisiComboBox.Location = new Point(3, 236);
             BilgisayarYetkisiComboBox.Name = "BilgisayarYetkisiComboBox";
             BilgisayarYetkisiComboBox.Size = new Size(121, 23);
