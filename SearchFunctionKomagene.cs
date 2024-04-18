@@ -9,15 +9,17 @@ namespace AnydeskEasyConnect
 {
     internal class SearchFunctionKomagene
     {
-        internal void BindSearchData(DataGridView KomageneDataGrid)
+        internal static void BindSearchData(DataGridView KomageneDataGrid)
         {
-            BindingSource KomageneBindingSource = new BindingSource();
-            KomageneBindingSource.DataSource = AramaSonucunuGetir(MainScreen.subeAdiylaAramaGirdisi, AnydeskDAO.CreateConnectionString());
+            BindingSource KomageneBindingSource = new()
+            {
+                DataSource = AramaSonucunuGetir(MainScreen.subeAdiylaAramaGirdisi, AnydeskDAO.CreateConnectionString())
+            };
             KomageneDataGrid.DataSource = KomageneBindingSource;
         }
-        private List<Anydesks> AramaSonucunuGetir(string subeAdiylaAramaGirdisi, string connectionString)
+        private static List<Anydesks> AramaSonucunuGetir(string subeAdiylaAramaGirdisi, string connectionString)
         {
-            List<Anydesks> returnThese = new List<Anydesks>();
+            List<Anydesks> returnThese = [];
             string searchQuery = $"SELECT SubeAdi,SubeAnydeskNumarasi,SubeAnydeskParolasi,BilgisayarYetkisi FROM Komagene WHERE SubeAdi LIKE '%{subeAdiylaAramaGirdisi}%'";
             try
             {

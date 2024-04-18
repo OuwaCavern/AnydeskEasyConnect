@@ -479,9 +479,6 @@ namespace AnydeskEasyConnect
         private DataGridView AdileDataGrid;
         private DataGridView DigerDataGrid;
         private DataGridViewButtonColumn MaydonozBaglanTusu;
-        private DataGridViewTextBoxColumn subeAdiDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn subeAnydeskNumarasiDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn subeAnydeskParolasiDataGridViewTextBoxColumn;
         private FlowLayoutPanel KomageneMainFlowLayout;
         private FlowLayoutPanel KomageneAraVeYenileFlow;
         private TextBox KomageneSubeAdiTextBox;

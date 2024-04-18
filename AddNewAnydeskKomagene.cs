@@ -76,6 +76,26 @@ namespace AnydeskEasyConnect
                 }
             }
             int assignedId = countOfEntries + 1;
+            subeAdi = subeAdi switch
+            {
+                null => "null",
+                _ => subeAdi.Trim(),
+            };
+            subeAnydeskNumarasi = subeAnydeskNumarasi switch
+            {
+                null => "null",
+                _ => subeAnydeskNumarasi.Trim(),
+            };
+            subeAnydeskParolasi = subeAnydeskParolasi switch
+            {
+                null => "null",
+                _ => subeAnydeskParolasi.Trim(),
+            };
+            subeBilgisayarYetkisi = subeBilgisayarYetkisi switch
+            {
+                null => "null",
+                _ => subeBilgisayarYetkisi.Trim(),
+            };
             if (subeAnydeskNumarasi != null)
             {
                 string insertQuery = $"INSERT INTO Komagene (Id,SubeAdi,SubeAnydeskNumarasi,SubeAnydeskParolasi,BilgisayarYetkisi) VALUES ({assignedId},'{subeAdi}','{subeAnydeskNumarasi}','{subeAnydeskParolasi}','{subeBilgisayarYetkisi}')";

@@ -96,7 +96,7 @@ namespace AnydeskEasyConnect
                 if (anydeskNumarasi != null)
                 {
                     string anydeskConnectCommand = $"echo {anydeskParolasi} | \"C:\\Program Files (x86)\\AnyDesk\\AnyDesk.exe\" {anydeskNumarasi} --with-password";
-                    System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo
+                    System.Diagnostics.ProcessStartInfo startInfo = new()
                     {
                         FileName = "cmd.exe",
                         Arguments = "/c " + anydeskConnectCommand,
@@ -156,8 +156,7 @@ namespace AnydeskEasyConnect
 
         private void KomageneAramaButonu_Click(object sender, EventArgs e)
         {
-            SearchFunctionKomagene searchFunctionKomagene = new();
-            searchFunctionKomagene.BindSearchData(KomageneDataGrid);
+            SearchFunctionKomagene.BindSearchData(KomageneDataGrid);
             KomageneDataGrid.Refresh();
         }
     }

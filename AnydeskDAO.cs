@@ -29,7 +29,7 @@ namespace AnydeskEasyConnect
         }
         public List<Anydesks> MaydonozAnydeskleriniGetir()
         {
-            List<Anydesks> returnThese = new List<Anydesks>();
+            List<Anydesks> returnThese = [];
             try
             {
                 ConnectionString = CreateConnectionString();
@@ -127,7 +127,7 @@ namespace AnydeskEasyConnect
         }
         public List<Anydesks> CajunCornerAnydeskleriniGetir()
         {
-            List<Anydesks> returnThese = new();
+            List<Anydesks> returnThese = [];
             try
             {
                 ConnectionString = CreateConnectionString();
@@ -236,7 +236,7 @@ namespace AnydeskEasyConnect
                 {
                     while (reader.Read())
                     {
-                        Anydesks a = new Anydesks
+                        Anydesks a = new()
                         {
                             ŞubeninAdı = reader.IsDBNull(0) ? "null" : reader.GetString(0),
                             ŞubeninAnydeskNumarası = reader.IsDBNull(1) ? "null" : reader.GetString(1),
@@ -255,7 +255,7 @@ namespace AnydeskEasyConnect
         }
         public List<Anydesks> DigerAnydeskleriniGetir()
         {
-            List<Anydesks> returnThese = new List<Anydesks>();
+            List<Anydesks> returnThese = [];
             try
             {
                 ConnectionString = CreateConnectionString();
