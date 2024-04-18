@@ -148,10 +148,17 @@ namespace AnydeskEasyConnect
             KomageneDataGrid.Refresh();
         }
 
-        string? subeAdiylaAramaGirdisi;
+        public static string? subeAdiylaAramaGirdisi;
         private void KomageneSubeAdiTextBox_TextChanged(object sender, EventArgs e)
         {
             subeAdiylaAramaGirdisi = KomageneSubeAdiTextBox.Text;
+        }
+
+        private void KomageneAramaButonu_Click(object sender, EventArgs e)
+        {
+            SearchFunctionKomagene searchFunctionKomagene = new();
+            searchFunctionKomagene.BindSearchData(KomageneDataGrid);
+            KomageneDataGrid.Refresh();
         }
     }
 }

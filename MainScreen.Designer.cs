@@ -200,6 +200,7 @@ namespace AnydeskEasyConnect
             KomageneAramaButonu.TabIndex = 1;
             KomageneAramaButonu.Text = "Ara";
             KomageneAramaButonu.UseVisualStyleBackColor = true;
+            KomageneAramaButonu.Click += KomageneAramaButonu_Click;
             // 
             // KomageneYenilemeButonu
             // 
@@ -486,10 +487,10 @@ namespace AnydeskEasyConnect
         private TextBox KomageneSubeAdiTextBox;
         private Button KomageneAramaButonu;
         private Button KomageneYenilemeButonu;
-        private DataGridView KomageneDataGrid;
         private DataGridViewButtonColumn KomageneBaglanButonu;
         private DataGridViewButtonColumn KomageneSifreyleBaglanButonu;
         private DataGridViewButtonColumn KomageneDuzenleButonu;
         private Button KomageneAnydeskEkleButonu;
+        internal DataGridView KomageneDataGrid;
     }
 }

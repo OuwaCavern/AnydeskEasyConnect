@@ -9,34 +9,43 @@ namespace AnydeskEasyConnect
 {
     internal class SearchFunctionKomagene
     {
-        public List<Anydesks> AramaSonucunuGetir()
+        internal void BindSearchData(DataGridView KomageneDataGrid)
         {
-            public SearchFunctionKomagene(string subeAdiylaAramaGirdisi, string connectionString)
+            BindingSource KomageneBindingSource = new BindingSource();
+            KomageneBindingSource.DataSource = AramaSonucunuGetir(MainScreen.subeAdiylaAramaGirdisi, AnydeskDAO.CreateConnectionString());
+            KomageneDataGrid.DataSource = KomageneBindingSource;
+        }
+        private List<Anydesks> AramaSonucunuGetir(string subeAdiylaAramaGirdisi, string connectionString)
+        {
+            List<Anydesks> returnThese = new List<Anydesks>();
+            string searchQuery = $"SELECT SubeAdi,SubeAnydeskNumarasi,SubeAnydeskParolasi,BilgisayarYetkisi FROM Komagene WHERE SubeAdi LIKE '%{subeAdiylaAramaGirdisi}%'";
+            try
             {
-                string searchQuery = $"SELECT SubeAdi FROM Komagene WHERE SubeAdi LIKE '%{subeAdiylaAramaGirdisi}%'";
-                try
+                SqlConnection sqlConnection;
+                sqlConnection = new SqlConnection(connectionString);
+                sqlConnection.Open();
+                SqlCommand sqlCommand = new SqlCommand(searchQuery, sqlConnection);
+                using (SqlDataReader reader = sqlCommand.ExecuteReader())
                 {
-                    SqlConnection sqlConnection;
-                    sqlConnection = new SqlConnection(connectionString);
-                    sqlConnection.Open();
-                    SqlCommand sqlCommand = new SqlCommand(searchQuery, sqlConnection);
-                    using (SqlDataReader reader = sqlCommand.ExecuteReader())
+                    while (reader.Read())
                     {
-                        while (reader.Read())
+                        Anydesks a = new Anydesks
                         {
-                            Anydesks a = new Anydesks
-                            {
-                                ŞubeninAdı = reader.IsDBNull(0) ? "null" : reader.GetString(0),
-                            };
-                        }
+                            ŞubeninAdı = reader.IsDBNull(0) ? "null" : reader.GetString(0),
+                            ŞubeninAnydeskNumarası = reader.IsDBNull(1) ? "null" : reader.GetString(1),
+                            ŞubeninAnydeskParolası = reader.IsDBNull(2) ? "null" : reader.GetString(2),
+                            BilgisayarYetkisi = reader.IsDBNull(3) ? "null" : reader.GetString(3),
+                        };
+                        returnThese.Add(a);
                     }
-                    sqlConnection.Close();
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
+                sqlConnection.Close();
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            return returnThese;
         }
     }
 }
