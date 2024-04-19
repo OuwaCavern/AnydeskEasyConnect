@@ -83,6 +83,19 @@ namespace AnydeskEasyConnect
                     MessageBox.Show($"Bu Anydesk numarasına ait bir girdi bulundu: {duplicateSubeAdi}. Lütfen numarayı yeniden kontrol edin veya uygulamada halihazırda bulunan girdiyi düzenleyin.");
                     return;
                 }
+                else if (duzenlenenSubeAdi.Count() >= 8)
+                {
+                    string updateQuery = $"UPDATE Komagene SET SubeAdi='{duzenlenenSubeAdi}',SubeAnydeskNumarasi='{duzenlenenAnydeskNumarasi}',SubeAnydeskParolasi='{duzenlenenAnydeskParolasi}',BilgisayarYetkisi='{duzenlenenBilgisayarYetkisi}' WHERE SubeAnydeskNumarasi='{eskiAnydeskNumarasi}'";
+                    SqlCommand updateCommand = new SqlCommand(updateQuery, sqlConnection);
+                    updateCommand.ExecuteNonQuery();
+                    sqlConnection.Close();
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show($"{duzenlenenSubeAdi} 8 karakterden daha küçük. Lütfen geçerli bir şube adı giriniz.");
+                    return;
+                }
             }
             else
             {

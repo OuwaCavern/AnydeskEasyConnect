@@ -96,7 +96,7 @@ namespace AnydeskEasyConnect
                 null => "null",
                 _ => subeBilgisayarYetkisi.Trim(),
             };
-            if (subeAnydeskNumarasi != null)
+            if (subeAnydeskNumarasi != null & subeAnydeskNumarasi.Count() >= 8)
             {
                 string insertQuery = $"INSERT INTO Komagene (Id,SubeAdi,SubeAnydeskNumarasi,SubeAnydeskParolasi,BilgisayarYetkisi) VALUES ({assignedId},'{subeAdi}','{subeAnydeskNumarasi}','{subeAnydeskParolasi}','{subeBilgisayarYetkisi}')";
                 SqlCommand insertCommand = new SqlCommand(insertQuery, sqlConnection);
@@ -105,7 +105,7 @@ namespace AnydeskEasyConnect
             }
             else
             {
-                MessageBox.Show("Lütfen geçerli bir AnydeskNumarası giriniz.");
+                MessageBox.Show("Şube numarası en az 8 karakter olmalıdır. Lütfen geçerli bir AnydeskNumarası giriniz.");
             }
             sqlConnection.Close();
         }
