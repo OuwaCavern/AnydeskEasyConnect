@@ -14,18 +14,25 @@ namespace AnydeskEasyConnect
             formOriginalSize = this.Size;
             recAnydeskEKleButonu = new Rectangle(KomageneAnydeskEkleButonu.Location, KomageneAnydeskEkleButonu.Size);
             recKomageneDataGrid = new Rectangle(KomageneDataGrid.Location, KomageneDataGrid.Size);
-            recAraVeyYenileFlow = new Rectangle(KomageneAraVeYenileFlow.Location, KomageneAraVeYenileFlow.Size);
+            recAramaButonu = new Rectangle(KomageneAramaButonu.Location, KomageneAramaButonu.Size);
+            recAramaGirdisi = new Rectangle(KomageneSubeAdiTextBox.Location, KomageneSubeAdiTextBox.Size);
+            recYenilemeButonu = new Rectangle(KomageneYenilemeButonu.Location, KomageneYenilemeButonu.Size);
+            KomageneSubeAdiTextBox.Multiline = true;
         }
         private Size formOriginalSize;
         private Rectangle recAnydeskEKleButonu;
         private Rectangle recKomageneDataGrid;
-        private Rectangle recAraVeyYenileFlow;
+        private Rectangle recAramaButonu;
+        private Rectangle recYenilemeButonu;
+        private Rectangle recAramaGirdisi;
 
         private void MainScreen_Resiz(object sender, EventArgs e)
         {
             ResizeControl(KomageneAnydeskEkleButonu, recAnydeskEKleButonu);
             ResizeControl(KomageneDataGrid, recKomageneDataGrid);
-            ResizeControl(KomageneAraVeYenileFlow, recAraVeyYenileFlow);
+            ResizeControl(KomageneAramaButonu, recAramaButonu);
+            ResizeControl(KomageneYenilemeButonu, recYenilemeButonu);
+            ResizeControl(KomageneSubeAdiTextBox, recAramaGirdisi);
         }
 
         private void ResizeControl(Control control, Rectangle rect)

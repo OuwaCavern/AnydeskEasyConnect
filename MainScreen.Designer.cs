@@ -154,16 +154,15 @@ namespace AnydeskEasyConnect
             // KomageneMainFlowLayout
             // 
             KomageneMainFlowLayout.AutoSize = true;
+            KomageneMainFlowLayout.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             KomageneMainFlowLayout.Controls.Add(KomageneAraVeYenileFlow);
             KomageneMainFlowLayout.Controls.Add(KomageneDataGrid);
             KomageneMainFlowLayout.Controls.Add(KomageneAnydeskEkleButonu);
             KomageneMainFlowLayout.Dock = DockStyle.Fill;
             KomageneMainFlowLayout.FlowDirection = FlowDirection.TopDown;
             KomageneMainFlowLayout.Location = new Point(3, 3);
-            KomageneMainFlowLayout.MaximumSize = new Size(817, 417);
-            KomageneMainFlowLayout.MinimumSize = new Size(1200, 700);
             KomageneMainFlowLayout.Name = "KomageneMainFlowLayout";
-            KomageneMainFlowLayout.Size = new Size(1200, 700);
+            KomageneMainFlowLayout.Size = new Size(811, 421);
             KomageneMainFlowLayout.TabIndex = 3;
             // 
             // KomageneAraVeYenileFlow

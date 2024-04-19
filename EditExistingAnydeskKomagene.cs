@@ -64,22 +64,25 @@ namespace AnydeskEasyConnect
             sqlConnection = new SqlConnection(connectionString);
             sqlConnection.Open();
             // Check if an Anydesk entry with the same number already exists in the database
-            string duplicateAnydeskNo = "null";
-            string duplicateSubeAdi = "null";
-            string checkAnydeskNoCommand = $"SELECT SubeAnydeskNumarasi,SubeAdi FROM Komagene WHERE SubeAnydeskNumarasi='{duzenlenenAnydeskNumarasi}'";
-            SqlCommand sqlCheckAnydeskNoCommand = new SqlCommand(checkAnydeskNoCommand, sqlConnection);
-            using (SqlDataReader reader = sqlCheckAnydeskNoCommand.ExecuteReader())
+            if (eskiAnydeskNumarasi != duzenlenenAnydeskNumarasi)
             {
-                while (reader.Read())
+                string duplicateAnydeskNo = "null";
+                string duplicateSubeAdi = "null";
+                string checkAnydeskNoCommand = $"SELECT SubeAnydeskNumarasi,SubeAdi FROM Komagene WHERE SubeAnydeskNumarasi='{duzenlenenAnydeskNumarasi}'";
+                SqlCommand sqlCheckAnydeskNoCommand = new SqlCommand(checkAnydeskNoCommand, sqlConnection);
+                using (SqlDataReader reader = sqlCheckAnydeskNoCommand.ExecuteReader())
                 {
-                    duplicateAnydeskNo = reader.GetString(0);
-                    duplicateSubeAdi = reader.GetString(1);
+                    while (reader.Read())
+                    {
+                        duplicateAnydeskNo = reader.GetString(0);
+                        duplicateSubeAdi = reader.GetString(1);
+                    }
                 }
-            }
-            if (duplicateAnydeskNo != "null")
-            {
-                MessageBox.Show($"Bu Anydesk numarasına ait bir girdi bulundu: {duplicateSubeAdi}. Lütfen numarayı yeniden kontrol edin veya uygulamada halihazırda bulunan girdiyi düzenleyin.");
-                return;
+                if (duplicateAnydeskNo != "null")
+                {
+                    MessageBox.Show($"Bu Anydesk numarasına ait bir girdi bulundu: {duplicateSubeAdi}. Lütfen numarayı yeniden kontrol edin veya uygulamada halihazırda bulunan girdiyi düzenleyin.");
+                    return;
+                }
             }
             else
             {
