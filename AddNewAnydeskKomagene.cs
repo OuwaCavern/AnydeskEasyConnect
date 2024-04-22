@@ -108,6 +108,8 @@ namespace AnydeskEasyConnect
                 MessageBox.Show("Şube numarası en az 8 karakter olmalıdır. Lütfen geçerli bir AnydeskNumarası giriniz.");
             }
             sqlConnection.Close();
+            MainScreen mainScreen = new();
+            mainScreen.KomageneYenilemeButonu_Click(sender, e);
         }
     }
 }

@@ -149,7 +149,7 @@ namespace AnydeskEasyConnect
             addNewAnydesk.Show();
         }
 
-        private void KomageneYenilemeButonu_Click(object sender, EventArgs e)
+        internal void KomageneYenilemeButonu_Click(object sender, EventArgs e)
         {
             MainScreen_Load(sender, e);
             KomageneDataGrid.Refresh();
