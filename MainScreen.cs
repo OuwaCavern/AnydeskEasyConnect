@@ -19,6 +19,7 @@ namespace AnydeskEasyConnect
             recAramaButonu = new Rectangle(KomageneAramaButonu.Location, KomageneAramaButonu.Size);
             recAramaGirdisi = new Rectangle(KomageneSubeAdiTextBox.Location, KomageneSubeAdiTextBox.Size);
             recYenilemeButonu = new Rectangle(KomageneYenilemeButonu.Location, KomageneYenilemeButonu.Size);
+            WindowState = FormWindowState.Maximized;
         }
         private Size formOriginalSize;
         private Rectangle recAnydeskEKleButonu;
@@ -80,6 +81,8 @@ namespace AnydeskEasyConnect
             DigerDataGrid.DataSource = DigerBindingSource;
 
             SetAcceptButtonForActiveTab();
+
+            KomageneDataGrid.Columns[3].Width = 500;
         }
         internal void KomageneDataGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {

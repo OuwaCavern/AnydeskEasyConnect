@@ -100,7 +100,7 @@ namespace AnydeskEasyConnect
             mainTabControl.Location = new Point(0, 0);
             mainTabControl.Name = "mainTabControl";
             mainTabControl.SelectedIndex = 0;
-            mainTabControl.Size = new Size(825, 455);
+            mainTabControl.Size = new Size(791, 455);
             mainTabControl.TabIndex = 0;
             // 
             // MaydonozTab
@@ -110,7 +110,7 @@ namespace AnydeskEasyConnect
             MaydonozTab.Location = new Point(4, 24);
             MaydonozTab.Name = "MaydonozTab";
             MaydonozTab.Padding = new Padding(3);
-            MaydonozTab.Size = new Size(817, 427);
+            MaydonozTab.Size = new Size(783, 427);
             MaydonozTab.TabIndex = 0;
             MaydonozTab.Text = "Maydonoz Döner";
             MaydonozTab.UseVisualStyleBackColor = true;
@@ -125,7 +125,7 @@ namespace AnydeskEasyConnect
             MaydonozDataGrid.Location = new Point(3, 3);
             MaydonozDataGrid.Name = "MaydonozDataGrid";
             MaydonozDataGrid.ReadOnly = true;
-            MaydonozDataGrid.Size = new Size(811, 421);
+            MaydonozDataGrid.Size = new Size(777, 421);
             MaydonozDataGrid.TabIndex = 0;
             // 
             // MaydonozBaglanTusu
@@ -146,7 +146,7 @@ namespace AnydeskEasyConnect
             KomageneTab.Location = new Point(4, 24);
             KomageneTab.Name = "KomageneTab";
             KomageneTab.Padding = new Padding(3);
-            KomageneTab.Size = new Size(817, 427);
+            KomageneTab.Size = new Size(783, 427);
             KomageneTab.TabIndex = 1;
             KomageneTab.Text = "Komagene";
             KomageneTab.UseVisualStyleBackColor = true;
@@ -162,7 +162,7 @@ namespace AnydeskEasyConnect
             KomageneMainFlowLayout.FlowDirection = FlowDirection.TopDown;
             KomageneMainFlowLayout.Location = new Point(3, 3);
             KomageneMainFlowLayout.Name = "KomageneMainFlowLayout";
-            KomageneMainFlowLayout.Size = new Size(811, 421);
+            KomageneMainFlowLayout.Size = new Size(777, 421);
             KomageneMainFlowLayout.TabIndex = 3;
             // 
             // KomageneAraVeYenileFlow
@@ -218,6 +218,8 @@ namespace AnydeskEasyConnect
             // KomageneDataGrid
             // 
             KomageneDataGrid.AllowUserToAddRows = false;
+            KomageneDataGrid.AllowUserToDeleteRows = false;
+            KomageneDataGrid.AllowUserToOrderColumns = true;
             KomageneDataGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             KomageneDataGrid.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             KomageneDataGrid.ClipboardCopyMode = DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
@@ -296,7 +298,7 @@ namespace AnydeskEasyConnect
             KofteciYusufTab.ImageIndex = 5;
             KofteciYusufTab.Location = new Point(4, 24);
             KofteciYusufTab.Name = "KofteciYusufTab";
-            KofteciYusufTab.Size = new Size(817, 427);
+            KofteciYusufTab.Size = new Size(783, 427);
             KofteciYusufTab.TabIndex = 2;
             KofteciYusufTab.Text = "Köfteci Yusuf";
             KofteciYusufTab.UseVisualStyleBackColor = true;
@@ -307,7 +309,7 @@ namespace AnydeskEasyConnect
             KofteciDataGrid.Dock = DockStyle.Fill;
             KofteciDataGrid.Location = new Point(0, 0);
             KofteciDataGrid.Name = "KofteciDataGrid";
-            KofteciDataGrid.Size = new Size(817, 427);
+            KofteciDataGrid.Size = new Size(783, 427);
             KofteciDataGrid.TabIndex = 0;
             // 
             // CajunCornerTab
@@ -316,7 +318,7 @@ namespace AnydeskEasyConnect
             CajunCornerTab.ImageIndex = 3;
             CajunCornerTab.Location = new Point(4, 24);
             CajunCornerTab.Name = "CajunCornerTab";
-            CajunCornerTab.Size = new Size(817, 427);
+            CajunCornerTab.Size = new Size(783, 427);
             CajunCornerTab.TabIndex = 3;
             CajunCornerTab.Text = "Cajun Corner";
             CajunCornerTab.UseVisualStyleBackColor = true;
@@ -327,7 +329,7 @@ namespace AnydeskEasyConnect
             CajunDataGrid.Dock = DockStyle.Fill;
             CajunDataGrid.Location = new Point(0, 0);
             CajunDataGrid.Name = "CajunDataGrid";
-            CajunDataGrid.Size = new Size(817, 427);
+            CajunDataGrid.Size = new Size(783, 427);
             CajunDataGrid.TabIndex = 0;
             // 
             // HotTab
@@ -336,7 +338,7 @@ namespace AnydeskEasyConnect
             HotTab.ImageIndex = 4;
             HotTab.Location = new Point(4, 24);
             HotTab.Name = "HotTab";
-            HotTab.Size = new Size(817, 427);
+            HotTab.Size = new Size(783, 427);
             HotTab.TabIndex = 4;
             HotTab.Text = "Hot Döner";
             HotTab.UseVisualStyleBackColor = true;
@@ -347,7 +349,7 @@ namespace AnydeskEasyConnect
             HotDataGrid.Dock = DockStyle.Fill;
             HotDataGrid.Location = new Point(0, 0);
             HotDataGrid.Name = "HotDataGrid";
-            HotDataGrid.Size = new Size(817, 427);
+            HotDataGrid.Size = new Size(783, 427);
             HotDataGrid.TabIndex = 0;
             // 
             // BereketTab
@@ -356,7 +358,7 @@ namespace AnydeskEasyConnect
             BereketTab.ImageIndex = 2;
             BereketTab.Location = new Point(4, 24);
             BereketTab.Name = "BereketTab";
-            BereketTab.Size = new Size(817, 427);
+            BereketTab.Size = new Size(783, 427);
             BereketTab.TabIndex = 5;
             BereketTab.Text = "Bereket Döner";
             BereketTab.UseVisualStyleBackColor = true;
@@ -367,7 +369,7 @@ namespace AnydeskEasyConnect
             BereketDataGrid.Dock = DockStyle.Fill;
             BereketDataGrid.Location = new Point(0, 0);
             BereketDataGrid.Name = "BereketDataGrid";
-            BereketDataGrid.Size = new Size(817, 427);
+            BereketDataGrid.Size = new Size(783, 427);
             BereketDataGrid.TabIndex = 0;
             // 
             // AdileTab
@@ -376,7 +378,7 @@ namespace AnydeskEasyConnect
             AdileTab.ImageIndex = 1;
             AdileTab.Location = new Point(4, 24);
             AdileTab.Name = "AdileTab";
-            AdileTab.Size = new Size(817, 427);
+            AdileTab.Size = new Size(783, 427);
             AdileTab.TabIndex = 6;
             AdileTab.Text = "Adile Sultan";
             AdileTab.UseVisualStyleBackColor = true;
@@ -387,7 +389,7 @@ namespace AnydeskEasyConnect
             AdileDataGrid.Dock = DockStyle.Fill;
             AdileDataGrid.Location = new Point(0, 0);
             AdileDataGrid.Name = "AdileDataGrid";
-            AdileDataGrid.Size = new Size(817, 427);
+            AdileDataGrid.Size = new Size(783, 427);
             AdileDataGrid.TabIndex = 0;
             // 
             // DigerTab
@@ -396,7 +398,7 @@ namespace AnydeskEasyConnect
             DigerTab.ImageIndex = 7;
             DigerTab.Location = new Point(4, 24);
             DigerTab.Name = "DigerTab";
-            DigerTab.Size = new Size(817, 427);
+            DigerTab.Size = new Size(783, 427);
             DigerTab.TabIndex = 7;
             DigerTab.Text = "Diğer";
             DigerTab.UseVisualStyleBackColor = true;
@@ -407,7 +409,7 @@ namespace AnydeskEasyConnect
             DigerDataGrid.Dock = DockStyle.Fill;
             DigerDataGrid.Location = new Point(0, 0);
             DigerDataGrid.Name = "DigerDataGrid";
-            DigerDataGrid.Size = new Size(817, 427);
+            DigerDataGrid.Size = new Size(783, 427);
             DigerDataGrid.TabIndex = 0;
             // 
             // icons
@@ -426,10 +428,9 @@ namespace AnydeskEasyConnect
             // 
             // MainScreen
             // 
-            AcceptButton = null;
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(825, 455);
+            ClientSize = new Size(791, 455);
             Controls.Add(mainTabControl);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "MainScreen";
@@ -488,6 +489,6 @@ namespace AnydeskEasyConnect
         private DataGridViewButtonColumn KomageneSifreyleBaglanButonu;
         private DataGridViewButtonColumn KomageneDuzenleButonu;
         private Button KomageneAnydeskEkleButonu;
-        internal static DataGridView KomageneDataGrid;
+        internal DataGridView KomageneDataGrid;
     }
 }
