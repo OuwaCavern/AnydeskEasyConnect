@@ -96,7 +96,7 @@ namespace AnydeskEasyConnect
                 null => "null",
                 _ => subeBilgisayarYetkisi.Trim(),
             };
-            if (subeAnydeskNumarasi != null & subeAdi.Count() >= 8)
+            if (subeAnydeskNumarasi != "null" & subeAdi.Count() >= 8)
             {
                 string insertQuery = $"INSERT INTO Komagene (Id,SubeAdi,SubeAnydeskNumarasi,SubeAnydeskParolasi,BilgisayarYetkisi) VALUES ({assignedId},'{subeAdi}','{subeAnydeskNumarasi}','{subeAnydeskParolasi}','{subeBilgisayarYetkisi}')";
                 SqlCommand insertCommand = new SqlCommand(insertQuery, sqlConnection);

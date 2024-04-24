@@ -63,27 +63,64 @@ namespace AnydeskEasyConnect
             SqlConnection sqlConnection;
             sqlConnection = new SqlConnection(connectionString);
             sqlConnection.Open();
-            // Check if an Anydesk entry with the same number already exists in the database
-            if (eskiAnydeskNumarasi != duzenlenenAnydeskNumarasi)
+            duzenlenenSubeAdi = duzenlenenSubeAdi switch
             {
-                string duplicateAnydeskNo = "null";
-                string duplicateSubeAdi = "null";
-                string checkAnydeskNoCommand = $"SELECT SubeAnydeskNumarasi,SubeAdi FROM Komagene WHERE SubeAnydeskNumarasi='{duzenlenenAnydeskNumarasi}'";
-                SqlCommand sqlCheckAnydeskNoCommand = new SqlCommand(checkAnydeskNoCommand, sqlConnection);
-                using (SqlDataReader reader = sqlCheckAnydeskNoCommand.ExecuteReader())
+                null => "null",
+                _ => duzenlenenSubeAdi.Trim(),
+            };
+            duzenlenenAnydeskNumarasi = duzenlenenAnydeskNumarasi switch
+            {
+                null => "null",
+                _ => duzenlenenAnydeskNumarasi.Trim(),
+            };
+            duzenlenenAnydeskParolasi = duzenlenenAnydeskParolasi switch
+            {
+                null => "null",
+                _ => duzenlenenAnydeskParolasi.Trim(),
+            };
+            duzenlenenBilgisayarYetkisi = duzenlenenBilgisayarYetkisi switch
+            {
+                null => "null",
+                _ => duzenlenenBilgisayarYetkisi.Trim(),
+            };
+            // Check if an Anydesk entry with the same number already exists in the database
+            if (duzenlenenSubeAdi.Count() >= 8)
+            {
+                if (eskiAnydeskNumarasi != duzenlenenAnydeskNumarasi)
                 {
-                    while (reader.Read())
+                    string duplicateAnydeskNo = "null";
+                    string duplicateSubeAdi = "null";
+                    string checkAnydeskNoCommand = $"SELECT SubeAnydeskNumarasi,SubeAdi FROM Komagene WHERE SubeAnydeskNumarasi='{duzenlenenAnydeskNumarasi}'";
+                    SqlCommand sqlCheckAnydeskNoCommand = new SqlCommand(checkAnydeskNoCommand, sqlConnection);
+                    using (SqlDataReader reader = sqlCheckAnydeskNoCommand.ExecuteReader())
                     {
-                        duplicateAnydeskNo = reader.GetString(0);
-                        duplicateSubeAdi = reader.GetString(1);
+                        while (reader.Read())
+                        {
+                            duplicateAnydeskNo = reader.GetString(0);
+                            duplicateSubeAdi = reader.GetString(1);
+                        }
+                    }
+                    if (duplicateAnydeskNo != "null")
+                    {
+                        MessageBox.Show($"Bu Anydesk numarasına ait bir girdi bulundu: {duplicateSubeAdi}. Lütfen numarayı yeniden kontrol edin veya uygulamada halihazırda bulunan girdiyi düzenleyin.");
+                        return;
+                    }
+                    else if (duzenlenenSubeAdi.Count() >= 8)
+                    {
+                        string updateQuery = $"UPDATE Komagene SET SubeAdi='{duzenlenenSubeAdi}',SubeAnydeskNumarasi='{duzenlenenAnydeskNumarasi}',SubeAnydeskParolasi='{duzenlenenAnydeskParolasi}',BilgisayarYetkisi='{duzenlenenBilgisayarYetkisi}' WHERE SubeAnydeskNumarasi='{eskiAnydeskNumarasi}'";
+                        SqlCommand updateCommand = new SqlCommand(updateQuery, sqlConnection);
+                        updateCommand.ExecuteNonQuery();
+                        MainScreen.KomageneYenile();
+                        sqlConnection.Close();
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show($"{duzenlenenSubeAdi} 8 karakterden daha küçük. Lütfen geçerli bir şube adı giriniz.");
+                        return;
                     }
                 }
-                if (duplicateAnydeskNo != "null")
-                {
-                    MessageBox.Show($"Bu Anydesk numarasına ait bir girdi bulundu: {duplicateSubeAdi}. Lütfen numarayı yeniden kontrol edin veya uygulamada halihazırda bulunan girdiyi düzenleyin.");
-                    return;
-                }
-                else if (duzenlenenSubeAdi.Count() >= 8)
+                else
                 {
                     string updateQuery = $"UPDATE Komagene SET SubeAdi='{duzenlenenSubeAdi}',SubeAnydeskNumarasi='{duzenlenenAnydeskNumarasi}',SubeAnydeskParolasi='{duzenlenenAnydeskParolasi}',BilgisayarYetkisi='{duzenlenenBilgisayarYetkisi}' WHERE SubeAnydeskNumarasi='{eskiAnydeskNumarasi}'";
                     SqlCommand updateCommand = new SqlCommand(updateQuery, sqlConnection);
@@ -92,20 +129,10 @@ namespace AnydeskEasyConnect
                     sqlConnection.Close();
                     this.Close();
                 }
-                else
-                {
-                    MessageBox.Show($"{duzenlenenSubeAdi} 8 karakterden daha küçük. Lütfen geçerli bir şube adı giriniz.");
-                    return;
-                }
             }
             else
             {
-                string updateQuery = $"UPDATE Komagene SET SubeAdi='{duzenlenenSubeAdi}',SubeAnydeskNumarasi='{duzenlenenAnydeskNumarasi}',SubeAnydeskParolasi='{duzenlenenAnydeskParolasi}',BilgisayarYetkisi='{duzenlenenBilgisayarYetkisi}' WHERE SubeAnydeskNumarasi='{eskiAnydeskNumarasi}'";
-                SqlCommand updateCommand = new SqlCommand(updateQuery, sqlConnection);
-                updateCommand.ExecuteNonQuery();
-                MainScreen.KomageneYenile();
-                sqlConnection.Close();
-                this.Close();
+                MessageBox.Show("Şube adı en az 8 karakter olmalıdır. Lütfen geçerli bir şube adı giriniz.");
             }
         }
     }

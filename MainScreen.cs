@@ -121,20 +121,32 @@ namespace AnydeskEasyConnect
                 object anydeskParolasi = KomageneDataGrid.Rows[e.RowIndex].Cells["ŞubeninAnydeskParolası"].Value;
                 if (anydeskNumarasi != null)
                 {
-                    string anydeskParolasiString = "";
-                    string subeAdiString = "";
-                    string bilgisayarYetkisiString = "";
-                    if (anydeskParolasi != null)
+                    string? anydeskParolasiString = "";
+                    string? subeAdiString = "";
+                    string? bilgisayarYetkisiString = "";
+                    try
                     {
                         anydeskParolasiString = anydeskParolasi.ToString();
                     }
-                    if (subeAdi != null)
+                    catch
+                    {
+                        MessageBox.Show("Null Reference Exception: Parolası null olan en az 1 girdi bulundu.");
+                    }
+                    try
                     {
                         subeAdiString = subeAdi.ToString();
                     }
-                    if (bilgisayarYetkisi != null)
+                    catch
+                    {
+                        MessageBox.Show("Null Reference Exception: Şube adı null olan en az 1 girdi bulundu.");
+                    }
+                    try
                     {
                         bilgisayarYetkisiString = bilgisayarYetkisi.ToString();
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Null Reference Exception: Bilgisayar Yetkisi null olan en az 1 girdi bulundu.");
                     }
                     string anydeskNumarasiString = anydeskNumarasi.ToString();
                     EditExistingAnydeskKomagene editExistingAnydeskKomagene = new EditExistingAnydeskKomagene();
