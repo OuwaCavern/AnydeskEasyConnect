@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Text;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -89,6 +90,10 @@ namespace AnydeskEasyConnect
                     _ => subeAnydeskNumarasi.Trim(),
                 };
                 Int64.Parse(subeAnydeskNumarasi);
+                if (subeAnydeskNumarasi.Length == 9)
+                {
+                    subeAnydeskNumarasi.Split()
+                }
                 if (subeAnydeskNumarasi.Length < 9 | subeAnydeskNumarasi.Length > 10)
                 {
                     MessageBox.Show("Girdiğiniz anydesk numarası 9 veya 10 haneli değil\r\nLütfen yeniden kontrol ediniz.");
@@ -128,6 +133,24 @@ namespace AnydeskEasyConnect
                 MessageBox.Show("Şube adı en az 8 karakter olmalıdır. Lütfen geçerli bir şube adı giriniz.");
             }
             sqlConnection.Close();
+        }
+        private string AnydeskNumarasiDuzenleyici(string orijinalAnydeskNumarasi)
+        {
+        string formatlanmisTersAnydeskNumarasi = "";
+        foreach (char c in orijinalAnydeskNumarasi.ToCharArray())
+        {
+            if (formatlanmisTersAnydeskNumarasi.Length % 3 == 0 & c != orijinalAnydeskNumarasi.ToCharArray()[0])
+            {
+                formatlanmisTersAnydeskNumarasi.Append(' ');
+                formatlanmisTersAnydeskNumarasi.Append(c);
+            }
+            else
+            {
+                formatlanmisTersAnydeskNumarasi.Append(c);
+            }
+        }
+        formatlanmisTersAnydeskNumarasi.ToCharArray().Reverse();
+        return formatlanmisTersAnydeskNumarasi.ToString();
         }
     }
 }
