@@ -96,20 +96,19 @@ namespace AnydeskEasyConnect
                 null => "null",
                 _ => subeBilgisayarYetkisi.Trim(),
             };
-            if (subeAnydeskNumarasi != null & subeAnydeskNumarasi.Count() >= 8)
+            if (subeAnydeskNumarasi != null & subeAdi.Count() >= 8)
             {
                 string insertQuery = $"INSERT INTO Komagene (Id,SubeAdi,SubeAnydeskNumarasi,SubeAnydeskParolasi,BilgisayarYetkisi) VALUES ({assignedId},'{subeAdi}','{subeAnydeskNumarasi}','{subeAnydeskParolasi}','{subeBilgisayarYetkisi}')";
                 SqlCommand insertCommand = new SqlCommand(insertQuery, sqlConnection);
                 insertCommand.ExecuteNonQuery();
+                MainScreen.KomageneYenile();
                 this.Close();
             }
             else
             {
-                MessageBox.Show("Şube numarası en az 8 karakter olmalıdır. Lütfen geçerli bir AnydeskNumarası giriniz.");
+                MessageBox.Show("Şube adı en az 8 karakter olmalıdır. Lütfen geçerli bir şube adı giriniz.");
             }
             sqlConnection.Close();
-            MainScreen mainScreen = new();
-            mainScreen.KomageneYenilemeButonu_Click(sender, e);
         }
     }
 }

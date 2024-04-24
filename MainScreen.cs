@@ -1,11 +1,11 @@
 ﻿using Microsoft.Identity.Client;
 using System.Drawing.Text;
+using System.Runtime.CompilerServices;
 
 namespace AnydeskEasyConnect
 {
     public partial class MainScreen : Form
     {
-
         public MainScreen()
         {
             InitializeComponent();
@@ -149,9 +149,17 @@ namespace AnydeskEasyConnect
             addNewAnydesk.Show();
         }
 
-        internal void KomageneYenilemeButonu_Click(object sender, EventArgs e)
+        private void KomageneYenilemeButonu_Click(object sender, EventArgs e)
         {
-            MainScreen_Load(sender, e);
+            KomageneYenile();
+        }
+
+        internal static void KomageneYenile()
+        {
+            AnydeskDAO anydeskDAO = new AnydeskDAO();
+            BindingSource KomageneBindingSource = new BindingSource();
+            KomageneBindingSource.DataSource = anydeskDAO.KomageneAnydeskleriniGetir();
+            KomageneDataGrid.DataSource = KomageneBindingSource;
             KomageneDataGrid.Refresh();
         }
 

@@ -487,6 +487,6 @@ namespace AnydeskEasyConnect
         private DataGridViewButtonColumn KomageneSifreyleBaglanButonu;
         private DataGridViewButtonColumn KomageneDuzenleButonu;
         private Button KomageneAnydeskEkleButonu;
-        internal DataGridView KomageneDataGrid;
+        internal static DataGridView KomageneDataGrid;
     }
 }

@@ -88,6 +88,7 @@ namespace AnydeskEasyConnect
                     string updateQuery = $"UPDATE Komagene SET SubeAdi='{duzenlenenSubeAdi}',SubeAnydeskNumarasi='{duzenlenenAnydeskNumarasi}',SubeAnydeskParolasi='{duzenlenenAnydeskParolasi}',BilgisayarYetkisi='{duzenlenenBilgisayarYetkisi}' WHERE SubeAnydeskNumarasi='{eskiAnydeskNumarasi}'";
                     SqlCommand updateCommand = new SqlCommand(updateQuery, sqlConnection);
                     updateCommand.ExecuteNonQuery();
+                    MainScreen.KomageneYenile();
                     sqlConnection.Close();
                     this.Close();
                 }
@@ -102,6 +103,7 @@ namespace AnydeskEasyConnect
                 string updateQuery = $"UPDATE Komagene SET SubeAdi='{duzenlenenSubeAdi}',SubeAnydeskNumarasi='{duzenlenenAnydeskNumarasi}',SubeAnydeskParolasi='{duzenlenenAnydeskParolasi}',BilgisayarYetkisi='{duzenlenenBilgisayarYetkisi}' WHERE SubeAnydeskNumarasi='{eskiAnydeskNumarasi}'";
                 SqlCommand updateCommand = new SqlCommand(updateQuery, sqlConnection);
                 updateCommand.ExecuteNonQuery();
+                MainScreen.KomageneYenile();
                 sqlConnection.Close();
                 this.Close();
             }
