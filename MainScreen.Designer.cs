@@ -36,7 +36,7 @@ namespace AnydeskEasyConnect
             DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainScreen));
-            tabControl = new TabControl();
+            mainTabControl = new TabControl();
             MaydonozTab = new TabPage();
             MaydonozDataGrid = new DataGridView();
             MaydonozBaglanTusu = new DataGridViewButtonColumn();
@@ -64,7 +64,7 @@ namespace AnydeskEasyConnect
             DigerTab = new TabPage();
             DigerDataGrid = new DataGridView();
             icons = new ImageList(components);
-            tabControl.SuspendLayout();
+            mainTabControl.SuspendLayout();
             MaydonozTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)MaydonozDataGrid).BeginInit();
             KomageneTab.SuspendLayout();
@@ -85,23 +85,23 @@ namespace AnydeskEasyConnect
             ((System.ComponentModel.ISupportInitialize)DigerDataGrid).BeginInit();
             SuspendLayout();
             // 
-            // tabControl
+            // mainTabControl
             // 
-            tabControl.Controls.Add(MaydonozTab);
-            tabControl.Controls.Add(KomageneTab);
-            tabControl.Controls.Add(KofteciYusufTab);
-            tabControl.Controls.Add(CajunCornerTab);
-            tabControl.Controls.Add(HotTab);
-            tabControl.Controls.Add(BereketTab);
-            tabControl.Controls.Add(AdileTab);
-            tabControl.Controls.Add(DigerTab);
-            tabControl.Dock = DockStyle.Fill;
-            tabControl.ImageList = icons;
-            tabControl.Location = new Point(0, 0);
-            tabControl.Name = "tabControl";
-            tabControl.SelectedIndex = 0;
-            tabControl.Size = new Size(825, 455);
-            tabControl.TabIndex = 0;
+            mainTabControl.Controls.Add(MaydonozTab);
+            mainTabControl.Controls.Add(KomageneTab);
+            mainTabControl.Controls.Add(KofteciYusufTab);
+            mainTabControl.Controls.Add(CajunCornerTab);
+            mainTabControl.Controls.Add(HotTab);
+            mainTabControl.Controls.Add(BereketTab);
+            mainTabControl.Controls.Add(AdileTab);
+            mainTabControl.Controls.Add(DigerTab);
+            mainTabControl.Dock = DockStyle.Fill;
+            mainTabControl.ImageList = icons;
+            mainTabControl.Location = new Point(0, 0);
+            mainTabControl.Name = "mainTabControl";
+            mainTabControl.SelectedIndex = 0;
+            mainTabControl.Size = new Size(825, 455);
+            mainTabControl.TabIndex = 0;
             // 
             // MaydonozTab
             // 
@@ -426,14 +426,15 @@ namespace AnydeskEasyConnect
             // 
             // MainScreen
             // 
+            AcceptButton = null;
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(825, 455);
-            Controls.Add(tabControl);
+            Controls.Add(mainTabControl);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "MainScreen";
             Text = "YemekPOS Anydesk Servisi";
-            tabControl.ResumeLayout(false);
+            mainTabControl.ResumeLayout(false);
             MaydonozTab.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)MaydonozDataGrid).EndInit();
             KomageneTab.ResumeLayout(false);
@@ -460,7 +461,7 @@ namespace AnydeskEasyConnect
 
         #endregion
 
-        private TabControl tabControl;
+        private TabControl mainTabControl;
         private TabPage MaydonozTab;
         private TabPage KomageneTab;
         private TabPage KofteciYusufTab;

@@ -1,6 +1,7 @@
 ﻿using Microsoft.Identity.Client;
 using System.Drawing.Text;
 using System.Runtime.CompilerServices;
+using System.Windows.Forms;
 
 namespace AnydeskEasyConnect
 {
@@ -10,6 +11,7 @@ namespace AnydeskEasyConnect
         {
             InitializeComponent();
             this.Load += MainScreen_Load;
+            mainTabControl.SelectedIndexChanged += mainTabControl_SelectedIndexChanged;
             this.Resize += MainScreen_Resiz;
             formOriginalSize = this.Size;
             recAnydeskEKleButonu = new Rectangle(KomageneAnydeskEkleButonu.Location, KomageneAnydeskEkleButonu.Size);
@@ -17,7 +19,6 @@ namespace AnydeskEasyConnect
             recAramaButonu = new Rectangle(KomageneAramaButonu.Location, KomageneAramaButonu.Size);
             recAramaGirdisi = new Rectangle(KomageneSubeAdiTextBox.Location, KomageneSubeAdiTextBox.Size);
             recYenilemeButonu = new Rectangle(KomageneYenilemeButonu.Location, KomageneYenilemeButonu.Size);
-            KomageneSubeAdiTextBox.Multiline = true;
         }
         private Size formOriginalSize;
         private Rectangle recAnydeskEKleButonu;
@@ -77,6 +78,8 @@ namespace AnydeskEasyConnect
             HotDataGrid.DataSource = HotDonerBindingSource;
             AdileDataGrid.DataSource = AdileSultanBindingSource;
             DigerDataGrid.DataSource = DigerBindingSource;
+
+            SetAcceptButtonForActiveTab();
         }
         internal void KomageneDataGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -102,15 +105,23 @@ namespace AnydeskEasyConnect
                 object anydeskParolasi = KomageneDataGrid.Rows[e.RowIndex].Cells["ŞubeninAnydeskParolası"].Value;
                 if (anydeskNumarasi != null)
                 {
-                    string anydeskConnectCommand = $"echo {anydeskParolasi} | \"C:\\Program Files (x86)\\AnyDesk\\AnyDesk.exe\" {anydeskNumarasi} --with-password";
-                    System.Diagnostics.ProcessStartInfo startInfo = new()
+                    try
                     {
-                        FileName = "cmd.exe",
-                        Arguments = "/c " + anydeskConnectCommand,
-                        CreateNoWindow = true,
-                        UseShellExecute = false
-                    };
-                    System.Diagnostics.Process.Start(startInfo);
+                        anydeskNumarasi = anydeskNumarasi.ToString().Replace(" ", "");
+                        string anydeskConnectCommand = $"echo {anydeskParolasi} | \"C:\\Program Files (x86)\\AnyDesk\\AnyDesk.exe\" {anydeskNumarasi} --with-password";
+                        System.Diagnostics.ProcessStartInfo startInfo = new()
+                        {
+                            FileName = "cmd.exe",
+                            Arguments = "/c " + anydeskConnectCommand,
+                            CreateNoWindow = true,
+                            UseShellExecute = false
+                        };
+                        System.Diagnostics.Process.Start(startInfo);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Şubenin Anydesk numarası boş!");
+                    }
                 }
             }
             else if (e.RowIndex >= 0 && e.ColumnIndex == KomageneDataGrid.Columns["KomageneDuzenleButonu"].Index)
@@ -185,6 +196,17 @@ namespace AnydeskEasyConnect
         {
             SearchFunctionKomagene.BindSearchData(KomageneDataGrid);
             KomageneDataGrid.Refresh();
+        }
+        private void mainTabControl_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SetAcceptButtonForActiveTab();
+        }
+        private void SetAcceptButtonForActiveTab()
+        {
+            if (mainTabControl.SelectedTab == KomageneTab)
+            {
+                AcceptButton = KomageneAramaButonu;
+            }
         }
     }
 }

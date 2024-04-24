@@ -20,6 +20,10 @@ namespace AnydeskEasyConnect
         private static List<Anydesks> AramaSonucunuGetir(string subeAdiylaAramaGirdisi, string connectionString)
         {
             List<Anydesks> returnThese = [];
+            if (subeAdiylaAramaGirdisi != null)
+            {
+                subeAdiylaAramaGirdisi = subeAdiylaAramaGirdisi.Trim();
+            }
             string searchQuery = $"SELECT SubeAdi,SubeAnydeskNumarasi,SubeAnydeskParolasi,BilgisayarYetkisi FROM Komagene WHERE SubeAdi LIKE '%{subeAdiylaAramaGirdisi}%'";
             try
             {

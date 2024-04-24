@@ -89,15 +89,16 @@ namespace AnydeskEasyConnect
                     null => "null",
                     _ => subeAnydeskNumarasi.Trim(),
                 };
+                subeAnydeskNumarasi = subeAnydeskNumarasi.Replace(" ", "");
                 Int64.Parse(subeAnydeskNumarasi);
-                if (subeAnydeskNumarasi.Length == 9)
-                {
-                    subeAnydeskNumarasi.Split()
-                }
                 if (subeAnydeskNumarasi.Length < 9 | subeAnydeskNumarasi.Length > 10)
                 {
                     MessageBox.Show("Girdiğiniz anydesk numarası 9 veya 10 haneli değil\r\nLütfen yeniden kontrol ediniz.");
                     return;
+                }
+                else
+                {
+                    subeAnydeskNumarasi = Algorithms.AnydeskNumarasiDuzenleyici(subeAnydeskNumarasi);
                 }
             }
             catch (FormatException ex)
@@ -133,24 +134,6 @@ namespace AnydeskEasyConnect
                 MessageBox.Show("Şube adı en az 8 karakter olmalıdır. Lütfen geçerli bir şube adı giriniz.");
             }
             sqlConnection.Close();
-        }
-        private string AnydeskNumarasiDuzenleyici(string orijinalAnydeskNumarasi)
-        {
-        string formatlanmisTersAnydeskNumarasi = "";
-        foreach (char c in orijinalAnydeskNumarasi.ToCharArray())
-        {
-            if (formatlanmisTersAnydeskNumarasi.Length % 3 == 0 & c != orijinalAnydeskNumarasi.ToCharArray()[0])
-            {
-                formatlanmisTersAnydeskNumarasi.Append(' ');
-                formatlanmisTersAnydeskNumarasi.Append(c);
-            }
-            else
-            {
-                formatlanmisTersAnydeskNumarasi.Append(c);
-            }
-        }
-        formatlanmisTersAnydeskNumarasi.ToCharArray().Reverse();
-        return formatlanmisTersAnydeskNumarasi.ToString();
         }
     }
 }

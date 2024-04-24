@@ -75,11 +75,16 @@ namespace AnydeskEasyConnect
                     null => "null",
                     _ => duzenlenenAnydeskNumarasi.Trim(),
                 };
+                duzenlenenAnydeskNumarasi = duzenlenenAnydeskNumarasi.Replace(" ", "");
                 Int64.Parse(duzenlenenAnydeskNumarasi);
                 if (duzenlenenAnydeskNumarasi.Length < 9 | duzenlenenAnydeskNumarasi.Length > 10)
                 {
                     MessageBox.Show("Girdiğiniz anydesk numarası 9 veya 10 haneli değil\r\nLütfen yeniden kontrol ediniz.");
                     return;
+                }
+                else
+                {
+                    duzenlenenAnydeskNumarasi = Algorithms.AnydeskNumarasiDuzenleyici(duzenlenenAnydeskNumarasi);
                 }
             }
             catch (FormatException ex)
