@@ -81,11 +81,30 @@ namespace AnydeskEasyConnect
                 null => "null",
                 _ => subeAdi.Trim(),
             };
-            subeAnydeskNumarasi = subeAnydeskNumarasi switch
+            try
             {
-                null => "null",
-                _ => subeAnydeskNumarasi.Trim(),
-            };
+                subeAnydeskNumarasi = subeAnydeskNumarasi switch
+                {
+                    null => "null",
+                    _ => subeAnydeskNumarasi.Trim(),
+                };
+                Int64.Parse(subeAnydeskNumarasi);
+                if (subeAnydeskNumarasi.Length < 9 | subeAnydeskNumarasi.Length > 10)
+                {
+                    MessageBox.Show("Girdiğiniz anydesk numarası 9 veya 10 haneli değil\r\nLütfen yeniden kontrol ediniz.");
+                    return;
+                }
+            }
+            catch (FormatException ex)
+            {
+                MessageBox.Show("Girdiğiniz anydesk numarası bir sayı değil.\r\n" + ex.Message);
+                return;
+            }
+            catch (OverflowException ex)
+            {
+                MessageBox.Show("Girdiğinizi anydesk numarası çok büyük.\r\nLütfen tekrar kontrol ediniz.\r\n" + ex.Message);
+                return;
+            }
             subeAnydeskParolasi = subeAnydeskParolasi switch
             {
                 null => "null",
