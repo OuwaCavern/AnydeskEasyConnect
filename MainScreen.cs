@@ -14,27 +14,97 @@ namespace AnydeskEasyConnect
             maınTabControl.SelectedIndexChanged += mainTabControl_SelectedIndexChanged;
             this.Resize += MainScreen_Resiz;
             formOriginalSize = this.Size;
-            recAnydeskEKleButonu = new Rectangle(KomageneAnydeskEkleButonu.Location, KomageneAnydeskEkleButonu.Size);
+            recKomageneAnydeskEkleButonu = new Rectangle(KomageneAnydeskEkleButonu.Location, KomageneAnydeskEkleButonu.Size);
             recKomageneDataGrid = new Rectangle(KomageneDataGrid.Location, KomageneDataGrid.Size);
-            recAramaButonu = new Rectangle(KomageneAramaButonu.Location, KomageneAramaButonu.Size);
-            recAramaGirdisi = new Rectangle(KomageneSubeAdiTextBox.Location, KomageneSubeAdiTextBox.Size);
-            recYenilemeButonu = new Rectangle(KomageneYenilemeButonu.Location, KomageneYenilemeButonu.Size);
+            recKomageneAramaButonu = new Rectangle(KomageneAramaButonu.Location, KomageneAramaButonu.Size);
+            recKomageneAramaGirdisi = new Rectangle(KomageneSubeAdiTextBox.Location, KomageneSubeAdiTextBox.Size);
+            recKomageneYenilemeButonu = new Rectangle(KomageneYenilemeButonu.Location, KomageneYenilemeButonu.Size);
+            recCajunAnydeskEkleButonu = new Rectangle(CajunAnydeskEkleButonu.Location, CajunAnydeskEkleButonu.Size);
+            recCajunDataGrid = new Rectangle(CajunDataGrid.Location, CajunDataGrid.Size);
+            recCajunAramaButonu = new Rectangle(CajunAramaButonu.Location, CajunAramaButonu.Size);
+            recCajunAramaGirdisi = new Rectangle(CajunAramaGirdisi.Location, CajunAramaGirdisi.Size);
+            recCajunYenilemeButonu = new Rectangle(CajunYenileButonu.Location, CajunYenileButonu.Size);
+            recHotAnydeskEkleButonu = new Rectangle(HotAnydeskEkleButonu.Location, HotAnydeskEkleButonu.Size);
+            recHotDataGrid = new Rectangle(HotDataGrid.Location, HotDataGrid.Size);
+            recHotAramaButonu = new Rectangle(HotAramaButonu.Location, HotAramaButonu.Size);
+            recHotAramaGirdisi = new Rectangle(HotAramaGirdisi.Location, HotAramaGirdisi.Size);
+            recHotYenilemeButonu = new Rectangle(HotYenileButonu.Location, HotYenileButonu.Size);
+            recBereketAnydeskEkleButonu = new Rectangle(BereketAnydeskEkleButonu.Location, BereketAnydeskEkleButonu.Size);
+            recBereketDataGrid = new Rectangle(BereketDataGrid.Location, BereketDataGrid.Size);
+            recBereketAramaButonu = new Rectangle(BereketAramaButonu.Location, BereketAramaButonu.Size);
+            recBereketAramaGirdisi = new Rectangle(BereketAramaGirdisi.Location, BereketAramaGirdisi.Size);
+            recBereketYenilemeButonu = new Rectangle(BereketYenileButonu.Location, BereketYenileButonu.Size);
+            recAdileAnydeskEkleButonu = new Rectangle(AdileAnydeskEkleButonu.Location, AdileAnydeskEkleButonu.Size);
+            recAdileDataGrid = new Rectangle(AdileDataGrid.Location, AdileDataGrid.Size);
+            recAdileAramaButonu = new Rectangle(AdileAramaButonu.Location, AdileAramaButonu.Size);
+            recAdileAramaGirdisi = new Rectangle(AdileAramaGirdisi.Location, AdileAramaGirdisi.Size);
+            recAdileYenilemeButonu = new Rectangle(AdileYenileButonu.Location, AdileYenileButonu.Size);
+            recKofteciAnydeskEkleButonu = new Rectangle(KofteciAnydeskEkleButonu.Location, KofteciAnydeskEkleButonu.Size);
+            recKofteciDataGrid = new Rectangle(KofteciDataGrid.Location, KofteciDataGrid.Size);
+            recKofteciAramaButonu = new Rectangle(KofteciAramaButonu.Location, KofteciAramaButonu.Size);
+            recKofteciAramaGirdisi = new Rectangle(KofteciAramaGirdisi.Location, KofteciAramaGirdisi.Size);
+            recKofteciYenilemeButonu = new Rectangle(KofteciYenileButonu.Location, KofteciYenileButonu.Size);
+            recMaydonozAnydeskEkleButonu = new Rectangle(MaydonozAnydeskEkleButonu.Location, MaydonozAnydeskEkleButonu.Size);
+            recMaydonozDataGrid = new Rectangle(MaydonozDataGrid.Location, MaydonozDataGrid.Size);
+            recMaydonozAramaButonu = new Rectangle(MaydonozAramaButonu.Location, MaydonozAramaButonu.Size);
+            recMaydonozAramaGirdisi = new Rectangle(MaydonozAramaGirdisi.Location, MaydonozAramaGirdisi.Size);
+            recMaydonozYenilemeButonu = new Rectangle(MaydonozYenileButonu.Location, MaydonozYenileButonu.Size);
+            recDigerAnydeskEkleButonu = new Rectangle(DigerAnydeskEkleButonu.Location, DigerAnydeskEkleButonu.Size);
+            recDigerDataGrid = new Rectangle(DigerDataGrid.Location, DigerDataGrid.Size);
+            recDigerAramaButonu = new Rectangle(DigerAramaButonu.Location, DigerAramaButonu.Size);
+            recDigerAramaGirdisi = new Rectangle(DigerAramaGirdisi.Location, DigerAramaGirdisi.Size);
+            recDigerYenilemeButonu = new Rectangle(DigerYenileButonu.Location, DigerYenileButonu.Size);
             WindowState = FormWindowState.Maximized;
         }
         private Size formOriginalSize;
-        private Rectangle recAnydeskEKleButonu;
+        private Rectangle recKomageneAnydeskEkleButonu;
         private Rectangle recKomageneDataGrid;
-        private Rectangle recAramaButonu;
-        private Rectangle recYenilemeButonu;
-        private Rectangle recAramaGirdisi;
+        private Rectangle recKomageneAramaButonu;
+        private Rectangle recKomageneYenilemeButonu;
+        private Rectangle recKomageneAramaGirdisi;
+        private Rectangle recCajunAnydeskEkleButonu;
+        private Rectangle recCajunDataGrid;
+        private Rectangle recCajunAramaButonu;
+        private Rectangle recCajunYenilemeButonu;
+        private Rectangle recCajunAramaGirdisi;
+        private Rectangle recAdileAnydeskEkleButonu;
+        private Rectangle recAdileDataGrid;
+        private Rectangle recAdileAramaButonu;
+        private Rectangle recAdileYenilemeButonu;
+        private Rectangle recAdileAramaGirdisi;
+        private Rectangle recBereketAnydeskEkleButonu;
+        private Rectangle recBereketDataGrid;
+        private Rectangle recBereketAramaButonu;
+        private Rectangle recBereketYenilemeButonu;
+        private Rectangle recBereketAramaGirdisi;
+        private Rectangle recHotAnydeskEkleButonu;
+        private Rectangle recHotDataGrid;
+        private Rectangle recHotAramaButonu;
+        private Rectangle recHotYenilemeButonu;
+        private Rectangle recHotAramaGirdisi;
+        private Rectangle recKofteciAnydeskEkleButonu;
+        private Rectangle recKofteciDataGrid;
+        private Rectangle recKofteciAramaButonu;
+        private Rectangle recKofteciYenilemeButonu;
+        private Rectangle recKofteciAramaGirdisi;
+        private Rectangle recDigerAnydeskEkleButonu;
+        private Rectangle recDigerDataGrid;
+        private Rectangle recDigerAramaButonu;
+        private Rectangle recDigerYenilemeButonu;
+        private Rectangle recDigerAramaGirdisi;
+        private Rectangle recMaydonozAnydeskEkleButonu;
+        private Rectangle recMaydonozDataGrid;
+        private Rectangle recMaydonozAramaButonu;
+        private Rectangle recMaydonozYenilemeButonu;
+        private Rectangle recMaydonozAramaGirdisi;
 
         private void MainScreen_Resiz(object sender, EventArgs e)
         {
-            ResizeControl(KomageneAnydeskEkleButonu, recAnydeskEKleButonu);
+            ResizeControl(KomageneAnydeskEkleButonu, recKomageneAnydeskEkleButonu);
             ResizeControl(KomageneDataGrid, recKomageneDataGrid);
-            ResizeControl(KomageneAramaButonu, recAramaButonu);
-            ResizeControl(KomageneYenilemeButonu, recYenilemeButonu);
-            ResizeControl(KomageneSubeAdiTextBox, recAramaGirdisi);
+            ResizeControl(KomageneAramaButonu, recKomageneAramaButonu);
+            ResizeControl(KomageneYenilemeButonu, recKomageneYenilemeButonu);
+            ResizeControl(KomageneSubeAdiTextBox, recKomageneAramaGirdisi);
         }
 
         private void ResizeControl(Control control, Rectangle rect)
@@ -177,13 +247,119 @@ namespace AnydeskEasyConnect
         }
         private void KomageneAnydeskEkleButonu_Click(object sender, EventArgs e)
         {
-            AddNewAnydeskKomagene addNewAnydesk = new AddNewAnydeskKomagene();
+            AddNewAnydeskKomagene addNewAnydesk = new();
             addNewAnydesk.Show();
         }
-
+        private void AdileAnydeskEkleButonu_Click(object sender, EventArgs e)
+        {
+            AddNewAnydeskAdile addNewAnydesk = new();
+            addNewAnydesk.Show();
+        }
+        private void MaydonozAnydeskEkleButonu_Click(object sender, EventArgs e)
+        {
+            AddNewAnydeskMaydonoz addNewAnydesk = new();
+            addNewAnydesk.Show();
+        }
+        private void BereketAnydeskEkleButonu_Click(object sender, EventArgs e)
+        {
+            AddNewAnydeskBereket addNewAnydesk = new();
+            addNewAnydesk.Show();
+        }
+        private void HotAnydeskEkleButonu_Click(object sender, EventArgs e)
+        {
+            AddNewAnydeskHot addNewAnydesk = new();
+            addNewAnydesk.Show();
+        }
+        private void KofteciAnydeskEkleButonu_Click(object sender, EventArgs e)
+        {
+            AddNewAnydeskKofteci addNewAnydesk = new();
+            addNewAnydesk.Show();
+        }
+        private void DigerAnydeskEkleButonu_Click(object sender, EventArgs e)
+        {
+            AddNewAnydeskDiger addNewAnydesk = new();
+            addNewAnydesk.Show();
+        }
+        private void CajunAnydeskEkleButonu_Click(object sender, EventArgs e)
+        {
+            AddNewAnydeskCajun addNewAnydesk = new();
+            addNewAnydesk.Show();
+        }
         private void KomageneYenilemeButonu_Click(object sender, EventArgs e)
         {
             KomageneYenile();
+        }
+        private void AdileYenilemeButonu_Click(object sender, EventArgs e)
+        {
+            AdileYenile();
+        }
+        private void MaydonozYenilemeButonu_Click(object sender, EventArgs e)
+        {
+            MaydonozYenile();
+        }
+        private void HotYenilemeButonu_Click(object sender, EventArgs e)
+        {
+            HotYenile();
+        }
+        private void BereketYenilemeButonu_Click(object sender, EventArgs e)
+        {
+            BereketYenile();
+        }
+        private void CajunYenilemeButonu_Click(object sender, EventArgs e)
+        {
+            CajunYenile();
+        }
+
+        internal static void AdileYenile()
+        {
+            AnydeskDAO anydeskDAO = new AnydeskDAO();
+            BindingSource AdileBindingSource = new BindingSource();
+            AdileBindingSource.DataSource = anydeskDAO.AdileSultanAnydeskleriniGetir();
+            AdileDataGrid.DataSource = AdileBindingSource;
+            AdileDataGrid.Refresh();
+        }
+        internal static void CajunYenile()
+        {
+            AnydeskDAO anydeskDAO = new AnydeskDAO();
+            BindingSource CajunBindingSource = new BindingSource();
+            CajunBindingSource.DataSource = anydeskDAO.CajunCornerAnydeskleriniGetir();
+            CajunDataGrid.DataSource = CajunBindingSource;
+            CajunDataGrid.Refresh();
+        }
+        internal static void MaydonozYenile()
+        {
+            AnydeskDAO anydeskDAO = new AnydeskDAO();
+            BindingSource MaydonozBindingSource = new BindingSource();
+            MaydonozBindingSource.DataSource = anydeskDAO.MaydonozAnydeskleriniGetir();
+            MaydonozDataGrid.DataSource = MaydonozBindingSource;
+            MaydonozDataGrid.Refresh();
+        }
+
+        internal static void BereketYenile()
+        {
+            AnydeskDAO anydeskDAO = new AnydeskDAO();
+            BindingSource BereketBindingSource = new BindingSource();
+            BereketBindingSource.DataSource = anydeskDAO.BereketDonerAnydeskleriniGetir();
+            BereketDataGrid.DataSource = BereketBindingSource;
+            AdileDataGrid.Refresh();
+        }
+
+        internal static void HotYenile()
+        {
+            AnydeskDAO anydeskDAO = new AnydeskDAO();
+            BindingSource HotBindingSource = new BindingSource();
+            HotBindingSource.DataSource = anydeskDAO.HotDonerAnydeskleriniGetir();
+            HotDataGrid.DataSource = HotBindingSource;
+            HotDataGrid.Refresh();
+        }
+
+        internal static void DigerYenile()
+        {
+            AnydeskDAO anydeskDAO = new AnydeskDAO();
+            BindingSource DigerBindingSource = new BindingSource();
+            DigerBindingSource.DataSource = anydeskDAO.DigerAnydeskleriniGetir();
+            DigerDataGrid.DataSource = DigerBindingSource;
+            DigerDataGrid.Refresh();
         }
 
         internal static void KomageneYenile()
@@ -193,6 +369,14 @@ namespace AnydeskEasyConnect
             KomageneBindingSource.DataSource = anydeskDAO.KomageneAnydeskleriniGetir();
             KomageneDataGrid.DataSource = KomageneBindingSource;
             KomageneDataGrid.Refresh();
+        }
+        internal static void KofteciYenile()
+        {
+            AnydeskDAO anydeskDAO = new AnydeskDAO();
+            BindingSource KofteciBindingSource = new BindingSource();
+            KofteciBindingSource.DataSource = anydeskDAO.KofteciYusufAnydeskleriniGetir();
+            KofteciDataGrid.DataSource = KofteciBindingSource;
+            KofteciDataGrid.Refresh();
         }
 
         public static string? subeAdiylaAramaGirdisi;

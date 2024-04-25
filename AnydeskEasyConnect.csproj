@@ -14,4 +14,49 @@
     <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="8.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Update="AddNewAnydeskBereket.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="AddNewAnydeskAdile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="AddNewAnydeskHot.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="AddNewAnydeskKofteci.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="AddNewAnydeskDiger.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="AddNewAnydeskCajun.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="AddNewAnydeskMaydonoz.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="EditExistingAnydeskKofteci.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="EditExistingAnydeskHot.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="EditExistingAnydeskDiger.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="EditExistingAnydeskBereket.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="EditExistingAnydeskAdile.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="EditExistingAnydeskCajun.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="EditExistingAnydeskMaydonoz.cs">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+
 </Project>
