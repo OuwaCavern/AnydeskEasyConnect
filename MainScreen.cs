@@ -11,7 +11,7 @@ namespace AnydeskEasyConnect
         {
             InitializeComponent();
             this.Load += MainScreen_Load;
-            mainTabControl.SelectedIndexChanged += mainTabControl_SelectedIndexChanged;
+            maınTabControl.SelectedIndexChanged += mainTabControl_SelectedIndexChanged;
             this.Resize += MainScreen_Resiz;
             formOriginalSize = this.Size;
             recAnydeskEKleButonu = new Rectangle(KomageneAnydeskEkleButonu.Location, KomageneAnydeskEkleButonu.Size);
@@ -212,7 +212,7 @@ namespace AnydeskEasyConnect
         }
         private void SetAcceptButtonForActiveTab()
         {
-            if (mainTabControl.SelectedTab == KomageneTab)
+            if (maınTabControl.SelectedTab == KomageneTab)
             {
                 AcceptButton = KomageneAramaButonu;
             }
