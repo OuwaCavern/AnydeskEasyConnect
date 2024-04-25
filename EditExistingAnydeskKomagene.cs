@@ -22,6 +22,7 @@ namespace AnydeskEasyConnect
         string? duzenlenenAnydeskParolasi;
         string? duzenlenenBilgisayarYetkisi;
         string? eskiAnydeskNumarasi;
+        string? eskiAnydeskParolasi;
         internal void SatirinBilgileriniAl(string subeAdi, string anydeskNumarasi, string anydeskParolasi, string bilgisayarYetkisi)
         {
             AnydeskNumarasıGirdisi.Text = anydeskNumarasi;
@@ -35,6 +36,7 @@ namespace AnydeskEasyConnect
             duzenlenenBilgisayarYetkisi = bilgisayarYetkisi;
 
             eskiAnydeskNumarasi = AnydeskNumarasıGirdisi.Text;
+            eskiAnydeskParolasi = AnydeskParolasıGirdisi.Text;
         }
 
         private void ŞubeAdıGirdisi_TextChanged(object sender, EventArgs e)
@@ -68,6 +70,11 @@ namespace AnydeskEasyConnect
                 null => "null",
                 _ => duzenlenenSubeAdi.Trim(),
             };
+            if (duzenlenenSubeAdi.Length > 153)
+            {
+                MessageBox.Show("Girdiğiniz şube adı çok uzun! Lütfen kısaltınız.");
+                return;
+            }
             try
             {
                 duzenlenenAnydeskNumarasi = duzenlenenAnydeskNumarasi switch
@@ -102,6 +109,14 @@ namespace AnydeskEasyConnect
                 null => "null",
                 _ => duzenlenenAnydeskParolasi.Trim(),
             };
+            if (duzenlenenAnydeskParolasi != "DesenErp.12345" && duzenlenenAnydeskParolasi != eskiAnydeskParolasi)
+            {
+                DialogResult answerToQuestion = MessageBox.Show($"{duzenlenenAnydeskParolasi} şifresi normalde koyulan şifremizden farklı.\r\nBu şifreyi koymak istediğinize emin misiniz?", "Onaylıyor musunuz?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (answerToQuestion == DialogResult.No)
+                {
+                    return;
+                }
+            }
             duzenlenenBilgisayarYetkisi = duzenlenenBilgisayarYetkisi switch
             {
                 null => "null",

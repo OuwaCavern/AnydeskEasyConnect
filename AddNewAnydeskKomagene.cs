@@ -82,6 +82,11 @@ namespace AnydeskEasyConnect
                 null => "null",
                 _ => subeAdi.Trim(),
             };
+            if (subeAdi.Length > 153)
+            {
+                MessageBox.Show("Girdiğiniz şube adı çok uzun! Lütfen kısaltınız.");
+                return;
+            }
             try
             {
                 subeAnydeskNumarasi = subeAnydeskNumarasi switch
@@ -116,6 +121,19 @@ namespace AnydeskEasyConnect
                 null => "null",
                 _ => subeAnydeskParolasi.Trim(),
             };
+            if (subeAnydeskParolasi.Length > 153)
+            {
+                MessageBox.Show("Girdiğiniz şube parolası çok uzun! Lütfen kısaltınız.");
+                return;
+            }
+            if (subeAnydeskParolasi != "DesenErp.12345")
+            {
+                DialogResult answerToQuestion = MessageBox.Show($"{subeAnydeskParolasi} şifresi normalde koyulan şifremizden farklı.\r\nBu şifreyi koymak istediğinize emin misiniz?", "Onaylıyor musunuz?", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (answerToQuestion == DialogResult.No)
+                {
+                    return;
+                }
+            }
             subeBilgisayarYetkisi = subeBilgisayarYetkisi switch
             {
                 null => "null",

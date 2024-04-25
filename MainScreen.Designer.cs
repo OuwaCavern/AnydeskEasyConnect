@@ -100,7 +100,7 @@ namespace AnydeskEasyConnect
             mainTabControl.Location = new Point(0, 0);
             mainTabControl.Name = "mainTabControl";
             mainTabControl.SelectedIndex = 0;
-            mainTabControl.Size = new Size(791, 455);
+            mainTabControl.Size = new Size(828, 455);
             mainTabControl.TabIndex = 0;
             // 
             // MaydonozTab
@@ -146,7 +146,7 @@ namespace AnydeskEasyConnect
             KomageneTab.Location = new Point(4, 24);
             KomageneTab.Name = "KomageneTab";
             KomageneTab.Padding = new Padding(3);
-            KomageneTab.Size = new Size(783, 427);
+            KomageneTab.Size = new Size(820, 427);
             KomageneTab.TabIndex = 1;
             KomageneTab.Text = "Komagene";
             KomageneTab.UseVisualStyleBackColor = true;
@@ -162,7 +162,7 @@ namespace AnydeskEasyConnect
             KomageneMainFlowLayout.FlowDirection = FlowDirection.TopDown;
             KomageneMainFlowLayout.Location = new Point(3, 3);
             KomageneMainFlowLayout.Name = "KomageneMainFlowLayout";
-            KomageneMainFlowLayout.Size = new Size(777, 421);
+            KomageneMainFlowLayout.Size = new Size(814, 421);
             KomageneMainFlowLayout.TabIndex = 3;
             // 
             // KomageneAraVeYenileFlow
@@ -430,7 +430,7 @@ namespace AnydeskEasyConnect
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(791, 455);
+            ClientSize = new Size(828, 455);
             Controls.Add(mainTabControl);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "MainScreen";
@@ -489,6 +489,6 @@ namespace AnydeskEasyConnect
         private DataGridViewButtonColumn KomageneSifreyleBaglanButonu;
         private DataGridViewButtonColumn KomageneDuzenleButonu;
         private Button KomageneAnydeskEkleButonu;
-        internal DataGridView KomageneDataGrid;
+        internal static DataGridView KomageneDataGrid;
     }
 }

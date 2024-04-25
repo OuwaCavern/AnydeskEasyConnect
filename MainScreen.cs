@@ -81,8 +81,6 @@ namespace AnydeskEasyConnect
             DigerDataGrid.DataSource = DigerBindingSource;
 
             SetAcceptButtonForActiveTab();
-
-            KomageneDataGrid.Columns[3].Width = 500;
         }
         internal void KomageneDataGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -91,15 +89,23 @@ namespace AnydeskEasyConnect
                 object anydeskNumarasi = KomageneDataGrid.Rows[e.RowIndex].Cells["ŞubeninAnydeskNumarası"].Value;
                 if (anydeskNumarasi != null)
                 {
-                    string anydeskConnectCommand = $"\"C:\\Program Files (x86)\\AnyDesk\\AnyDesk.exe\" {anydeskNumarasi}";
-                    System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo
+                    try
                     {
-                        FileName = "cmd.exe",
-                        Arguments = "/c " + anydeskConnectCommand,
-                        CreateNoWindow = true,
-                        UseShellExecute = false
-                    };
-                    System.Diagnostics.Process.Start(startInfo);
+                        anydeskNumarasi = anydeskNumarasi.ToString().Replace(" ", "");
+                        string anydeskConnectCommand = $"\"C:\\Program Files (x86)\\AnyDesk\\AnyDesk.exe\" {anydeskNumarasi}";
+                        System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo
+                        {
+                            FileName = "cmd.exe",
+                            Arguments = "/c " + anydeskConnectCommand,
+                            CreateNoWindow = true,
+                            UseShellExecute = false
+                        };
+                        System.Diagnostics.Process.Start(startInfo);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
                 }
             }
             else if (e.RowIndex >= 0 && e.ColumnIndex == KomageneDataGrid.Columns["KomageneSifreyleBaglanButonu"].Index)
@@ -123,7 +129,7 @@ namespace AnydeskEasyConnect
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show("Şubenin Anydesk numarası boş!");
+                        MessageBox.Show(ex.Message);
                     }
                 }
             }
