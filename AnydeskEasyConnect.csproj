@@ -7,7 +7,14 @@
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
     <UserSecretsId>5707ae42-82e5-4a6b-9ae8-d24bd4b53539</UserSecretsId>
-    <SignAssembly>False</SignAssembly>
+    <SignAssembly>True</SignAssembly>
+    <Copyright>YemekPOS</Copyright>
+    <PackageProjectUrl>www.yemekpos.com</PackageProjectUrl>
+    <PackageIcon>DesenPos_32512.ico</PackageIcon>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/OuwaCavern/AnydeskEasyConnect</RepositoryUrl>
+    <AssemblyVersion>1.1</AssemblyVersion>
+    <DelaySign>False</DelaySign>
   </PropertyGroup>
 
   <ItemGroup>
@@ -76,6 +83,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="icons\DesenPos_32512.ico">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
     <None Update="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
