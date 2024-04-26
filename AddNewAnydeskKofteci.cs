@@ -144,7 +144,7 @@ namespace AnydeskEasyConnect
                 string insertQuery = $"INSERT INTO Kofteci (Id,SubeAdi,SubeAnydeskNumarasi,SubeAnydeskParolasi,BilgisayarYetkisi) VALUES ({assignedId},'{subeAdi}','{subeAnydeskNumarasi}','{subeAnydeskParolasi}','{subeBilgisayarYetkisi}')";
                 SqlCommand insertCommand = new SqlCommand(insertQuery, sqlConnection);
                 insertCommand.ExecuteNonQuery();
-                MainScreen.KomageneYenile();
+                MainScreen.KofteciYenile();
                 this.Close();
             }
             else
