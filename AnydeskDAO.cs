@@ -16,7 +16,7 @@ namespace AnydeskEasyConnect
             {
                 ExeConfigurationFileMap fileMapping = new ExeConfigurationFileMap
                 {
-                    ExeConfigFilename = @"C:\Users\emirc\source\repos\AnydeskEasyConnect\connectionstring.config"
+                    ExeConfigFilename = Path.Combine(Application.StartupPath, "connectionstring.config")
                 };
                 Configuration configuration = ConfigurationManager.OpenMappedExeConfiguration(fileMapping, ConfigurationUserLevel.None);
                 return configuration.AppSettings.Settings["baglanti"].Value;

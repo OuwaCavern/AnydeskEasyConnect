@@ -1,6 +1,7 @@
 ﻿using Microsoft.Identity.Client;
 using System.Drawing.Text;
 using System.Runtime.CompilerServices;
+using System.Security.AccessControl;
 using System.Windows.Forms;
 
 namespace AnydeskEasyConnect
@@ -105,6 +106,41 @@ namespace AnydeskEasyConnect
             ResizeControl(KomageneAramaButonu, recKomageneAramaButonu);
             ResizeControl(KomageneYenilemeButonu, recKomageneYenilemeButonu);
             ResizeControl(KomageneSubeAdiTextBox, recKomageneAramaGirdisi);
+            ResizeControl(AdileAnydeskEkleButonu, recAdileAnydeskEkleButonu);
+            ResizeControl(AdileDataGrid, recAdileDataGrid);
+            ResizeControl(AdileAramaButonu, recAdileAramaButonu);
+            ResizeControl(AdileYenileButonu, recAdileYenilemeButonu);
+            ResizeControl(AdileAramaGirdisi, recAdileAramaGirdisi);
+            ResizeControl(MaydonozAnydeskEkleButonu, recMaydonozAnydeskEkleButonu);
+            ResizeControl(MaydonozDataGrid, recMaydonozDataGrid);
+            ResizeControl(MaydonozAramaButonu, recMaydonozAramaButonu);
+            ResizeControl(MaydonozYenileButonu, recMaydonozYenilemeButonu);
+            ResizeControl(MaydonozAramaGirdisi, recMaydonozAramaGirdisi);
+            ResizeControl(KofteciAnydeskEkleButonu, recKofteciAnydeskEkleButonu);
+            ResizeControl(KofteciDataGrid, recKofteciDataGrid);
+            ResizeControl(KofteciAramaButonu, recKofteciAramaButonu);
+            ResizeControl(KofteciYenileButonu, recKofteciYenilemeButonu);
+            ResizeControl(KofteciAramaGirdisi, recKofteciAramaGirdisi);
+            ResizeControl(HotAnydeskEkleButonu, recHotAnydeskEkleButonu);
+            ResizeControl(HotDataGrid, recHotDataGrid);
+            ResizeControl(HotAramaButonu, recHotAramaButonu);
+            ResizeControl(HotYenileButonu, recHotYenilemeButonu);
+            ResizeControl(HotAramaGirdisi, recHotAramaGirdisi);
+            ResizeControl(CajunAnydeskEkleButonu, recCajunAnydeskEkleButonu);
+            ResizeControl(CajunDataGrid, recCajunDataGrid);
+            ResizeControl(CajunAramaButonu, recCajunAramaButonu);
+            ResizeControl(CajunYenileButonu, recCajunYenilemeButonu);
+            ResizeControl(CajunAramaGirdisi, recCajunAramaGirdisi);
+            ResizeControl(BereketAnydeskEkleButonu, recBereketAnydeskEkleButonu);
+            ResizeControl(BereketDataGrid, recBereketDataGrid);
+            ResizeControl(BereketAramaButonu, recBereketAramaButonu);
+            ResizeControl(BereketYenileButonu, recBereketYenilemeButonu);
+            ResizeControl(BereketAramaGirdisi, recBereketAramaGirdisi);
+            ResizeControl(DigerAnydeskEkleButonu, recDigerAnydeskEkleButonu);
+            ResizeControl(DigerDataGrid, recDigerDataGrid);
+            ResizeControl(DigerAramaButonu, recDigerAramaButonu);
+            ResizeControl(DigerYenileButonu, recDigerYenilemeButonu);
+            ResizeControl(DigerAramaGirdisi, recDigerAramaGirdisi);
         }
 
         private void ResizeControl(Control control, Rectangle rect)
@@ -245,6 +281,657 @@ namespace AnydeskEasyConnect
                 }
             }
         }
+        internal void CajunDataGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex == CajunDataGrid.Columns["CajunBaglanButonu"].Index)
+            {
+                object anydeskNumarasi = CajunDataGrid.Rows[e.RowIndex].Cells["ŞubeninAnydeskNumarası"].Value;
+                if (anydeskNumarasi != null)
+                {
+                    try
+                    {
+                        anydeskNumarasi = anydeskNumarasi.ToString().Replace(" ", "");
+                        string anydeskConnectCommand = $"\"C:\\Program Files (x86)\\AnyDesk\\AnyDesk.exe\" {anydeskNumarasi}";
+                        System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo
+                        {
+                            FileName = "cmd.exe",
+                            Arguments = "/c " + anydeskConnectCommand,
+                            CreateNoWindow = true,
+                            UseShellExecute = false
+                        };
+                        System.Diagnostics.Process.Start(startInfo);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                }
+            }
+            else if (e.RowIndex >= 0 && e.ColumnIndex == CajunDataGrid.Columns["CajunSifreyleBaglanButonu"].Index)
+            {
+                object anydeskNumarasi = CajunDataGrid.Rows[e.RowIndex].Cells["ŞubeninAnydeskNumarası"].Value;
+                object anydeskParolasi = CajunDataGrid.Rows[e.RowIndex].Cells["ŞubeninAnydeskParolası"].Value;
+                if (anydeskNumarasi != null)
+                {
+                    try
+                    {
+                        anydeskNumarasi = anydeskNumarasi.ToString().Replace(" ", "");
+                        string anydeskConnectCommand = $"echo {anydeskParolasi} | \"C:\\Program Files (x86)\\AnyDesk\\AnyDesk.exe\" {anydeskNumarasi} --with-password";
+                        System.Diagnostics.ProcessStartInfo startInfo = new()
+                        {
+                            FileName = "cmd.exe",
+                            Arguments = "/c " + anydeskConnectCommand,
+                            CreateNoWindow = true,
+                            UseShellExecute = false
+                        };
+                        System.Diagnostics.Process.Start(startInfo);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                }
+            }
+            else if (e.RowIndex >= 0 && e.ColumnIndex == CajunDataGrid.Columns["CajunDuzenleButonu"].Index)
+            {
+                object bilgisayarYetkisi = CajunDataGrid.Rows[e.RowIndex].Cells["BilgisayarYetkisi"].Value;
+                object subeAdi = CajunDataGrid.Rows[e.RowIndex].Cells["ŞubeninAdı"].Value;
+                object anydeskNumarasi = CajunDataGrid.Rows[e.RowIndex].Cells["ŞubeninAnydeskNumarası"].Value;
+                object anydeskParolasi = CajunDataGrid.Rows[e.RowIndex].Cells["ŞubeninAnydeskParolası"].Value;
+                if (anydeskNumarasi != null)
+                {
+                    string? anydeskParolasiString = "";
+                    string? subeAdiString = "";
+                    string? bilgisayarYetkisiString = "";
+                    try
+                    {
+                        anydeskParolasiString = anydeskParolasi.ToString();
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Null Reference Exception: Parolası null olan en az 1 girdi bulundu.");
+                    }
+                    try
+                    {
+                        subeAdiString = subeAdi.ToString();
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Null Reference Exception: Şube adı null olan en az 1 girdi bulundu.");
+                    }
+                    try
+                    {
+                        bilgisayarYetkisiString = bilgisayarYetkisi.ToString();
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Null Reference Exception: Bilgisayar Yetkisi null olan en az 1 girdi bulundu.");
+                    }
+                    string anydeskNumarasiString = anydeskNumarasi.ToString();
+                    EditExistingAnydeskCajun editExistingAnydeskCajun = new EditExistingAnydeskCajun();
+                    editExistingAnydeskCajun.SatirinBilgileriniAl(subeAdiString, anydeskNumarasiString, anydeskParolasiString, bilgisayarYetkisiString);
+                    editExistingAnydeskCajun.Show();
+                }
+            }
+        }
+        internal void AdileDataGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex == AdileDataGrid.Columns["AdileBaglanButonu"].Index)
+            {
+                object anydeskNumarasi = AdileDataGrid.Rows[e.RowIndex].Cells["ŞubeninAnydeskNumarası"].Value;
+                if (anydeskNumarasi != null)
+                {
+                    try
+                    {
+                        anydeskNumarasi = anydeskNumarasi.ToString().Replace(" ", "");
+                        string anydeskConnectCommand = $"\"C:\\Program Files (x86)\\AnyDesk\\AnyDesk.exe\" {anydeskNumarasi}";
+                        System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo
+                        {
+                            FileName = "cmd.exe",
+                            Arguments = "/c " + anydeskConnectCommand,
+                            CreateNoWindow = true,
+                            UseShellExecute = false
+                        };
+                        System.Diagnostics.Process.Start(startInfo);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                }
+            }
+            else if (e.RowIndex >= 0 && e.ColumnIndex == AdileDataGrid.Columns["AdileSifreyleBaglanButonu"].Index)
+            {
+                object anydeskNumarasi = AdileDataGrid.Rows[e.RowIndex].Cells["ŞubeninAnydeskNumarası"].Value;
+                object anydeskParolasi = AdileDataGrid.Rows[e.RowIndex].Cells["ŞubeninAnydeskParolası"].Value;
+                if (anydeskNumarasi != null)
+                {
+                    try
+                    {
+                        anydeskNumarasi = anydeskNumarasi.ToString().Replace(" ", "");
+                        string anydeskConnectCommand = $"echo {anydeskParolasi} | \"C:\\Program Files (x86)\\AnyDesk\\AnyDesk.exe\" {anydeskNumarasi} --with-password";
+                        System.Diagnostics.ProcessStartInfo startInfo = new()
+                        {
+                            FileName = "cmd.exe",
+                            Arguments = "/c " + anydeskConnectCommand,
+                            CreateNoWindow = true,
+                            UseShellExecute = false
+                        };
+                        System.Diagnostics.Process.Start(startInfo);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                }
+            }
+            else if (e.RowIndex >= 0 && e.ColumnIndex == AdileDataGrid.Columns["AdileDuzenleButonu"].Index)
+            {
+                object bilgisayarYetkisi = AdileDataGrid.Rows[e.RowIndex].Cells["BilgisayarYetkisi"].Value;
+                object subeAdi = AdileDataGrid.Rows[e.RowIndex].Cells["ŞubeninAdı"].Value;
+                object anydeskNumarasi = AdileDataGrid.Rows[e.RowIndex].Cells["ŞubeninAnydeskNumarası"].Value;
+                object anydeskParolasi = AdileDataGrid.Rows[e.RowIndex].Cells["ŞubeninAnydeskParolası"].Value;
+                if (anydeskNumarasi != null)
+                {
+                    string? anydeskParolasiString = "";
+                    string? subeAdiString = "";
+                    string? bilgisayarYetkisiString = "";
+                    try
+                    {
+                        anydeskParolasiString = anydeskParolasi.ToString();
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Null Reference Exception: Parolası null olan en az 1 girdi bulundu.");
+                    }
+                    try
+                    {
+                        subeAdiString = subeAdi.ToString();
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Null Reference Exception: Şube adı null olan en az 1 girdi bulundu.");
+                    }
+                    try
+                    {
+                        bilgisayarYetkisiString = bilgisayarYetkisi.ToString();
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Null Reference Exception: Bilgisayar Yetkisi null olan en az 1 girdi bulundu.");
+                    }
+                    string anydeskNumarasiString = anydeskNumarasi.ToString();
+                    EditExistingAnydeskAdile editExistingAnydeskAdile = new EditExistingAnydeskAdile();
+                    editExistingAnydeskAdile.SatirinBilgileriniAl(subeAdiString, anydeskNumarasiString, anydeskParolasiString, bilgisayarYetkisiString);
+                    editExistingAnydeskAdile.Show();
+                }
+            }
+        }
+        internal void KofteciDataGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex == KofteciDataGrid.Columns["KofteciBaglanButonu"].Index)
+            {
+                object anydeskNumarasi = KofteciDataGrid.Rows[e.RowIndex].Cells["ŞubeninAnydeskNumarası"].Value;
+                if (anydeskNumarasi != null)
+                {
+                    try
+                    {
+                        anydeskNumarasi = anydeskNumarasi.ToString().Replace(" ", "");
+                        string anydeskConnectCommand = $"\"C:\\Program Files (x86)\\AnyDesk\\AnyDesk.exe\" {anydeskNumarasi}";
+                        System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo
+                        {
+                            FileName = "cmd.exe",
+                            Arguments = "/c " + anydeskConnectCommand,
+                            CreateNoWindow = true,
+                            UseShellExecute = false
+                        };
+                        System.Diagnostics.Process.Start(startInfo);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                }
+            }
+            else if (e.RowIndex >= 0 && e.ColumnIndex == KofteciDataGrid.Columns["KofteciSifreyleBaglanButonu"].Index)
+            {
+                object anydeskNumarasi = KofteciDataGrid.Rows[e.RowIndex].Cells["ŞubeninAnydeskNumarası"].Value;
+                object anydeskParolasi = KofteciDataGrid.Rows[e.RowIndex].Cells["ŞubeninAnydeskParolası"].Value;
+                if (anydeskNumarasi != null)
+                {
+                    try
+                    {
+                        anydeskNumarasi = anydeskNumarasi.ToString().Replace(" ", "");
+                        string anydeskConnectCommand = $"echo {anydeskParolasi} | \"C:\\Program Files (x86)\\AnyDesk\\AnyDesk.exe\" {anydeskNumarasi} --with-password";
+                        System.Diagnostics.ProcessStartInfo startInfo = new()
+                        {
+                            FileName = "cmd.exe",
+                            Arguments = "/c " + anydeskConnectCommand,
+                            CreateNoWindow = true,
+                            UseShellExecute = false
+                        };
+                        System.Diagnostics.Process.Start(startInfo);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                }
+            }
+            else if (e.RowIndex >= 0 && e.ColumnIndex == KofteciDataGrid.Columns["KofteciDuzenleButonu"].Index)
+            {
+                object bilgisayarYetkisi = KofteciDataGrid.Rows[e.RowIndex].Cells["BilgisayarYetkisi"].Value;
+                object subeAdi = KofteciDataGrid.Rows[e.RowIndex].Cells["ŞubeninAdı"].Value;
+                object anydeskNumarasi = KofteciDataGrid.Rows[e.RowIndex].Cells["ŞubeninAnydeskNumarası"].Value;
+                object anydeskParolasi = KofteciDataGrid.Rows[e.RowIndex].Cells["ŞubeninAnydeskParolası"].Value;
+                if (anydeskNumarasi != null)
+                {
+                    string? anydeskParolasiString = "";
+                    string? subeAdiString = "";
+                    string? bilgisayarYetkisiString = "";
+                    try
+                    {
+                        anydeskParolasiString = anydeskParolasi.ToString();
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Null Reference Exception: Parolası null olan en az 1 girdi bulundu.");
+                    }
+                    try
+                    {
+                        subeAdiString = subeAdi.ToString();
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Null Reference Exception: Şube adı null olan en az 1 girdi bulundu.");
+                    }
+                    try
+                    {
+                        bilgisayarYetkisiString = bilgisayarYetkisi.ToString();
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Null Reference Exception: Bilgisayar Yetkisi null olan en az 1 girdi bulundu.");
+                    }
+                    string anydeskNumarasiString = anydeskNumarasi.ToString();
+                    EditExistingAnydeskKofteci editExistingAnydeskKofteci = new EditExistingAnydeskKofteci();
+                    editExistingAnydeskKofteci.SatirinBilgileriniAl(subeAdiString, anydeskNumarasiString, anydeskParolasiString, bilgisayarYetkisiString);
+                    editExistingAnydeskKofteci.Show();
+                }
+            }
+        }
+        internal void BereketDataGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex == BereketDataGrid.Columns["BereketBaglanButonu"].Index)
+            {
+                object anydeskNumarasi = BereketDataGrid.Rows[e.RowIndex].Cells["ŞubeninAnydeskNumarası"].Value;
+                if (anydeskNumarasi != null)
+                {
+                    try
+                    {
+                        anydeskNumarasi = anydeskNumarasi.ToString().Replace(" ", "");
+                        string anydeskConnectCommand = $"\"C:\\Program Files (x86)\\AnyDesk\\AnyDesk.exe\" {anydeskNumarasi}";
+                        System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo
+                        {
+                            FileName = "cmd.exe",
+                            Arguments = "/c " + anydeskConnectCommand,
+                            CreateNoWindow = true,
+                            UseShellExecute = false
+                        };
+                        System.Diagnostics.Process.Start(startInfo);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                }
+            }
+            else if (e.RowIndex >= 0 && e.ColumnIndex == BereketDataGrid.Columns["BereketSifreyleBaglanButonu"].Index)
+            {
+                object anydeskNumarasi = BereketDataGrid.Rows[e.RowIndex].Cells["ŞubeninAnydeskNumarası"].Value;
+                object anydeskParolasi = BereketDataGrid.Rows[e.RowIndex].Cells["ŞubeninAnydeskParolası"].Value;
+                if (anydeskNumarasi != null)
+                {
+                    try
+                    {
+                        anydeskNumarasi = anydeskNumarasi.ToString().Replace(" ", "");
+                        string anydeskConnectCommand = $"echo {anydeskParolasi} | \"C:\\Program Files (x86)\\AnyDesk\\AnyDesk.exe\" {anydeskNumarasi} --with-password";
+                        System.Diagnostics.ProcessStartInfo startInfo = new()
+                        {
+                            FileName = "cmd.exe",
+                            Arguments = "/c " + anydeskConnectCommand,
+                            CreateNoWindow = true,
+                            UseShellExecute = false
+                        };
+                        System.Diagnostics.Process.Start(startInfo);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                }
+            }
+            else if (e.RowIndex >= 0 && e.ColumnIndex == BereketDataGrid.Columns["BereketDuzenleButonu"].Index)
+            {
+                object bilgisayarYetkisi = BereketDataGrid.Rows[e.RowIndex].Cells["BilgisayarYetkisi"].Value;
+                object subeAdi = BereketDataGrid.Rows[e.RowIndex].Cells["ŞubeninAdı"].Value;
+                object anydeskNumarasi = BereketDataGrid.Rows[e.RowIndex].Cells["ŞubeninAnydeskNumarası"].Value;
+                object anydeskParolasi = BereketDataGrid.Rows[e.RowIndex].Cells["ŞubeninAnydeskParolası"].Value;
+                if (anydeskNumarasi != null)
+                {
+                    string? anydeskParolasiString = "";
+                    string? subeAdiString = "";
+                    string? bilgisayarYetkisiString = "";
+                    try
+                    {
+                        anydeskParolasiString = anydeskParolasi.ToString();
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Null Reference Exception: Parolası null olan en az 1 girdi bulundu.");
+                    }
+                    try
+                    {
+                        subeAdiString = subeAdi.ToString();
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Null Reference Exception: Şube adı null olan en az 1 girdi bulundu.");
+                    }
+                    try
+                    {
+                        bilgisayarYetkisiString = bilgisayarYetkisi.ToString();
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Null Reference Exception: Bilgisayar Yetkisi null olan en az 1 girdi bulundu.");
+                    }
+                    string anydeskNumarasiString = anydeskNumarasi.ToString();
+                    EditExistingAnydeskBereket editExistingAnydeskBereket = new EditExistingAnydeskBereket();
+                    editExistingAnydeskBereket.SatirinBilgileriniAl(subeAdiString, anydeskNumarasiString, anydeskParolasiString, bilgisayarYetkisiString);
+                    editExistingAnydeskBereket.Show();
+                }
+            }
+        }
+        internal void HotDataGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex == HotDataGrid.Columns["HotBaglanButonu"].Index)
+            {
+                object anydeskNumarasi = HotDataGrid.Rows[e.RowIndex].Cells["ŞubeninAnydeskNumarası"].Value;
+                if (anydeskNumarasi != null)
+                {
+                    try
+                    {
+                        anydeskNumarasi = anydeskNumarasi.ToString().Replace(" ", "");
+                        string anydeskConnectCommand = $"\"C:\\Program Files (x86)\\AnyDesk\\AnyDesk.exe\" {anydeskNumarasi}";
+                        System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo
+                        {
+                            FileName = "cmd.exe",
+                            Arguments = "/c " + anydeskConnectCommand,
+                            CreateNoWindow = true,
+                            UseShellExecute = false
+                        };
+                        System.Diagnostics.Process.Start(startInfo);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                }
+            }
+            else if (e.RowIndex >= 0 && e.ColumnIndex == HotDataGrid.Columns["HotSifreyleBaglanButonu"].Index)
+            {
+                object anydeskNumarasi = HotDataGrid.Rows[e.RowIndex].Cells["ŞubeninAnydeskNumarası"].Value;
+                object anydeskParolasi = HotDataGrid.Rows[e.RowIndex].Cells["ŞubeninAnydeskParolası"].Value;
+                if (anydeskNumarasi != null)
+                {
+                    try
+                    {
+                        anydeskNumarasi = anydeskNumarasi.ToString().Replace(" ", "");
+                        string anydeskConnectCommand = $"echo {anydeskParolasi} | \"C:\\Program Files (x86)\\AnyDesk\\AnyDesk.exe\" {anydeskNumarasi} --with-password";
+                        System.Diagnostics.ProcessStartInfo startInfo = new()
+                        {
+                            FileName = "cmd.exe",
+                            Arguments = "/c " + anydeskConnectCommand,
+                            CreateNoWindow = true,
+                            UseShellExecute = false
+                        };
+                        System.Diagnostics.Process.Start(startInfo);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                }
+            }
+            else if (e.RowIndex >= 0 && e.ColumnIndex == HotDataGrid.Columns["HotDuzenleButonu"].Index)
+            {
+                object bilgisayarYetkisi = HotDataGrid.Rows[e.RowIndex].Cells["BilgisayarYetkisi"].Value;
+                object subeAdi = HotDataGrid.Rows[e.RowIndex].Cells["ŞubeninAdı"].Value;
+                object anydeskNumarasi = HotDataGrid.Rows[e.RowIndex].Cells["ŞubeninAnydeskNumarası"].Value;
+                object anydeskParolasi = HotDataGrid.Rows[e.RowIndex].Cells["ŞubeninAnydeskParolası"].Value;
+                if (anydeskNumarasi != null)
+                {
+                    string? anydeskParolasiString = "";
+                    string? subeAdiString = "";
+                    string? bilgisayarYetkisiString = "";
+                    try
+                    {
+                        anydeskParolasiString = anydeskParolasi.ToString();
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Null Reference Exception: Parolası null olan en az 1 girdi bulundu.");
+                    }
+                    try
+                    {
+                        subeAdiString = subeAdi.ToString();
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Null Reference Exception: Şube adı null olan en az 1 girdi bulundu.");
+                    }
+                    try
+                    {
+                        bilgisayarYetkisiString = bilgisayarYetkisi.ToString();
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Null Reference Exception: Bilgisayar Yetkisi null olan en az 1 girdi bulundu.");
+                    }
+                    string anydeskNumarasiString = anydeskNumarasi.ToString();
+                    EditExistingAnydeskHot editExistingAnydeskHot = new EditExistingAnydeskHot();
+                    editExistingAnydeskHot.SatirinBilgileriniAl(subeAdiString, anydeskNumarasiString, anydeskParolasiString, bilgisayarYetkisiString);
+                    editExistingAnydeskHot.Show();
+                }
+            }
+        }
+        internal void MaydonozDataGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex == MaydonozDataGrid.Columns["MaydonozBaglanButonu"].Index)
+            {
+                object anydeskNumarasi = MaydonozDataGrid.Rows[e.RowIndex].Cells["ŞubeninAnydeskNumarası"].Value;
+                if (anydeskNumarasi != null)
+                {
+                    try
+                    {
+                        anydeskNumarasi = anydeskNumarasi.ToString().Replace(" ", "");
+                        string anydeskConnectCommand = $"\"C:\\Program Files (x86)\\AnyDesk\\AnyDesk.exe\" {anydeskNumarasi}";
+                        System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo
+                        {
+                            FileName = "cmd.exe",
+                            Arguments = "/c " + anydeskConnectCommand,
+                            CreateNoWindow = true,
+                            UseShellExecute = false
+                        };
+                        System.Diagnostics.Process.Start(startInfo);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                }
+            }
+            else if (e.RowIndex >= 0 && e.ColumnIndex == MaydonozDataGrid.Columns["MaydonozSifreyleBaglanButonu"].Index)
+            {
+                object anydeskNumarasi = MaydonozDataGrid.Rows[e.RowIndex].Cells["ŞubeninAnydeskNumarası"].Value;
+                object anydeskParolasi = MaydonozDataGrid.Rows[e.RowIndex].Cells["ŞubeninAnydeskParolası"].Value;
+                if (anydeskNumarasi != null)
+                {
+                    try
+                    {
+                        anydeskNumarasi = anydeskNumarasi.ToString().Replace(" ", "");
+                        string anydeskConnectCommand = $"echo {anydeskParolasi} | \"C:\\Program Files (x86)\\AnyDesk\\AnyDesk.exe\" {anydeskNumarasi} --with-password";
+                        System.Diagnostics.ProcessStartInfo startInfo = new()
+                        {
+                            FileName = "cmd.exe",
+                            Arguments = "/c " + anydeskConnectCommand,
+                            CreateNoWindow = true,
+                            UseShellExecute = false
+                        };
+                        System.Diagnostics.Process.Start(startInfo);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                }
+            }
+            else if (e.RowIndex >= 0 && e.ColumnIndex == MaydonozDataGrid.Columns["MaydonozDuzenleButonu"].Index)
+            {
+                object bilgisayarYetkisi = MaydonozDataGrid.Rows[e.RowIndex].Cells["BilgisayarYetkisi"].Value;
+                object subeAdi = MaydonozDataGrid.Rows[e.RowIndex].Cells["ŞubeninAdı"].Value;
+                object anydeskNumarasi = MaydonozDataGrid.Rows[e.RowIndex].Cells["ŞubeninAnydeskNumarası"].Value;
+                object anydeskParolasi = MaydonozDataGrid.Rows[e.RowIndex].Cells["ŞubeninAnydeskParolası"].Value;
+                if (anydeskNumarasi != null)
+                {
+                    string? anydeskParolasiString = "";
+                    string? subeAdiString = "";
+                    string? bilgisayarYetkisiString = "";
+                    try
+                    {
+                        anydeskParolasiString = anydeskParolasi.ToString();
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Null Reference Exception: Parolası null olan en az 1 girdi bulundu.");
+                    }
+                    try
+                    {
+                        subeAdiString = subeAdi.ToString();
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Null Reference Exception: Şube adı null olan en az 1 girdi bulundu.");
+                    }
+                    try
+                    {
+                        bilgisayarYetkisiString = bilgisayarYetkisi.ToString();
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Null Reference Exception: Bilgisayar Yetkisi null olan en az 1 girdi bulundu.");
+                    }
+                    string anydeskNumarasiString = anydeskNumarasi.ToString();
+                    EditExistingAnydeskMaydonoz editExistingAnydeskMaydonoz = new EditExistingAnydeskMaydonoz();
+                    editExistingAnydeskMaydonoz.SatirinBilgileriniAl(subeAdiString, anydeskNumarasiString, anydeskParolasiString, bilgisayarYetkisiString);
+                    editExistingAnydeskMaydonoz.Show();
+                }
+            }
+        }
+        internal void DigerDataGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex == DigerDataGrid.Columns["DigerBaglanButonu"].Index)
+            {
+                object anydeskNumarasi = DigerDataGrid.Rows[e.RowIndex].Cells["ŞubeninAnydeskNumarası"].Value;
+                if (anydeskNumarasi != null)
+                {
+                    try
+                    {
+                        anydeskNumarasi = anydeskNumarasi.ToString().Replace(" ", "");
+                        string anydeskConnectCommand = $"\"C:\\Program Files (x86)\\AnyDesk\\AnyDesk.exe\" {anydeskNumarasi}";
+                        System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo
+                        {
+                            FileName = "cmd.exe",
+                            Arguments = "/c " + anydeskConnectCommand,
+                            CreateNoWindow = true,
+                            UseShellExecute = false
+                        };
+                        System.Diagnostics.Process.Start(startInfo);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                }
+            }
+            else if (e.RowIndex >= 0 && e.ColumnIndex == DigerDataGrid.Columns["DigerSifreyleBaglanButonu"].Index)
+            {
+                object anydeskNumarasi = DigerDataGrid.Rows[e.RowIndex].Cells["ŞubeninAnydeskNumarası"].Value;
+                object anydeskParolasi = DigerDataGrid.Rows[e.RowIndex].Cells["ŞubeninAnydeskParolası"].Value;
+                if (anydeskNumarasi != null)
+                {
+                    try
+                    {
+                        anydeskNumarasi = anydeskNumarasi.ToString().Replace(" ", "");
+                        string anydeskConnectCommand = $"echo {anydeskParolasi} | \"C:\\Program Files (x86)\\AnyDesk\\AnyDesk.exe\" {anydeskNumarasi} --with-password";
+                        System.Diagnostics.ProcessStartInfo startInfo = new()
+                        {
+                            FileName = "cmd.exe",
+                            Arguments = "/c " + anydeskConnectCommand,
+                            CreateNoWindow = true,
+                            UseShellExecute = false
+                        };
+                        System.Diagnostics.Process.Start(startInfo);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                }
+            }
+            else if (e.RowIndex >= 0 && e.ColumnIndex == DigerDataGrid.Columns["DigerDuzenleButonu"].Index)
+            {
+                object bilgisayarYetkisi = DigerDataGrid.Rows[e.RowIndex].Cells["BilgisayarYetkisi"].Value;
+                object subeAdi = DigerDataGrid.Rows[e.RowIndex].Cells["ŞubeninAdı"].Value;
+                object anydeskNumarasi = DigerDataGrid.Rows[e.RowIndex].Cells["ŞubeninAnydeskNumarası"].Value;
+                object anydeskParolasi = DigerDataGrid.Rows[e.RowIndex].Cells["ŞubeninAnydeskParolası"].Value;
+                if (anydeskNumarasi != null)
+                {
+                    string? anydeskParolasiString = "";
+                    string? subeAdiString = "";
+                    string? bilgisayarYetkisiString = "";
+                    try
+                    {
+                        anydeskParolasiString = anydeskParolasi.ToString();
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Null Reference Exception: Parolası null olan en az 1 girdi bulundu.");
+                    }
+                    try
+                    {
+                        subeAdiString = subeAdi.ToString();
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Null Reference Exception: Şube adı null olan en az 1 girdi bulundu.");
+                    }
+                    try
+                    {
+                        bilgisayarYetkisiString = bilgisayarYetkisi.ToString();
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Null Reference Exception: Bilgisayar Yetkisi null olan en az 1 girdi bulundu.");
+                    }
+                    string anydeskNumarasiString = anydeskNumarasi.ToString();
+                    EditExistingAnydeskDiger editExistingAnydeskDiger = new EditExistingAnydeskDiger();
+                    editExistingAnydeskDiger.SatirinBilgileriniAl(subeAdiString, anydeskNumarasiString, anydeskParolasiString, bilgisayarYetkisiString);
+                    editExistingAnydeskDiger.Show();
+                }
+            }
+        }
         private void KomageneAnydeskEkleButonu_Click(object sender, EventArgs e)
         {
             AddNewAnydeskKomagene addNewAnydesk = new();
@@ -341,7 +1028,7 @@ namespace AnydeskEasyConnect
             BindingSource BereketBindingSource = new BindingSource();
             BereketBindingSource.DataSource = anydeskDAO.BereketDonerAnydeskleriniGetir();
             BereketDataGrid.DataSource = BereketBindingSource;
-            AdileDataGrid.Refresh();
+            BereketDataGrid.Refresh();
         }
 
         internal static void HotYenile()
@@ -384,12 +1071,76 @@ namespace AnydeskEasyConnect
         {
             subeAdiylaAramaGirdisi = KomageneSubeAdiTextBox.Text;
         }
+        private void AdileAramaGirdisi_TextChanged(object sender, EventArgs e)
+        {
+            subeAdiylaAramaGirdisi = AdileAramaGirdisi.Text;
+        }
+        private void CajunAramaGirdisi_TextChanged(object sender, EventArgs e)
+        {
+            subeAdiylaAramaGirdisi = CajunAramaGirdisi.Text;
+        }
+        private void MaydonozAramaGirdisi_TextChanged(object sender, EventArgs e)
+        {
+            subeAdiylaAramaGirdisi = MaydonozAramaGirdisi.Text;
+        }
+        private void HotAramaGirdisi_TextChanged(object sender, EventArgs e)
+        {
+            subeAdiylaAramaGirdisi = HotAramaGirdisi.Text;
+        }
+        private void BereketAramaGirdisi_TextChanged(object sender, EventArgs e)
+        {
+            subeAdiylaAramaGirdisi = BereketAramaGirdisi.Text;
+        }
+        private void KofteciAramaGirdisi_TextChanged(object sender, EventArgs e)
+        {
+            subeAdiylaAramaGirdisi = KofteciAramaGirdisi.Text;
+        }
+        private void DigerAramaGirdisi_TextChanged(object sender, EventArgs e)
+        {
+            subeAdiylaAramaGirdisi = DigerAramaGirdisi.Text;
+        }
 
         private void KomageneAramaButonu_Click(object sender, EventArgs e)
         {
             SearchFunctionKomagene.BindSearchData(KomageneDataGrid);
             KomageneDataGrid.Refresh();
         }
+        private void CajunAramaButonu_Click(object sender, EventArgs e)
+        {
+            SearchFunctionCajun.BindSearchData(CajunDataGrid);
+            CajunDataGrid.Refresh();
+        }
+        private void AdileAramaButonu_Click(object sender, EventArgs e)
+        {
+            SearchFunctionAdile.BindSearchData(AdileDataGrid);
+            AdileDataGrid.Refresh();
+        }
+        private void KofteciAramaButonu_Click(object sender, EventArgs e)
+        {
+            SearchFunctionKofteci.BindSearchData(KofteciDataGrid);
+            KofteciDataGrid.Refresh();
+        }
+        private void BereketAramaButonu_Click(object sender, EventArgs e)
+        {
+            SearchFunctionBereket.BindSearchData(KomageneDataGrid);
+            KomageneDataGrid.Refresh();
+        }
+        private void HotAramaButonu_Click(object sender, EventArgs e)
+        {
+            SearchFunctionHot.BindSearchData(HotDataGrid);
+            HotDataGrid.Refresh();
+        }
+        private void MaydonozAramaButonu_Click(object sender, EventArgs e)
+        {
+            SearchFunctionMaydonoz.BindSearchData(MaydonozDataGrid);
+            MaydonozDataGrid.Refresh();
+        }
+        private void DigerAramaButonu_Click(object sender, EventArgs e)
+        {
+            SearchFunctionDiger.BindSearchData(DigerDataGrid);
+            DigerDataGrid.Refresh();
+        }
+
         private void mainTabControl_SelectedIndexChanged(object sender, EventArgs e)
         {
             SetAcceptButtonForActiveTab();
@@ -399,6 +1150,42 @@ namespace AnydeskEasyConnect
             if (maınTabControl.SelectedTab == KomageneTab)
             {
                 AcceptButton = KomageneAramaButonu;
+                KomageneSubeAdiTextBox.Focus();
+            }
+            else if (maınTabControl.SelectedTab == AdileTab)
+            {
+                AcceptButton = AdileAramaButonu;
+                AdileAramaGirdisi.Focus();
+            }
+            else if (maınTabControl.SelectedTab == CajunTab)
+            {
+                AcceptButton = CajunAramaButonu;
+                CajunAramaGirdisi.Focus();
+            }
+            else if (maınTabControl.SelectedTab == HotTab)
+            {
+                AcceptButton = HotAramaButonu;
+                HotAramaGirdisi.Focus();
+            }
+            else if (maınTabControl.SelectedTab == BereketTab)
+            {
+                AcceptButton = BereketAramaButonu;
+                BereketAramaGirdisi.Focus();
+            }
+            else if (maınTabControl.SelectedTab == KofteciTab)
+            {
+                AcceptButton = KofteciAramaButonu;
+                KofteciAramaGirdisi.Focus();
+            }
+            else if (maınTabControl.SelectedTab == MaydonozTab)
+            {
+                AcceptButton = MaydonozAramaButonu;
+                MaydonozAramaGirdisi.Focus();
+            }
+            else if (maınTabControl.SelectedTab == DigerTab)
+            {
+                AcceptButton = DigerAramaButonu;
+                DigerAramaGirdisi.Focus();
             }
         }
     }

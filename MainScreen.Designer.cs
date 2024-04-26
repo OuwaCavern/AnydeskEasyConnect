@@ -220,6 +220,7 @@ namespace AnydeskEasyConnect
             DigerMainFlow.Name = "DigerMainFlow";
             DigerMainFlow.Size = new Size(814, 421);
             DigerMainFlow.TabIndex = 3;
+            DigerAnydeskEkleButonu.Click += DigerAnydeskEkleButonu_Click;
             // 
             // DigerAramaVeYenileFlow
             // 
@@ -241,6 +242,7 @@ namespace AnydeskEasyConnect
             DigerAramaGirdisi.PlaceholderText = "Buraya Şube Adını Giriniz (Wildcard Kullanabilirsiniz)";
             DigerAramaGirdisi.Size = new Size(449, 23);
             DigerAramaGirdisi.TabIndex = 0;
+            DigerAramaGirdisi.TextChanged += DigerAramaGirdisi_TextChanged;
             // 
             // DigerAramaButonu
             // 
@@ -254,6 +256,7 @@ namespace AnydeskEasyConnect
             DigerAramaButonu.TabIndex = 1;
             DigerAramaButonu.Text = "Ara";
             DigerAramaButonu.UseVisualStyleBackColor = true;
+            DigerAramaButonu.Click += DigerAramaButonu_Click;
             // 
             // DigerYenileButonu
             // 
@@ -292,6 +295,7 @@ namespace AnydeskEasyConnect
             DigerDataGrid.ShowRowErrors = false;
             DigerDataGrid.Size = new Size(810, 340);
             DigerDataGrid.TabIndex = 5;
+            DigerDataGrid.CellContentClick += DigerDataGrid_CellContentClick;
             // 
             // DigerBaglanButonu
             // 
@@ -389,6 +393,7 @@ namespace AnydeskEasyConnect
             HotAramaGirdisi.PlaceholderText = "Buraya Şube Adını Giriniz (Wildcard Kullanabilirsiniz)";
             HotAramaGirdisi.Size = new Size(449, 23);
             HotAramaGirdisi.TabIndex = 0;
+            HotAramaGirdisi.TextChanged += HotAramaGirdisi_TextChanged;
             // 
             // HotAramaButonu
             // 
@@ -402,6 +407,7 @@ namespace AnydeskEasyConnect
             HotAramaButonu.TabIndex = 1;
             HotAramaButonu.Text = "Ara";
             HotAramaButonu.UseVisualStyleBackColor = true;
+            HotAramaButonu.Click += HotAramaButonu_Click;
             // 
             // HotYenileButonu
             // 
@@ -440,6 +446,7 @@ namespace AnydeskEasyConnect
             HotDataGrid.ShowRowErrors = false;
             HotDataGrid.Size = new Size(810, 340);
             HotDataGrid.TabIndex = 5;
+            HotDataGrid.CellContentClick += HotDataGrid_CellContentClick;
             // 
             // HotBaglanButonu
             // 
@@ -490,6 +497,7 @@ namespace AnydeskEasyConnect
             HotAnydeskEkleButonu.TabIndex = 6;
             HotAnydeskEkleButonu.Text = "Yeni Anydesk Ekle";
             HotAnydeskEkleButonu.UseVisualStyleBackColor = true;
+            HotAnydeskEkleButonu.Click += HotAnydeskEkleButonu_Click;
             // 
             // BereketTab
             // 
@@ -537,6 +545,7 @@ namespace AnydeskEasyConnect
             BereketAramaGirdisi.PlaceholderText = "Buraya Şube Adını Giriniz (Wildcard Kullanabilirsiniz)";
             BereketAramaGirdisi.Size = new Size(449, 23);
             BereketAramaGirdisi.TabIndex = 0;
+            BereketAramaGirdisi.TextChanged += BereketAramaGirdisi_TextChanged;
             // 
             // BereketAramaButonu
             // 
@@ -550,6 +559,7 @@ namespace AnydeskEasyConnect
             BereketAramaButonu.TabIndex = 1;
             BereketAramaButonu.Text = "Ara";
             BereketAramaButonu.UseVisualStyleBackColor = true;
+            BereketAramaButonu.Click += BereketAramaButonu_Click;
             // 
             // BereketYenileButonu
             // 
@@ -588,6 +598,7 @@ namespace AnydeskEasyConnect
             BereketDataGrid.ShowRowErrors = false;
             BereketDataGrid.Size = new Size(810, 340);
             BereketDataGrid.TabIndex = 5;
+            BereketDataGrid.CellContentClick += BereketDataGrid_CellContentClick;
             // 
             // BereketBaglanButonu
             // 
@@ -638,6 +649,7 @@ namespace AnydeskEasyConnect
             BereketAnydeskEkleButonu.TabIndex = 6;
             BereketAnydeskEkleButonu.Text = "Yeni Anydesk Ekle";
             BereketAnydeskEkleButonu.UseVisualStyleBackColor = true;
+            BereketAnydeskEkleButonu.Click += BereketAnydeskEkleButonu_Click;
             // 
             // AdileTab
             // 
@@ -685,6 +697,7 @@ namespace AnydeskEasyConnect
             AdileAramaGirdisi.PlaceholderText = "Buraya Şube Adını Giriniz (Wildcard Kullanabilirsiniz)";
             AdileAramaGirdisi.Size = new Size(449, 23);
             AdileAramaGirdisi.TabIndex = 0;
+            AdileAramaGirdisi.TextChanged += AdileAramaGirdisi_TextChanged;
             // 
             // AdileAramaButonu
             // 
@@ -698,6 +711,7 @@ namespace AnydeskEasyConnect
             AdileAramaButonu.TabIndex = 1;
             AdileAramaButonu.Text = "Ara";
             AdileAramaButonu.UseVisualStyleBackColor = true;
+            AdileAramaButonu.Click += AdileAramaButonu_Click;
             // 
             // AdileYenileButonu
             // 
@@ -736,6 +750,7 @@ namespace AnydeskEasyConnect
             AdileDataGrid.ShowRowErrors = false;
             AdileDataGrid.Size = new Size(810, 340);
             AdileDataGrid.TabIndex = 5;
+            AdileDataGrid.CellContentClick += AdileDataGrid_CellContentClick;
             // 
             // AdileBaglanButonu
             // 
@@ -786,6 +801,7 @@ namespace AnydeskEasyConnect
             AdileAnydeskEkleButonu.TabIndex = 6;
             AdileAnydeskEkleButonu.Text = "Yeni Anydesk Ekle";
             AdileAnydeskEkleButonu.UseVisualStyleBackColor = true;
+            AdileAnydeskEkleButonu.Click += AdileAnydeskEkleButonu_Click;
             // 
             // CajunTab
             // 
@@ -833,6 +849,7 @@ namespace AnydeskEasyConnect
             CajunAramaGirdisi.PlaceholderText = "Buraya Şube Adını Giriniz (Wildcard Kullanabilirsiniz)";
             CajunAramaGirdisi.Size = new Size(449, 23);
             CajunAramaGirdisi.TabIndex = 0;
+            CajunAramaGirdisi.TextChanged += CajunAramaGirdisi_TextChanged;
             // 
             // CajunAramaButonu
             // 
@@ -846,6 +863,7 @@ namespace AnydeskEasyConnect
             CajunAramaButonu.TabIndex = 1;
             CajunAramaButonu.Text = "Ara";
             CajunAramaButonu.UseVisualStyleBackColor = true;
+            CajunAramaButonu.Click += CajunAramaButonu_Click;
             // 
             // CajunYenileButonu
             // 
@@ -884,6 +902,7 @@ namespace AnydeskEasyConnect
             CajunDataGrid.ShowRowErrors = false;
             CajunDataGrid.Size = new Size(810, 340);
             CajunDataGrid.TabIndex = 5;
+            CajunDataGrid.CellContentClick += CajunDataGrid_CellContentClick;
             // 
             // CajunBaglanButonu
             // 
@@ -934,6 +953,7 @@ namespace AnydeskEasyConnect
             CajunAnydeskEkleButonu.TabIndex = 6;
             CajunAnydeskEkleButonu.Text = "Yeni Anydesk Ekle";
             CajunAnydeskEkleButonu.UseVisualStyleBackColor = true;
+            CajunAnydeskEkleButonu.Click += CajunAnydeskEkleButonu_Click;
             // 
             // KofteciTab
             // 
@@ -981,6 +1001,7 @@ namespace AnydeskEasyConnect
             KofteciAramaGirdisi.PlaceholderText = "Buraya Şube Adını Giriniz (Wildcard Kullanabilirsiniz)";
             KofteciAramaGirdisi.Size = new Size(449, 23);
             KofteciAramaGirdisi.TabIndex = 0;
+            KofteciAramaGirdisi.TextChanged += KofteciAramaGirdisi_TextChanged;
             // 
             // KofteciAramaButonu
             // 
@@ -994,6 +1015,7 @@ namespace AnydeskEasyConnect
             KofteciAramaButonu.TabIndex = 1;
             KofteciAramaButonu.Text = "Ara";
             KofteciAramaButonu.UseVisualStyleBackColor = true;
+            KofteciAramaButonu.Click += KofteciAramaButonu_Click;
             // 
             // KofteciYenileButonu
             // 
@@ -1082,6 +1104,7 @@ namespace AnydeskEasyConnect
             KofteciAnydeskEkleButonu.TabIndex = 6;
             KofteciAnydeskEkleButonu.Text = "Yeni Anydesk Ekle";
             KofteciAnydeskEkleButonu.UseVisualStyleBackColor = true;
+            KofteciAnydeskEkleButonu.Click += KofteciAnydeskEkleButonu_Click;
             // 
             // MaydonozTab
             // 
@@ -1129,6 +1152,7 @@ namespace AnydeskEasyConnect
             MaydonozAramaGirdisi.PlaceholderText = "Buraya Şube Adını Giriniz (Wildcard Kullanabilirsiniz)";
             MaydonozAramaGirdisi.Size = new Size(449, 23);
             MaydonozAramaGirdisi.TabIndex = 0;
+            MaydonozAramaGirdisi.TextChanged += MaydonozAramaGirdisi_TextChanged;
             // 
             // MaydonozAramaButonu
             // 
@@ -1142,6 +1166,7 @@ namespace AnydeskEasyConnect
             MaydonozAramaButonu.TabIndex = 1;
             MaydonozAramaButonu.Text = "Ara";
             MaydonozAramaButonu.UseVisualStyleBackColor = true;
+            MaydonozAramaButonu.Click += MaydonozAramaButonu_Click;
             // 
             // MaydonozYenileButonu
             // 
@@ -1180,6 +1205,7 @@ namespace AnydeskEasyConnect
             MaydonozDataGrid.ShowRowErrors = false;
             MaydonozDataGrid.Size = new Size(810, 340);
             MaydonozDataGrid.TabIndex = 5;
+            MaydonozDataGrid.CellContentClick += MaydonozDataGrid_CellContentClick;
             // 
             // MaydonozBaglanButonu
             // 
@@ -1230,6 +1256,7 @@ namespace AnydeskEasyConnect
             MaydonozAnydeskEkleButonu.TabIndex = 6;
             MaydonozAnydeskEkleButonu.Text = "Yeni Anydesk Ekle";
             MaydonozAnydeskEkleButonu.UseVisualStyleBackColor = true;
+            MaydonozAnydeskEkleButonu.Click += MaydonozAnydeskEkleButonu_Click;
             // 
             // KomageneTab
             // 
