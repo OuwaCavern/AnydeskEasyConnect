@@ -1125,7 +1125,7 @@ namespace AnydeskEasyConnect
         }
         private void BereketAramaButonu_Click(object sender, EventArgs e)
         {
-            SearchFunctionBereket.BindSearchData(KomageneDataGrid);
+            SearchFunctionBereket.BindSearchData(BereketDataGrid);
             KomageneDataGrid.Refresh();
         }
         private void HotAramaButonu_Click(object sender, EventArgs e)
