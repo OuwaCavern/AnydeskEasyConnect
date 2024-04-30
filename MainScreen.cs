@@ -996,7 +996,10 @@ namespace AnydeskEasyConnect
         {
             CajunYenile();
         }
-
+        private void DigerYenilemeButonu_Click(object sender, EventArgs e)
+        {
+            DigerYenile();
+        }
         internal static void AdileYenile()
         {
             AnydeskDAO anydeskDAO = new AnydeskDAO();

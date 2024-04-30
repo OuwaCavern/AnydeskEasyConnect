@@ -270,6 +270,7 @@ namespace AnydeskEasyConnect
             DigerYenileButonu.TabIndex = 2;
             DigerYenileButonu.Text = "Yenile (F5)";
             DigerYenileButonu.UseVisualStyleBackColor = true;
+            DigerYenileButonu.Click += DigerYenilemeButonu_Click;
             // 
             // DigerDataGrid
             // 
@@ -421,6 +422,7 @@ namespace AnydeskEasyConnect
             HotYenileButonu.TabIndex = 2;
             HotYenileButonu.Text = "Yenile (F5)";
             HotYenileButonu.UseVisualStyleBackColor = true;
+            HotYenileButonu.Click += HotYenilemeButonu_Click;
             // 
             // HotDataGrid
             // 
@@ -573,6 +575,7 @@ namespace AnydeskEasyConnect
             BereketYenileButonu.TabIndex = 2;
             BereketYenileButonu.Text = "Yenile (F5)";
             BereketYenileButonu.UseVisualStyleBackColor = true;
+            BereketYenileButonu.Click += BereketYenilemeButonu_Click;
             // 
             // BereketDataGrid
             // 
@@ -725,6 +728,7 @@ namespace AnydeskEasyConnect
             AdileYenileButonu.TabIndex = 2;
             AdileYenileButonu.Text = "Yenile (F5)";
             AdileYenileButonu.UseVisualStyleBackColor = true;
+            AdileYenileButonu.Click += AdileYenilemeButonu_Click;
             // 
             // AdileDataGrid
             // 
@@ -1181,6 +1185,7 @@ namespace AnydeskEasyConnect
             MaydonozYenileButonu.TabIndex = 2;
             MaydonozYenileButonu.Text = "Yenile (F5)";
             MaydonozYenileButonu.UseVisualStyleBackColor = true;
+            MaydonozYenileButonu.Click += MaydonozYenilemeButonu_Click;
             // 
             // MaydonozDataGrid
             // 
