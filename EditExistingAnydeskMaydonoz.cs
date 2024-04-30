@@ -1,13 +1,4 @@
 ﻿using Microsoft.Data.SqlClient;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace AnydeskEasyConnect
 {
@@ -35,7 +26,7 @@ namespace AnydeskEasyConnect
             duzenlenenSubeAdi = subeAdi;
             duzenlenenBilgisayarYetkisi = bilgisayarYetkisi;
 
-            eskiAnydeskNumarasi = AnydeskNumarasıGirdisi.Text;
+            eskiAnydeskNumarasi = AnydeskNumarasıGirdisi.Text.Replace(" ", "");
             eskiAnydeskParolasi = AnydeskParolasıGirdisi.Text;
         }
 
@@ -125,6 +116,7 @@ namespace AnydeskEasyConnect
             // Check if an Anydesk entry with the same number already exists in the database
             if (duzenlenenSubeAdi.Count() >= 8)
             {
+                duzenlenenAnydeskNumarasi.Replace(" ", "");
                 if (eskiAnydeskNumarasi != duzenlenenAnydeskNumarasi)
                 {
                     string duplicateAnydeskNo = "null";
@@ -146,6 +138,7 @@ namespace AnydeskEasyConnect
                     }
                     else if (duzenlenenSubeAdi.Count() >= 8)
                     {
+                        duzenlenenAnydeskNumarasi = Algorithms.AnydeskNumarasiDuzenleyici(duzenlenenAnydeskNumarasi);
                         string updateQuery = $"UPDATE Maydonoz SET SubeAdi='{duzenlenenSubeAdi}',SubeAnydeskNumarasi='{duzenlenenAnydeskNumarasi}',SubeAnydeskParolasi='{duzenlenenAnydeskParolasi}',BilgisayarYetkisi='{duzenlenenBilgisayarYetkisi}' WHERE SubeAnydeskNumarasi='{eskiAnydeskNumarasi}'";
                         SqlCommand updateCommand = new SqlCommand(updateQuery, sqlConnection);
                         updateCommand.ExecuteNonQuery();
@@ -161,6 +154,7 @@ namespace AnydeskEasyConnect
                 }
                 else
                 {
+                    duzenlenenAnydeskNumarasi = Algorithms.AnydeskNumarasiDuzenleyici(duzenlenenAnydeskNumarasi);
                     string updateQuery = $"UPDATE Maydonoz SET SubeAdi='{duzenlenenSubeAdi}',SubeAnydeskNumarasi='{duzenlenenAnydeskNumarasi}',SubeAnydeskParolasi='{duzenlenenAnydeskParolasi}',BilgisayarYetkisi='{duzenlenenBilgisayarYetkisi}' WHERE SubeAnydeskNumarasi='{eskiAnydeskNumarasi}'";
                     SqlCommand updateCommand = new SqlCommand(updateQuery, sqlConnection);
                     updateCommand.ExecuteNonQuery();

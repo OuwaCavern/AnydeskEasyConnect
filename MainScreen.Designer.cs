@@ -1054,6 +1054,7 @@ namespace AnydeskEasyConnect
             KofteciDataGrid.ShowRowErrors = false;
             KofteciDataGrid.Size = new Size(810, 340);
             KofteciDataGrid.TabIndex = 5;
+            KofteciDataGrid.CellContentClick += KofteciDataGrid_CellContentClick;
             // 
             // KofteciBaglanButonu
             // 

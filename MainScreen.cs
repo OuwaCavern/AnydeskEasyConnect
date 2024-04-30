@@ -1145,6 +1145,7 @@ namespace AnydeskEasyConnect
         {
             SetAcceptButtonForActiveTab();
         }
+
         private void SetAcceptButtonForActiveTab()
         {
             if (maınTabControl.SelectedTab == KomageneTab)

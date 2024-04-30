@@ -1,14 +1,4 @@
 ﻿using Microsoft.Data.SqlClient;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Drawing.Text;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace AnydeskEasyConnect
 {
@@ -49,21 +39,29 @@ namespace AnydeskEasyConnect
             // Check if an Anydesk entry with the same number already exists in the database
             string duplicateAnydeskNo = "null";
             string duplicateSubeAdi = "null";
-            string formattedSubeAnydeskNumarasi = subeAnydeskNumarasi.ToString().Replace(" ", "");
-            formattedSubeAnydeskNumarasi = Algorithms.AnydeskNumarasiDuzenleyici(formattedSubeAnydeskNumarasi);
-            string checkAnydeskNoCommand = $"SELECT SubeAnydeskNumarasi,SubeAdi FROM Kofteci WHERE SubeAnydeskNumarasi='{formattedSubeAnydeskNumarasi}'";
-            SqlCommand sqlCheckAnydeskNoCommand = new SqlCommand(checkAnydeskNoCommand, sqlConnection);
-            using (SqlDataReader reader = sqlCheckAnydeskNoCommand.ExecuteReader())
+            try
             {
-                while (reader.Read())
+                string formattedSubeAnydeskNumarasi = subeAnydeskNumarasi.ToString().Replace(" ", "");
+                formattedSubeAnydeskNumarasi = Algorithms.AnydeskNumarasiDuzenleyici(formattedSubeAnydeskNumarasi);
+                string checkAnydeskNoCommand = $"SELECT SubeAnydeskNumarasi,SubeAdi FROM Kofteci WHERE SubeAnydeskNumarasi='{formattedSubeAnydeskNumarasi}'";
+                SqlCommand sqlCheckAnydeskNoCommand = new SqlCommand(checkAnydeskNoCommand, sqlConnection);
+                using (SqlDataReader reader = sqlCheckAnydeskNoCommand.ExecuteReader())
                 {
-                    duplicateAnydeskNo = reader.GetString(0);
-                    duplicateSubeAdi = reader.GetString(1);
+                    while (reader.Read())
+                    {
+                        duplicateAnydeskNo = reader.GetString(0);
+                        duplicateSubeAdi = reader.GetString(1);
+                    }
+                }
+                if (duplicateAnydeskNo != "null")
+                {
+                    MessageBox.Show($"Bu Anydesk numarasına ait bir girdi bulundu: {duplicateSubeAdi}. Lütfen numarayı yeniden kontrol edin veya uygulamada halihazırda bulunan girdiyi düzenleyin.");
+                    return;
                 }
             }
-            if (duplicateAnydeskNo != "null")
+            catch
             {
-                MessageBox.Show($"Bu Anydesk numarasına ait bir girdi bulundu: {duplicateSubeAdi}. Lütfen numarayı yeniden kontrol edin veya uygulamada halihazırda bulunan girdiyi düzenleyin.");
+                MessageBox.Show("Lütfen geçerli bir Anydesk numarası giriniz.");
                 return;
             }
 
