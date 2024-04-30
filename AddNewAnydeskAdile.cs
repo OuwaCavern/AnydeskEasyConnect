@@ -49,7 +49,8 @@ namespace AnydeskEasyConnect
             // Check if an Anydesk entry with the same number already exists in the database
             string duplicateAnydeskNo = "null";
             string duplicateSubeAdi = "null";
-            string formattedSubeAnydeskNumarasi = Algorithms.AnydeskNumarasiDuzenleyici(subeAnydeskNumarasi);
+            string formattedSubeAnydeskNumarasi = subeAnydeskNumarasi.ToString().Replace(" ", "");
+            formattedSubeAnydeskNumarasi = Algorithms.AnydeskNumarasiDuzenleyici(formattedSubeAnydeskNumarasi);
             string checkAnydeskNoCommand = $"SELECT SubeAnydeskNumarasi,SubeAdi FROM Adile WHERE SubeAnydeskNumarasi='{formattedSubeAnydeskNumarasi}'";
             SqlCommand sqlCheckAnydeskNoCommand = new SqlCommand(checkAnydeskNoCommand, sqlConnection);
             using (SqlDataReader reader = sqlCheckAnydeskNoCommand.ExecuteReader())
