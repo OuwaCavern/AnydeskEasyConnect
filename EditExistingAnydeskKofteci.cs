@@ -116,12 +116,12 @@ namespace AnydeskEasyConnect
             // Check if an Anydesk entry with the same number already exists in the database
             if (duzenlenenSubeAdi.Count() >= 8)
             {
-                duzenlenenAnydeskNumarasi.Replace(" ", "");
+                duzenlenenAnydeskNumarasi = duzenlenenAnydeskNumarasi.Replace(" ", "");
                 if (eskiAnydeskNumarasi != duzenlenenAnydeskNumarasi)
                 {
                     string duplicateAnydeskNo = "null";
                     string duplicateSubeAdi = "null";
-                    string checkAnydeskNoCommand = $"SELECT SubeAnydeskNumarasi,SubeAdi FROM Kofteci WHERE SubeAnydeskNumarasi='{duzenlenenAnydeskNumarasi}'";
+                    string checkAnydeskNoCommand = $"SELECT SubeAnydeskNumarasi,SubeAdi FROM Kofteci WHERE SubeAnydeskNumarasi='{Algorithms.AnydeskNumarasiDuzenleyici(duzenlenenAnydeskNumarasi)}'";
                     SqlCommand sqlCheckAnydeskNoCommand = new SqlCommand(checkAnydeskNoCommand, sqlConnection);
                     using (SqlDataReader reader = sqlCheckAnydeskNoCommand.ExecuteReader())
                     {
@@ -139,7 +139,7 @@ namespace AnydeskEasyConnect
                     else if (duzenlenenSubeAdi.Count() >= 8)
                     {
                         duzenlenenAnydeskNumarasi = Algorithms.AnydeskNumarasiDuzenleyici(duzenlenenAnydeskNumarasi);
-                        string updateQuery = $"UPDATE Kofteci SET SubeAdi='{duzenlenenSubeAdi}',SubeAnydeskNumarasi='{duzenlenenAnydeskNumarasi}',SubeAnydeskParolasi='{duzenlenenAnydeskParolasi}',BilgisayarYetkisi='{duzenlenenBilgisayarYetkisi}' WHERE SubeAnydeskNumarasi='{eskiAnydeskNumarasi}'";
+                        string updateQuery = $"UPDATE Kofteci SET SubeAdi='{duzenlenenSubeAdi}',SubeAnydeskNumarasi='{duzenlenenAnydeskNumarasi}',SubeAnydeskParolasi='{duzenlenenAnydeskParolasi}',BilgisayarYetkisi='{duzenlenenBilgisayarYetkisi}' WHERE SubeAnydeskNumarasi='{Algorithms.AnydeskNumarasiDuzenleyici(eskiAnydeskNumarasi)}'";
                         SqlCommand updateCommand = new SqlCommand(updateQuery, sqlConnection);
                         updateCommand.ExecuteNonQuery();
                         MainScreen.KofteciYenile();
@@ -155,7 +155,7 @@ namespace AnydeskEasyConnect
                 else
                 {
                     duzenlenenAnydeskNumarasi = Algorithms.AnydeskNumarasiDuzenleyici(duzenlenenAnydeskNumarasi);
-                    string updateQuery = $"UPDATE Kofteci SET SubeAdi='{duzenlenenSubeAdi}',SubeAnydeskNumarasi='{duzenlenenAnydeskNumarasi}',SubeAnydeskParolasi='{duzenlenenAnydeskParolasi}',BilgisayarYetkisi='{duzenlenenBilgisayarYetkisi}' WHERE SubeAnydeskNumarasi='{eskiAnydeskNumarasi}'";
+                    string updateQuery = $"UPDATE Kofteci SET SubeAdi='{duzenlenenSubeAdi}',SubeAnydeskNumarasi='{duzenlenenAnydeskNumarasi}',SubeAnydeskParolasi='{duzenlenenAnydeskParolasi}',BilgisayarYetkisi='{duzenlenenBilgisayarYetkisi}' WHERE SubeAnydeskNumarasi='{Algorithms.AnydeskNumarasiDuzenleyici(eskiAnydeskNumarasi)}'";
                     SqlCommand updateCommand = new SqlCommand(updateQuery, sqlConnection);
                     updateCommand.ExecuteNonQuery();
                     MainScreen.KofteciYenile();

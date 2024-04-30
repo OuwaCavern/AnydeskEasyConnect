@@ -881,6 +881,7 @@ namespace AnydeskEasyConnect
             CajunYenileButonu.TabIndex = 2;
             CajunYenileButonu.Text = "Yenile (F5)";
             CajunYenileButonu.UseVisualStyleBackColor = true;
+            CajunYenileButonu.Click += CajunYenilemeButonu_Click;
             // 
             // CajunDataGrid
             // 
