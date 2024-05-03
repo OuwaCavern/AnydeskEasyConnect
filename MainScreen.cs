@@ -15,6 +15,7 @@ namespace AnydeskEasyConnect
             maınTabControl.SelectedIndexChanged += mainTabControl_SelectedIndexChanged;
             this.Resize += MainScreen_Resiz;
             formOriginalSize = this.Size;
+            WindowState = FormWindowState.Maximized;
             recKomageneAnydeskEkleButonu = new Rectangle(KomageneAnydeskEkleButonu.Location, KomageneAnydeskEkleButonu.Size);
             recKomageneDataGrid = new Rectangle(KomageneDataGrid.Location, KomageneDataGrid.Size);
             recKomageneAramaButonu = new Rectangle(KomageneAramaButonu.Location, KomageneAramaButonu.Size);
@@ -55,7 +56,6 @@ namespace AnydeskEasyConnect
             recDigerAramaButonu = new Rectangle(DigerAramaButonu.Location, DigerAramaButonu.Size);
             recDigerAramaGirdisi = new Rectangle(DigerAramaGirdisi.Location, DigerAramaGirdisi.Size);
             recDigerYenilemeButonu = new Rectangle(DigerYenileButonu.Location, DigerYenileButonu.Size);
-            WindowState = FormWindowState.Maximized;
         }
         private Size formOriginalSize;
         private Rectangle recKomageneAnydeskEkleButonu;
