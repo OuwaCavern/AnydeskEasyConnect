@@ -56,6 +56,11 @@ namespace AnydeskEasyConnect
             recDigerAramaButonu = new Rectangle(DigerAramaButonu.Location, DigerAramaButonu.Size);
             recDigerAramaGirdisi = new Rectangle(DigerAramaGirdisi.Location, DigerAramaGirdisi.Size);
             recDigerYenilemeButonu = new Rectangle(DigerYenileButonu.Location, DigerYenileButonu.Size);
+            recHeyAnydeskEkleButonu = new Rectangle(HeyAnydeskEkleButonu.Location, HeyAnydeskEkleButonu.Size);
+            recHeyDataGrid = new Rectangle(HeyDataGrid.Location, HeyDataGrid.Size);
+            recHeyAramaButonu = new Rectangle(HeyAramaButonu.Location, HeyAramaButonu.Size);
+            recHeyAramaGirdisi = new Rectangle(HeyAramaGirdisi.Location, HeyAramaGirdisi.Size);
+            recHeyYenilemeButonu = new Rectangle(HeyYenileButonu.Location, HeyYenileButonu.Size);
         }
         private Size formOriginalSize;
         private Rectangle recKomageneAnydeskEkleButonu;
@@ -98,6 +103,11 @@ namespace AnydeskEasyConnect
         private Rectangle recMaydonozAramaButonu;
         private Rectangle recMaydonozYenilemeButonu;
         private Rectangle recMaydonozAramaGirdisi;
+        private Rectangle recHeyAnydeskEkleButonu;
+        private Rectangle recHeyDataGrid;
+        private Rectangle recHeyAramaButonu;
+        private Rectangle recHeyYenilemeButonu;
+        private Rectangle recHeyAramaGirdisi;
 
         private void MainScreen_Resiz(object sender, EventArgs e)
         {
@@ -141,6 +151,11 @@ namespace AnydeskEasyConnect
             ResizeControl(DigerAramaButonu, recDigerAramaButonu);
             ResizeControl(DigerYenileButonu, recDigerYenilemeButonu);
             ResizeControl(DigerAramaGirdisi, recDigerAramaGirdisi);
+            ResizeControl(HeyAnydeskEkleButonu, recHeyAnydeskEkleButonu);
+            ResizeControl(HeyDataGrid, recHeyDataGrid);
+            ResizeControl(HeyAramaButonu, recHeyAramaButonu);
+            ResizeControl(HeyYenileButonu, recHeyYenilemeButonu);
+            ResizeControl(HeyAramaGirdisi, recHeyAramaGirdisi);
         }
 
         private void ResizeControl(Control control, Rectangle rect)
@@ -166,6 +181,7 @@ namespace AnydeskEasyConnect
             BindingSource BereketDonerBindingSource = new BindingSource();
             BindingSource HotDonerBindingSource = new BindingSource();
             BindingSource AdileSultanBindingSource = new BindingSource();
+            BindingSource HeyDonerBindingSource = new BindingSource();
             BindingSource DigerBindingSource = new BindingSource();
 
             MaydonozBindingSource.DataSource = anydeskDAO.MaydonozAnydeskleriniGetir();
@@ -175,6 +191,7 @@ namespace AnydeskEasyConnect
             BereketDonerBindingSource.DataSource = anydeskDAO.BereketDonerAnydeskleriniGetir();
             HotDonerBindingSource.DataSource = anydeskDAO.HotDonerAnydeskleriniGetir();
             AdileSultanBindingSource.DataSource = anydeskDAO.AdileSultanAnydeskleriniGetir();
+            HeyDonerBindingSource.DataSource = anydeskDAO.HeyDonerAnydeskleriniGetir();
             DigerBindingSource.DataSource = anydeskDAO.DigerAnydeskleriniGetir();
 
             MaydonozDataGrid.DataSource = MaydonozBindingSource;
@@ -184,6 +201,7 @@ namespace AnydeskEasyConnect
             BereketDataGrid.DataSource = BereketDonerBindingSource;
             HotDataGrid.DataSource = HotDonerBindingSource;
             AdileDataGrid.DataSource = AdileSultanBindingSource;
+            HeyDataGrid.DataSource = HeyDonerBindingSource;
             DigerDataGrid.DataSource = DigerBindingSource;
 
             SetAcceptButtonForActiveTab();
@@ -839,6 +857,100 @@ namespace AnydeskEasyConnect
                 }
             }
         }
+
+        internal void HeyDataGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex == HeyDataGrid.Columns["HeyBaglanButonu"].Index)
+            {
+                object anydeskNumarasi = HeyDataGrid.Rows[e.RowIndex].Cells["ŞubeninAnydeskNumarası"].Value;
+                if (anydeskNumarasi != null)
+                {
+                    try
+                    {
+                        anydeskNumarasi = anydeskNumarasi.ToString().Replace(" ", "");
+                        string anydeskConnectCommand = $"\"C:\\Program Files (x86)\\AnyDesk\\AnyDesk.exe\" {anydeskNumarasi}";
+                        System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo
+                        {
+                            FileName = "cmd.exe",
+                            Arguments = "/c " + anydeskConnectCommand,
+                            CreateNoWindow = true,
+                            UseShellExecute = false
+                        };
+                        System.Diagnostics.Process.Start(startInfo);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                }
+            }
+            else if (e.RowIndex >= 0 && e.ColumnIndex == HeyDataGrid.Columns["HeySifreyleBaglanButonu"].Index)
+            {
+                object anydeskNumarasi = HeyDataGrid.Rows[e.RowIndex].Cells["ŞubeninAnydeskNumarası"].Value;
+                object anydeskParolasi = HeyDataGrid.Rows[e.RowIndex].Cells["ŞubeninAnydeskParolası"].Value;
+                if (anydeskNumarasi != null)
+                {
+                    try
+                    {
+                        anydeskNumarasi = anydeskNumarasi.ToString().Replace(" ", "");
+                        string anydeskConnectCommand = $"echo {anydeskParolasi} | \"C:\\Program Files (x86)\\AnyDesk\\AnyDesk.exe\" {anydeskNumarasi} --with-password";
+                        System.Diagnostics.ProcessStartInfo startInfo = new()
+                        {
+                            FileName = "cmd.exe",
+                            Arguments = "/c " + anydeskConnectCommand,
+                            CreateNoWindow = true,
+                            UseShellExecute = false
+                        };
+                        System.Diagnostics.Process.Start(startInfo);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                }
+            }
+            else if (e.RowIndex >= 0 && e.ColumnIndex == HeyDataGrid.Columns["HeyDuzenleButonu"].Index)
+            {
+                object bilgisayarYetkisi = HeyDataGrid.Rows[e.RowIndex].Cells["BilgisayarYetkisi"].Value;
+                object subeAdi = HeyDataGrid.Rows[e.RowIndex].Cells["ŞubeninAdı"].Value;
+                object anydeskNumarasi = HeyDataGrid.Rows[e.RowIndex].Cells["ŞubeninAnydeskNumarası"].Value;
+                object anydeskParolasi = HeyDataGrid.Rows[e.RowIndex].Cells["ŞubeninAnydeskParolası"].Value;
+                if (anydeskNumarasi != null)
+                {
+                    string? anydeskParolasiString = "";
+                    string? subeAdiString = "";
+                    string? bilgisayarYetkisiString = "";
+                    try
+                    {
+                        anydeskParolasiString = anydeskParolasi.ToString();
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Null Reference Exception: Parolası null olan en az 1 girdi bulundu.");
+                    }
+                    try
+                    {
+                        subeAdiString = subeAdi.ToString();
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Null Reference Exception: Şube adı null olan en az 1 girdi bulundu.");
+                    }
+                    try
+                    {
+                        bilgisayarYetkisiString = bilgisayarYetkisi.ToString();
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Null Reference Exception: Bilgisayar Yetkisi null olan en az 1 girdi bulundu.");
+                    }
+                    string anydeskNumarasiString = anydeskNumarasi.ToString();
+                    EditExistingAnydeskHey editExistingAnydeskHey = new EditExistingAnydeskHey();
+                    editExistingAnydeskHey.SatirinBilgileriniAl(subeAdiString, anydeskNumarasiString, anydeskParolasiString, bilgisayarYetkisiString);
+                    editExistingAnydeskHey.Show();
+                }
+            }
+        }
         internal void DigerDataGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0 && e.ColumnIndex == DigerDataGrid.Columns["DigerBaglanButonu"].Index)
@@ -972,6 +1084,11 @@ namespace AnydeskEasyConnect
             AddNewAnydeskCajun addNewAnydesk = new();
             addNewAnydesk.Show();
         }
+        private void HeyAnydeskEkleButonu_Click(object sender, EventArgs e)
+        {
+            AddNewAnydeskHey addNewAnydesk = new();
+            addNewAnydesk.Show();
+        }
         private void KomageneYenilemeButonu_Click(object sender, EventArgs e)
         {
             KomageneYenile();
@@ -999,6 +1116,10 @@ namespace AnydeskEasyConnect
         private void DigerYenilemeButonu_Click(object sender, EventArgs e)
         {
             DigerYenile();
+        }
+        private void HeyYenilemeButonu_Click(object sender, EventArgs e)
+        {
+            HeyYenile();
         }
         internal static void AdileYenile()
         {
@@ -1069,6 +1190,15 @@ namespace AnydeskEasyConnect
             KofteciDataGrid.Refresh();
         }
 
+        internal static void HeyYenile()
+        {
+            AnydeskDAO anydeskDAO = new AnydeskDAO();
+            BindingSource HeyBindingSource = new BindingSource();
+            HeyBindingSource.DataSource = anydeskDAO.HeyDonerAnydeskleriniGetir();
+            HeyDataGrid.DataSource = HeyBindingSource;
+            HeyDataGrid.Refresh();
+        }
+
         public static string? subeAdiylaAramaGirdisi;
         private void KomageneSubeAdiTextBox_TextChanged(object sender, EventArgs e)
         {
@@ -1097,6 +1227,10 @@ namespace AnydeskEasyConnect
         private void KofteciAramaGirdisi_TextChanged(object sender, EventArgs e)
         {
             subeAdiylaAramaGirdisi = KofteciAramaGirdisi.Text;
+        }
+        private void HeyAramaGirdisi_TextChanged(object sender, EventArgs e)
+        {
+            subeAdiylaAramaGirdisi = HeyAramaGirdisi.Text;
         }
         private void DigerAramaGirdisi_TextChanged(object sender, EventArgs e)
         {
@@ -1137,6 +1271,11 @@ namespace AnydeskEasyConnect
         {
             SearchFunctionMaydonoz.BindSearchData(MaydonozDataGrid);
             MaydonozDataGrid.Refresh();
+        }
+        private void HeyAramaButonu_Click(object sender, EventArgs e)
+        {
+            SearchFunctionHey.BindSearchData(HeyDataGrid);
+            HeyDataGrid.Refresh();
         }
         private void DigerAramaButonu_Click(object sender, EventArgs e)
         {
@@ -1190,6 +1329,11 @@ namespace AnydeskEasyConnect
             {
                 AcceptButton = DigerAramaButonu;
                 DigerAramaGirdisi.Focus();
+            }
+            else if (maınTabControl.SelectedTab == HeyTab)
+            {
+                AcceptButton = HeyAramaButonu;
+                HeyAramaGirdisi.Focus();
             }
         }
     }
