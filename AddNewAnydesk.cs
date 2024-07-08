@@ -7,7 +7,7 @@ namespace AnydeskEasyConnect
         public AddNewAnydesk(string SirketAdi)
         {
             InitializeComponent();
-            sirketAdi = SirketAdi;
+            this.sirketAdi = SirketAdi;
         }
 
         internal string? subeAdi;

@@ -1,6 +1,6 @@
 ﻿namespace AnydeskEasyConnect
 {
-    partial class EditExistingAnydeskHot
+    partial class EditExistingAnydesk
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditExistingAnydeskHot));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(EditExistingAnydesk));
             EditExistingAnydeskFlowLayout = new FlowLayoutPanel();
             AdGirinizLabel = new Label();
             ŞubeAdıGirdisi = new TextBox();
@@ -152,7 +152,7 @@
             KaydetButonu.UseVisualStyleBackColor = true;
             KaydetButonu.Click += KaydetButonu_Click;
             // 
-            // EditExistingAnydeskHot
+            // EditExistingAnydesk
             // 
             AcceptButton = KaydetButonu;
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -162,7 +162,7 @@
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
-            Name = "EditExistingAnydeskHot";
+            Name = "EditExistingAnydesk";
             Text = "Anydeski Düzenle";
             EditExistingAnydeskFlowLayout.ResumeLayout(false);
             EditExistingAnydeskFlowLayout.PerformLayout();
