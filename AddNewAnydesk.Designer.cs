@@ -1,6 +1,6 @@
 ﻿namespace AnydeskEasyConnect
 {
-    partial class AddNewAnydeskDiger
+    partial class AddNewAnydesk
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddNewAnydeskDiger));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddNewAnydesk));
             AddNewAnydeskFlowLayout = new FlowLayoutPanel();
             AdGirinizLabel = new Label();
             ŞubeAdıGirdisi = new TextBox();
@@ -151,7 +151,7 @@
             KaydetButonu.UseVisualStyleBackColor = true;
             KaydetButonu.Click += KaydetButonu_Click;
             // 
-            // AddNewAnydeskDiger
+            // AddNewAnydesk
             // 
             AcceptButton = KaydetButonu;
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -161,7 +161,7 @@
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
-            Name = "AddNewAnydeskDiger";
+            Name = "AddNewAnydesk";
             Text = "Yeni Anydesk Ekle";
             AddNewAnydeskFlowLayout.ResumeLayout(false);
             AddNewAnydeskFlowLayout.PerformLayout();

@@ -206,6 +206,7 @@ namespace AnydeskEasyConnect
 
             SetAcceptButtonForActiveTab();
         }
+
         internal void KomageneDataGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0 && e.ColumnIndex == KomageneDataGrid.Columns["KomageneBaglanButonu"].Index)
@@ -1046,47 +1047,47 @@ namespace AnydeskEasyConnect
         }
         private void KomageneAnydeskEkleButonu_Click(object sender, EventArgs e)
         {
-            AddNewAnydeskKomagene addNewAnydesk = new();
+            AddNewAnydesk addNewAnydesk = new("Komagene");
             addNewAnydesk.Show();
         }
         private void AdileAnydeskEkleButonu_Click(object sender, EventArgs e)
         {
-            AddNewAnydeskAdile addNewAnydesk = new();
+            AddNewAnydesk addNewAnydesk = new("Adile");
             addNewAnydesk.Show();
         }
         private void MaydonozAnydeskEkleButonu_Click(object sender, EventArgs e)
         {
-            AddNewAnydeskMaydonoz addNewAnydesk = new();
+            AddNewAnydesk addNewAnydesk = new("Maydonoz");
             addNewAnydesk.Show();
         }
         private void BereketAnydeskEkleButonu_Click(object sender, EventArgs e)
         {
-            AddNewAnydeskBereket addNewAnydesk = new();
+            AddNewAnydesk addNewAnydesk = new("Bereket");
             addNewAnydesk.Show();
         }
         private void HotAnydeskEkleButonu_Click(object sender, EventArgs e)
         {
-            AddNewAnydeskHot addNewAnydesk = new();
+            AddNewAnydesk addNewAnydesk = new("Hot");
             addNewAnydesk.Show();
         }
         private void KofteciAnydeskEkleButonu_Click(object sender, EventArgs e)
         {
-            AddNewAnydeskKofteci addNewAnydesk = new();
+            AddNewAnydesk addNewAnydesk = new("Kofteci");
             addNewAnydesk.Show();
         }
         private void DigerAnydeskEkleButonu_Click(object sender, EventArgs e)
         {
-            AddNewAnydeskDiger addNewAnydesk = new();
+            AddNewAnydesk addNewAnydesk = new("Diger");
             addNewAnydesk.Show();
         }
         private void CajunAnydeskEkleButonu_Click(object sender, EventArgs e)
         {
-            AddNewAnydeskCajun addNewAnydesk = new();
+            AddNewAnydesk addNewAnydesk = new("Cajun");
             addNewAnydesk.Show();
         }
         private void HeyAnydeskEkleButonu_Click(object sender, EventArgs e)
         {
-            AddNewAnydeskHey addNewAnydesk = new();
+            AddNewAnydesk addNewAnydesk = new("Hey");
             addNewAnydesk.Show();
         }
         private void KomageneYenilemeButonu_Click(object sender, EventArgs e)

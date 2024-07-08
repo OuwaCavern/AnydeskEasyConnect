@@ -33,28 +33,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="AddNewAnydeskHey.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="AddNewAnydeskBereket.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="AddNewAnydeskAdile.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="AddNewAnydeskHot.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="AddNewAnydeskKofteci.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="AddNewAnydeskDiger.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="AddNewAnydeskCajun.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="AddNewAnydeskMaydonoz.cs">
+    <Compile Update="AddNewAnydesk.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="EditExistingAnydeskHey.cs">
