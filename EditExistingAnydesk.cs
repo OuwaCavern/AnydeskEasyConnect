@@ -2,11 +2,12 @@
 
 namespace AnydeskEasyConnect
 {
-    public partial class EditExistingAnydeskKomagene : Form
+    public partial class EditExistingAnydesk : Form
     {
-        public EditExistingAnydeskKomagene()
+        public EditExistingAnydesk(string? sirketAdi)
         {
             InitializeComponent();
+            this.sirketAdi = sirketAdi;
         }
         string? duzenlenenSubeAdi;
         string? duzenlenenAnydeskNumarasi;
@@ -14,6 +15,7 @@ namespace AnydeskEasyConnect
         string? duzenlenenBilgisayarYetkisi;
         string? eskiAnydeskNumarasi;
         string? eskiAnydeskParolasi;
+        string? sirketAdi;
         internal void SatirinBilgileriniAl(string subeAdi, string anydeskNumarasi, string anydeskParolasi, string bilgisayarYetkisi)
         {
             AnydeskNumarasıGirdisi.Text = anydeskNumarasi;
@@ -121,7 +123,7 @@ namespace AnydeskEasyConnect
                 {
                     string duplicateAnydeskNo = "null";
                     string duplicateSubeAdi = "null";
-                    string checkAnydeskNoCommand = $"SELECT SubeAnydeskNumarasi,SubeAdi FROM Komagene WHERE SubeAnydeskNumarasi='{Algorithms.AnydeskNumarasiDuzenleyici(duzenlenenAnydeskNumarasi)}'";
+                    string checkAnydeskNoCommand = $"SELECT SubeAnydeskNumarasi,SubeAdi FROM {sirketAdi} WHERE SubeAnydeskNumarasi='{Algorithms.AnydeskNumarasiDuzenleyici(duzenlenenAnydeskNumarasi)}'";
                     SqlCommand sqlCheckAnydeskNoCommand = new SqlCommand(checkAnydeskNoCommand, sqlConnection);
                     using (SqlDataReader reader = sqlCheckAnydeskNoCommand.ExecuteReader())
                     {
@@ -139,10 +141,10 @@ namespace AnydeskEasyConnect
                     else if (duzenlenenSubeAdi.Count() >= 8)
                     {
                         duzenlenenAnydeskNumarasi = Algorithms.AnydeskNumarasiDuzenleyici(duzenlenenAnydeskNumarasi);
-                        string updateQuery = $"UPDATE Komagene SET SubeAdi='{duzenlenenSubeAdi}',SubeAnydeskNumarasi='{duzenlenenAnydeskNumarasi}',SubeAnydeskParolasi='{duzenlenenAnydeskParolasi}',BilgisayarYetkisi='{duzenlenenBilgisayarYetkisi}' WHERE SubeAnydeskNumarasi='{Algorithms.AnydeskNumarasiDuzenleyici(eskiAnydeskNumarasi)}'";
+                        string updateQuery = $"UPDATE {sirketAdi} SET SubeAdi='{duzenlenenSubeAdi}',SubeAnydeskNumarasi='{duzenlenenAnydeskNumarasi}',SubeAnydeskParolasi='{duzenlenenAnydeskParolasi}',BilgisayarYetkisi='{duzenlenenBilgisayarYetkisi}' WHERE SubeAnydeskNumarasi='{Algorithms.AnydeskNumarasiDuzenleyici(eskiAnydeskNumarasi)}'";
                         SqlCommand updateCommand = new SqlCommand(updateQuery, sqlConnection);
                         updateCommand.ExecuteNonQuery();
-                        MainScreen.KomageneYenile();
+                        MainScreen.AdileYenile();
                         sqlConnection.Close();
                         this.Close();
                     }
@@ -155,10 +157,40 @@ namespace AnydeskEasyConnect
                 else
                 {
                     duzenlenenAnydeskNumarasi = Algorithms.AnydeskNumarasiDuzenleyici(duzenlenenAnydeskNumarasi);
-                    string updateQuery = $"UPDATE Komagene SET SubeAdi='{duzenlenenSubeAdi}',SubeAnydeskNumarasi='{duzenlenenAnydeskNumarasi}',SubeAnydeskParolasi='{duzenlenenAnydeskParolasi}',BilgisayarYetkisi='{duzenlenenBilgisayarYetkisi}' WHERE SubeAnydeskNumarasi='{Algorithms.AnydeskNumarasiDuzenleyici(eskiAnydeskNumarasi)}'";
+                    string updateQuery = $"UPDATE {sirketAdi} SET SubeAdi='{duzenlenenSubeAdi}',SubeAnydeskNumarasi='{duzenlenenAnydeskNumarasi}',SubeAnydeskParolasi='{duzenlenenAnydeskParolasi}',BilgisayarYetkisi='{duzenlenenBilgisayarYetkisi}' WHERE SubeAnydeskNumarasi='{Algorithms.AnydeskNumarasiDuzenleyici(eskiAnydeskNumarasi)}'";
                     SqlCommand updateCommand = new SqlCommand(updateQuery, sqlConnection);
                     updateCommand.ExecuteNonQuery();
-                    MainScreen.KomageneYenile();
+                    switch (sirketAdi)
+                    {
+                        case "Adile":
+                            MainScreen.AdileYenile();
+                            break;
+                        case "Bereket":
+                            MainScreen.BereketYenile();
+                            break;
+                        case "Cajun":
+                            MainScreen.CajunYenile();
+                            break;
+                        case "Diger":
+                            MainScreen.DigerYenile();
+                            break;
+                        case "Hey":
+                            MainScreen.HeyYenile();
+                            break;
+                        case "Hot":
+                            MainScreen.HotYenile();
+                            break;
+                        case "Kofteci":
+                            MainScreen.KofteciYenile();
+                            break;
+                        case "Komagene":
+                            MainScreen.KomageneYenile();
+                            break;
+                        case "Maydonoz":
+                            MainScreen.MaydonozYenile();
+                            break;
+                    }
+                    MainScreen.AdileYenile();
                     sqlConnection.Close();
                     this.Close();
                 }

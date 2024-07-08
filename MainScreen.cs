@@ -206,6 +206,47 @@ namespace AnydeskEasyConnect
 
             SetAcceptButtonForActiveTab();
         }
+        internal void AnydeskiBaslat(object anydeskNumarasi)
+        {
+            try
+            {
+                anydeskNumarasi = anydeskNumarasi.ToString().Replace(" ", "");
+                string anydeskConnectCommand = $"\"C:\\Program Files (x86)\\AnyDesk\\AnyDesk.exe\" {anydeskNumarasi}";
+                System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo
+                {
+                    FileName = "cmd.exe",
+                    Arguments = "/c " + anydeskConnectCommand,
+                    CreateNoWindow = true,
+                    UseShellExecute = false
+                };
+                System.Diagnostics.Process.Start(startInfo);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        internal void AnydeskiSifreyleBaslat(object anydeskNumarasi, object anydeskParolasi)
+        {
+            try
+            {
+                anydeskNumarasi = anydeskNumarasi.ToString().Replace(" ", "");
+                string anydeskConnectCommand = $"echo {anydeskParolasi} | \"C:\\Program Files (x86)\\AnyDesk\\AnyDesk.exe\" {anydeskNumarasi} --with-password";
+                System.Diagnostics.ProcessStartInfo startInfo = new()
+                {
+                    FileName = "cmd.exe",
+                    Arguments = "/c " + anydeskConnectCommand,
+                    CreateNoWindow = true,
+                    UseShellExecute = false
+                };
+                System.Diagnostics.Process.Start(startInfo);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
 
         internal void KomageneDataGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -214,23 +255,7 @@ namespace AnydeskEasyConnect
                 object anydeskNumarasi = KomageneDataGrid.Rows[e.RowIndex].Cells["ŞubeninAnydeskNumarası"].Value;
                 if (anydeskNumarasi != null)
                 {
-                    try
-                    {
-                        anydeskNumarasi = anydeskNumarasi.ToString().Replace(" ", "");
-                        string anydeskConnectCommand = $"\"C:\\Program Files (x86)\\AnyDesk\\AnyDesk.exe\" {anydeskNumarasi}";
-                        System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo
-                        {
-                            FileName = "cmd.exe",
-                            Arguments = "/c " + anydeskConnectCommand,
-                            CreateNoWindow = true,
-                            UseShellExecute = false
-                        };
-                        System.Diagnostics.Process.Start(startInfo);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
+                    AnydeskiBaslat(anydeskNumarasi);
                 }
             }
             else if (e.RowIndex >= 0 && e.ColumnIndex == KomageneDataGrid.Columns["KomageneSifreyleBaglanButonu"].Index)
@@ -239,23 +264,7 @@ namespace AnydeskEasyConnect
                 object anydeskParolasi = KomageneDataGrid.Rows[e.RowIndex].Cells["ŞubeninAnydeskParolası"].Value;
                 if (anydeskNumarasi != null)
                 {
-                    try
-                    {
-                        anydeskNumarasi = anydeskNumarasi.ToString().Replace(" ", "");
-                        string anydeskConnectCommand = $"echo {anydeskParolasi} | \"C:\\Program Files (x86)\\AnyDesk\\AnyDesk.exe\" {anydeskNumarasi} --with-password";
-                        System.Diagnostics.ProcessStartInfo startInfo = new()
-                        {
-                            FileName = "cmd.exe",
-                            Arguments = "/c " + anydeskConnectCommand,
-                            CreateNoWindow = true,
-                            UseShellExecute = false
-                        };
-                        System.Diagnostics.Process.Start(startInfo);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
+                    AnydeskiSifreyleBaslat(anydeskNumarasi, anydeskParolasi);
                 }
             }
             else if (e.RowIndex >= 0 && e.ColumnIndex == KomageneDataGrid.Columns["KomageneDuzenleButonu"].Index)
@@ -294,7 +303,7 @@ namespace AnydeskEasyConnect
                         MessageBox.Show("Null Reference Exception: Bilgisayar Yetkisi null olan en az 1 girdi bulundu.");
                     }
                     string anydeskNumarasiString = anydeskNumarasi.ToString();
-                    EditExistingAnydeskKomagene editExistingAnydeskKomagene = new EditExistingAnydeskKomagene();
+                    EditExistingAnydesk editExistingAnydeskKomagene = new EditExistingAnydesk("Komagene");
                     editExistingAnydeskKomagene.SatirinBilgileriniAl(subeAdiString, anydeskNumarasiString, anydeskParolasiString, bilgisayarYetkisiString);
                     editExistingAnydeskKomagene.Show();
                 }
@@ -307,23 +316,7 @@ namespace AnydeskEasyConnect
                 object anydeskNumarasi = CajunDataGrid.Rows[e.RowIndex].Cells["ŞubeninAnydeskNumarası"].Value;
                 if (anydeskNumarasi != null)
                 {
-                    try
-                    {
-                        anydeskNumarasi = anydeskNumarasi.ToString().Replace(" ", "");
-                        string anydeskConnectCommand = $"\"C:\\Program Files (x86)\\AnyDesk\\AnyDesk.exe\" {anydeskNumarasi}";
-                        System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo
-                        {
-                            FileName = "cmd.exe",
-                            Arguments = "/c " + anydeskConnectCommand,
-                            CreateNoWindow = true,
-                            UseShellExecute = false
-                        };
-                        System.Diagnostics.Process.Start(startInfo);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
+                    AnydeskiBaslat(anydeskNumarasi);
                 }
             }
             else if (e.RowIndex >= 0 && e.ColumnIndex == CajunDataGrid.Columns["CajunSifreyleBaglanButonu"].Index)
@@ -332,23 +325,7 @@ namespace AnydeskEasyConnect
                 object anydeskParolasi = CajunDataGrid.Rows[e.RowIndex].Cells["ŞubeninAnydeskParolası"].Value;
                 if (anydeskNumarasi != null)
                 {
-                    try
-                    {
-                        anydeskNumarasi = anydeskNumarasi.ToString().Replace(" ", "");
-                        string anydeskConnectCommand = $"echo {anydeskParolasi} | \"C:\\Program Files (x86)\\AnyDesk\\AnyDesk.exe\" {anydeskNumarasi} --with-password";
-                        System.Diagnostics.ProcessStartInfo startInfo = new()
-                        {
-                            FileName = "cmd.exe",
-                            Arguments = "/c " + anydeskConnectCommand,
-                            CreateNoWindow = true,
-                            UseShellExecute = false
-                        };
-                        System.Diagnostics.Process.Start(startInfo);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
+                    AnydeskiSifreyleBaslat(anydeskNumarasi, anydeskParolasi);
                 }
             }
             else if (e.RowIndex >= 0 && e.ColumnIndex == CajunDataGrid.Columns["CajunDuzenleButonu"].Index)
@@ -387,7 +364,7 @@ namespace AnydeskEasyConnect
                         MessageBox.Show("Null Reference Exception: Bilgisayar Yetkisi null olan en az 1 girdi bulundu.");
                     }
                     string anydeskNumarasiString = anydeskNumarasi.ToString();
-                    EditExistingAnydeskCajun editExistingAnydeskCajun = new EditExistingAnydeskCajun();
+                    EditExistingAnydesk editExistingAnydeskCajun = new EditExistingAnydesk("Cajun");
                     editExistingAnydeskCajun.SatirinBilgileriniAl(subeAdiString, anydeskNumarasiString, anydeskParolasiString, bilgisayarYetkisiString);
                     editExistingAnydeskCajun.Show();
                 }
@@ -400,23 +377,7 @@ namespace AnydeskEasyConnect
                 object anydeskNumarasi = AdileDataGrid.Rows[e.RowIndex].Cells["ŞubeninAnydeskNumarası"].Value;
                 if (anydeskNumarasi != null)
                 {
-                    try
-                    {
-                        anydeskNumarasi = anydeskNumarasi.ToString().Replace(" ", "");
-                        string anydeskConnectCommand = $"\"C:\\Program Files (x86)\\AnyDesk\\AnyDesk.exe\" {anydeskNumarasi}";
-                        System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo
-                        {
-                            FileName = "cmd.exe",
-                            Arguments = "/c " + anydeskConnectCommand,
-                            CreateNoWindow = true,
-                            UseShellExecute = false
-                        };
-                        System.Diagnostics.Process.Start(startInfo);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
+                    AnydeskiBaslat(anydeskNumarasi);
                 }
             }
             else if (e.RowIndex >= 0 && e.ColumnIndex == AdileDataGrid.Columns["AdileSifreyleBaglanButonu"].Index)
@@ -425,23 +386,7 @@ namespace AnydeskEasyConnect
                 object anydeskParolasi = AdileDataGrid.Rows[e.RowIndex].Cells["ŞubeninAnydeskParolası"].Value;
                 if (anydeskNumarasi != null)
                 {
-                    try
-                    {
-                        anydeskNumarasi = anydeskNumarasi.ToString().Replace(" ", "");
-                        string anydeskConnectCommand = $"echo {anydeskParolasi} | \"C:\\Program Files (x86)\\AnyDesk\\AnyDesk.exe\" {anydeskNumarasi} --with-password";
-                        System.Diagnostics.ProcessStartInfo startInfo = new()
-                        {
-                            FileName = "cmd.exe",
-                            Arguments = "/c " + anydeskConnectCommand,
-                            CreateNoWindow = true,
-                            UseShellExecute = false
-                        };
-                        System.Diagnostics.Process.Start(startInfo);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
+                    AnydeskiSifreyleBaslat(anydeskNumarasi, anydeskParolasi);
                 }
             }
             else if (e.RowIndex >= 0 && e.ColumnIndex == AdileDataGrid.Columns["AdileDuzenleButonu"].Index)
@@ -480,7 +425,7 @@ namespace AnydeskEasyConnect
                         MessageBox.Show("Null Reference Exception: Bilgisayar Yetkisi null olan en az 1 girdi bulundu.");
                     }
                     string anydeskNumarasiString = anydeskNumarasi.ToString();
-                    EditExistingAnydeskAdile editExistingAnydeskAdile = new EditExistingAnydeskAdile();
+                    EditExistingAnydesk editExistingAnydeskAdile = new EditExistingAnydesk("Adile");
                     editExistingAnydeskAdile.SatirinBilgileriniAl(subeAdiString, anydeskNumarasiString, anydeskParolasiString, bilgisayarYetkisiString);
                     editExistingAnydeskAdile.Show();
                 }
@@ -493,23 +438,7 @@ namespace AnydeskEasyConnect
                 object anydeskNumarasi = KofteciDataGrid.Rows[e.RowIndex].Cells["ŞubeninAnydeskNumarası"].Value;
                 if (anydeskNumarasi != null)
                 {
-                    try
-                    {
-                        anydeskNumarasi = anydeskNumarasi.ToString().Replace(" ", "");
-                        string anydeskConnectCommand = $"\"C:\\Program Files (x86)\\AnyDesk\\AnyDesk.exe\" {anydeskNumarasi}";
-                        System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo
-                        {
-                            FileName = "cmd.exe",
-                            Arguments = "/c " + anydeskConnectCommand,
-                            CreateNoWindow = true,
-                            UseShellExecute = false
-                        };
-                        System.Diagnostics.Process.Start(startInfo);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
+                    AnydeskiBaslat(anydeskNumarasi);
                 }
             }
             else if (e.RowIndex >= 0 && e.ColumnIndex == KofteciDataGrid.Columns["KofteciSifreyleBaglanButonu"].Index)
@@ -518,23 +447,7 @@ namespace AnydeskEasyConnect
                 object anydeskParolasi = KofteciDataGrid.Rows[e.RowIndex].Cells["ŞubeninAnydeskParolası"].Value;
                 if (anydeskNumarasi != null)
                 {
-                    try
-                    {
-                        anydeskNumarasi = anydeskNumarasi.ToString().Replace(" ", "");
-                        string anydeskConnectCommand = $"echo {anydeskParolasi} | \"C:\\Program Files (x86)\\AnyDesk\\AnyDesk.exe\" {anydeskNumarasi} --with-password";
-                        System.Diagnostics.ProcessStartInfo startInfo = new()
-                        {
-                            FileName = "cmd.exe",
-                            Arguments = "/c " + anydeskConnectCommand,
-                            CreateNoWindow = true,
-                            UseShellExecute = false
-                        };
-                        System.Diagnostics.Process.Start(startInfo);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
+                    AnydeskiSifreyleBaslat(anydeskNumarasi, anydeskParolasi);
                 }
             }
             else if (e.RowIndex >= 0 && e.ColumnIndex == KofteciDataGrid.Columns["KofteciDuzenleButonu"].Index)
@@ -573,7 +486,7 @@ namespace AnydeskEasyConnect
                         MessageBox.Show("Null Reference Exception: Bilgisayar Yetkisi null olan en az 1 girdi bulundu.");
                     }
                     string anydeskNumarasiString = anydeskNumarasi.ToString();
-                    EditExistingAnydeskKofteci editExistingAnydeskKofteci = new EditExistingAnydeskKofteci();
+                    EditExistingAnydesk editExistingAnydeskKofteci = new EditExistingAnydesk("Bereket");
                     editExistingAnydeskKofteci.SatirinBilgileriniAl(subeAdiString, anydeskNumarasiString, anydeskParolasiString, bilgisayarYetkisiString);
                     editExistingAnydeskKofteci.Show();
                 }
@@ -586,23 +499,7 @@ namespace AnydeskEasyConnect
                 object anydeskNumarasi = BereketDataGrid.Rows[e.RowIndex].Cells["ŞubeninAnydeskNumarası"].Value;
                 if (anydeskNumarasi != null)
                 {
-                    try
-                    {
-                        anydeskNumarasi = anydeskNumarasi.ToString().Replace(" ", "");
-                        string anydeskConnectCommand = $"\"C:\\Program Files (x86)\\AnyDesk\\AnyDesk.exe\" {anydeskNumarasi}";
-                        System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo
-                        {
-                            FileName = "cmd.exe",
-                            Arguments = "/c " + anydeskConnectCommand,
-                            CreateNoWindow = true,
-                            UseShellExecute = false
-                        };
-                        System.Diagnostics.Process.Start(startInfo);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
+                    AnydeskiBaslat(anydeskNumarasi);
                 }
             }
             else if (e.RowIndex >= 0 && e.ColumnIndex == BereketDataGrid.Columns["BereketSifreyleBaglanButonu"].Index)
@@ -611,23 +508,7 @@ namespace AnydeskEasyConnect
                 object anydeskParolasi = BereketDataGrid.Rows[e.RowIndex].Cells["ŞubeninAnydeskParolası"].Value;
                 if (anydeskNumarasi != null)
                 {
-                    try
-                    {
-                        anydeskNumarasi = anydeskNumarasi.ToString().Replace(" ", "");
-                        string anydeskConnectCommand = $"echo {anydeskParolasi} | \"C:\\Program Files (x86)\\AnyDesk\\AnyDesk.exe\" {anydeskNumarasi} --with-password";
-                        System.Diagnostics.ProcessStartInfo startInfo = new()
-                        {
-                            FileName = "cmd.exe",
-                            Arguments = "/c " + anydeskConnectCommand,
-                            CreateNoWindow = true,
-                            UseShellExecute = false
-                        };
-                        System.Diagnostics.Process.Start(startInfo);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
+                    AnydeskiSifreyleBaslat(anydeskNumarasi, anydeskParolasi);
                 }
             }
             else if (e.RowIndex >= 0 && e.ColumnIndex == BereketDataGrid.Columns["BereketDuzenleButonu"].Index)
@@ -666,7 +547,7 @@ namespace AnydeskEasyConnect
                         MessageBox.Show("Null Reference Exception: Bilgisayar Yetkisi null olan en az 1 girdi bulundu.");
                     }
                     string anydeskNumarasiString = anydeskNumarasi.ToString();
-                    EditExistingAnydeskBereket editExistingAnydeskBereket = new EditExistingAnydeskBereket();
+                    EditExistingAnydesk editExistingAnydeskBereket = new EditExistingAnydesk("Bereket");
                     editExistingAnydeskBereket.SatirinBilgileriniAl(subeAdiString, anydeskNumarasiString, anydeskParolasiString, bilgisayarYetkisiString);
                     editExistingAnydeskBereket.Show();
                 }
@@ -679,23 +560,7 @@ namespace AnydeskEasyConnect
                 object anydeskNumarasi = HotDataGrid.Rows[e.RowIndex].Cells["ŞubeninAnydeskNumarası"].Value;
                 if (anydeskNumarasi != null)
                 {
-                    try
-                    {
-                        anydeskNumarasi = anydeskNumarasi.ToString().Replace(" ", "");
-                        string anydeskConnectCommand = $"\"C:\\Program Files (x86)\\AnyDesk\\AnyDesk.exe\" {anydeskNumarasi}";
-                        System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo
-                        {
-                            FileName = "cmd.exe",
-                            Arguments = "/c " + anydeskConnectCommand,
-                            CreateNoWindow = true,
-                            UseShellExecute = false
-                        };
-                        System.Diagnostics.Process.Start(startInfo);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
+                    AnydeskiBaslat(anydeskNumarasi);
                 }
             }
             else if (e.RowIndex >= 0 && e.ColumnIndex == HotDataGrid.Columns["HotSifreyleBaglanButonu"].Index)
@@ -704,23 +569,7 @@ namespace AnydeskEasyConnect
                 object anydeskParolasi = HotDataGrid.Rows[e.RowIndex].Cells["ŞubeninAnydeskParolası"].Value;
                 if (anydeskNumarasi != null)
                 {
-                    try
-                    {
-                        anydeskNumarasi = anydeskNumarasi.ToString().Replace(" ", "");
-                        string anydeskConnectCommand = $"echo {anydeskParolasi} | \"C:\\Program Files (x86)\\AnyDesk\\AnyDesk.exe\" {anydeskNumarasi} --with-password";
-                        System.Diagnostics.ProcessStartInfo startInfo = new()
-                        {
-                            FileName = "cmd.exe",
-                            Arguments = "/c " + anydeskConnectCommand,
-                            CreateNoWindow = true,
-                            UseShellExecute = false
-                        };
-                        System.Diagnostics.Process.Start(startInfo);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
+                    AnydeskiSifreyleBaslat(anydeskNumarasi, anydeskParolasi);
                 }
             }
             else if (e.RowIndex >= 0 && e.ColumnIndex == HotDataGrid.Columns["HotDuzenleButonu"].Index)
@@ -759,7 +608,7 @@ namespace AnydeskEasyConnect
                         MessageBox.Show("Null Reference Exception: Bilgisayar Yetkisi null olan en az 1 girdi bulundu.");
                     }
                     string anydeskNumarasiString = anydeskNumarasi.ToString();
-                    EditExistingAnydeskHot editExistingAnydeskHot = new EditExistingAnydeskHot();
+                    EditExistingAnydesk editExistingAnydeskHot = new EditExistingAnydesk("Hot");
                     editExistingAnydeskHot.SatirinBilgileriniAl(subeAdiString, anydeskNumarasiString, anydeskParolasiString, bilgisayarYetkisiString);
                     editExistingAnydeskHot.Show();
                 }
@@ -772,23 +621,7 @@ namespace AnydeskEasyConnect
                 object anydeskNumarasi = MaydonozDataGrid.Rows[e.RowIndex].Cells["ŞubeninAnydeskNumarası"].Value;
                 if (anydeskNumarasi != null)
                 {
-                    try
-                    {
-                        anydeskNumarasi = anydeskNumarasi.ToString().Replace(" ", "");
-                        string anydeskConnectCommand = $"\"C:\\Program Files (x86)\\AnyDesk\\AnyDesk.exe\" {anydeskNumarasi}";
-                        System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo
-                        {
-                            FileName = "cmd.exe",
-                            Arguments = "/c " + anydeskConnectCommand,
-                            CreateNoWindow = true,
-                            UseShellExecute = false
-                        };
-                        System.Diagnostics.Process.Start(startInfo);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
+                    AnydeskiBaslat(anydeskNumarasi);
                 }
             }
             else if (e.RowIndex >= 0 && e.ColumnIndex == MaydonozDataGrid.Columns["MaydonozSifreyleBaglanButonu"].Index)
@@ -797,23 +630,7 @@ namespace AnydeskEasyConnect
                 object anydeskParolasi = MaydonozDataGrid.Rows[e.RowIndex].Cells["ŞubeninAnydeskParolası"].Value;
                 if (anydeskNumarasi != null)
                 {
-                    try
-                    {
-                        anydeskNumarasi = anydeskNumarasi.ToString().Replace(" ", "");
-                        string anydeskConnectCommand = $"echo {anydeskParolasi} | \"C:\\Program Files (x86)\\AnyDesk\\AnyDesk.exe\" {anydeskNumarasi} --with-password";
-                        System.Diagnostics.ProcessStartInfo startInfo = new()
-                        {
-                            FileName = "cmd.exe",
-                            Arguments = "/c " + anydeskConnectCommand,
-                            CreateNoWindow = true,
-                            UseShellExecute = false
-                        };
-                        System.Diagnostics.Process.Start(startInfo);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
+                    AnydeskiSifreyleBaslat(anydeskNumarasi, anydeskParolasi);
                 }
             }
             else if (e.RowIndex >= 0 && e.ColumnIndex == MaydonozDataGrid.Columns["MaydonozDuzenleButonu"].Index)
@@ -852,7 +669,7 @@ namespace AnydeskEasyConnect
                         MessageBox.Show("Null Reference Exception: Bilgisayar Yetkisi null olan en az 1 girdi bulundu.");
                     }
                     string anydeskNumarasiString = anydeskNumarasi.ToString();
-                    EditExistingAnydeskMaydonoz editExistingAnydeskMaydonoz = new EditExistingAnydeskMaydonoz();
+                    EditExistingAnydesk editExistingAnydeskMaydonoz = new EditExistingAnydesk("Maydonoz");
                     editExistingAnydeskMaydonoz.SatirinBilgileriniAl(subeAdiString, anydeskNumarasiString, anydeskParolasiString, bilgisayarYetkisiString);
                     editExistingAnydeskMaydonoz.Show();
                 }
@@ -866,23 +683,7 @@ namespace AnydeskEasyConnect
                 object anydeskNumarasi = HeyDataGrid.Rows[e.RowIndex].Cells["ŞubeninAnydeskNumarası"].Value;
                 if (anydeskNumarasi != null)
                 {
-                    try
-                    {
-                        anydeskNumarasi = anydeskNumarasi.ToString().Replace(" ", "");
-                        string anydeskConnectCommand = $"\"C:\\Program Files (x86)\\AnyDesk\\AnyDesk.exe\" {anydeskNumarasi}";
-                        System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo
-                        {
-                            FileName = "cmd.exe",
-                            Arguments = "/c " + anydeskConnectCommand,
-                            CreateNoWindow = true,
-                            UseShellExecute = false
-                        };
-                        System.Diagnostics.Process.Start(startInfo);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
+                    AnydeskiBaslat(anydeskNumarasi);
                 }
             }
             else if (e.RowIndex >= 0 && e.ColumnIndex == HeyDataGrid.Columns["HeySifreyleBaglanButonu"].Index)
@@ -891,23 +692,7 @@ namespace AnydeskEasyConnect
                 object anydeskParolasi = HeyDataGrid.Rows[e.RowIndex].Cells["ŞubeninAnydeskParolası"].Value;
                 if (anydeskNumarasi != null)
                 {
-                    try
-                    {
-                        anydeskNumarasi = anydeskNumarasi.ToString().Replace(" ", "");
-                        string anydeskConnectCommand = $"echo {anydeskParolasi} | \"C:\\Program Files (x86)\\AnyDesk\\AnyDesk.exe\" {anydeskNumarasi} --with-password";
-                        System.Diagnostics.ProcessStartInfo startInfo = new()
-                        {
-                            FileName = "cmd.exe",
-                            Arguments = "/c " + anydeskConnectCommand,
-                            CreateNoWindow = true,
-                            UseShellExecute = false
-                        };
-                        System.Diagnostics.Process.Start(startInfo);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
+                    AnydeskiSifreyleBaslat(anydeskNumarasi, anydeskParolasi);
                 }
             }
             else if (e.RowIndex >= 0 && e.ColumnIndex == HeyDataGrid.Columns["HeyDuzenleButonu"].Index)
@@ -946,7 +731,7 @@ namespace AnydeskEasyConnect
                         MessageBox.Show("Null Reference Exception: Bilgisayar Yetkisi null olan en az 1 girdi bulundu.");
                     }
                     string anydeskNumarasiString = anydeskNumarasi.ToString();
-                    EditExistingAnydeskHey editExistingAnydeskHey = new EditExistingAnydeskHey();
+                    EditExistingAnydesk editExistingAnydeskHey = new EditExistingAnydesk("Hey");
                     editExistingAnydeskHey.SatirinBilgileriniAl(subeAdiString, anydeskNumarasiString, anydeskParolasiString, bilgisayarYetkisiString);
                     editExistingAnydeskHey.Show();
                 }
@@ -959,23 +744,7 @@ namespace AnydeskEasyConnect
                 object anydeskNumarasi = DigerDataGrid.Rows[e.RowIndex].Cells["ŞubeninAnydeskNumarası"].Value;
                 if (anydeskNumarasi != null)
                 {
-                    try
-                    {
-                        anydeskNumarasi = anydeskNumarasi.ToString().Replace(" ", "");
-                        string anydeskConnectCommand = $"\"C:\\Program Files (x86)\\AnyDesk\\AnyDesk.exe\" {anydeskNumarasi}";
-                        System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo
-                        {
-                            FileName = "cmd.exe",
-                            Arguments = "/c " + anydeskConnectCommand,
-                            CreateNoWindow = true,
-                            UseShellExecute = false
-                        };
-                        System.Diagnostics.Process.Start(startInfo);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
+                    AnydeskiBaslat(anydeskNumarasi);
                 }
             }
             else if (e.RowIndex >= 0 && e.ColumnIndex == DigerDataGrid.Columns["DigerSifreyleBaglanButonu"].Index)
@@ -984,23 +753,7 @@ namespace AnydeskEasyConnect
                 object anydeskParolasi = DigerDataGrid.Rows[e.RowIndex].Cells["ŞubeninAnydeskParolası"].Value;
                 if (anydeskNumarasi != null)
                 {
-                    try
-                    {
-                        anydeskNumarasi = anydeskNumarasi.ToString().Replace(" ", "");
-                        string anydeskConnectCommand = $"echo {anydeskParolasi} | \"C:\\Program Files (x86)\\AnyDesk\\AnyDesk.exe\" {anydeskNumarasi} --with-password";
-                        System.Diagnostics.ProcessStartInfo startInfo = new()
-                        {
-                            FileName = "cmd.exe",
-                            Arguments = "/c " + anydeskConnectCommand,
-                            CreateNoWindow = true,
-                            UseShellExecute = false
-                        };
-                        System.Diagnostics.Process.Start(startInfo);
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
+                    AnydeskiSifreyleBaslat(anydeskNumarasi, anydeskParolasi);
                 }
             }
             else if (e.RowIndex >= 0 && e.ColumnIndex == DigerDataGrid.Columns["DigerDuzenleButonu"].Index)
@@ -1039,12 +792,13 @@ namespace AnydeskEasyConnect
                         MessageBox.Show("Null Reference Exception: Bilgisayar Yetkisi null olan en az 1 girdi bulundu.");
                     }
                     string anydeskNumarasiString = anydeskNumarasi.ToString();
-                    EditExistingAnydeskDiger editExistingAnydeskDiger = new EditExistingAnydeskDiger();
+                    EditExistingAnydesk editExistingAnydeskDiger = new EditExistingAnydesk("Diger");
                     editExistingAnydeskDiger.SatirinBilgileriniAl(subeAdiString, anydeskNumarasiString, anydeskParolasiString, bilgisayarYetkisiString);
                     editExistingAnydeskDiger.Show();
                 }
             }
         }
+
         private void KomageneAnydeskEkleButonu_Click(object sender, EventArgs e)
         {
             AddNewAnydesk addNewAnydesk = new("Komagene");

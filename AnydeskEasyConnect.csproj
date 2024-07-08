@@ -36,28 +36,7 @@
     <Compile Update="AddNewAnydesk.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="EditExistingAnydeskHey.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="EditExistingAnydeskKofteci.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="EditExistingAnydeskHot.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="EditExistingAnydeskDiger.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="EditExistingAnydeskBereket.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="EditExistingAnydeskAdile.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="EditExistingAnydeskCajun.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="EditExistingAnydeskMaydonoz.cs">
+    <Compile Update="EditExistingAnydesk.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Properties\Settings.Designer.cs">
