@@ -190,7 +190,6 @@ namespace AnydeskEasyConnect
                             MainScreen.MaydonozYenile();
                             break;
                     }
-                    MainScreen.AdileYenile();
                     sqlConnection.Close();
                     this.Close();
                 }
