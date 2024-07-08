@@ -2,17 +2,19 @@
 
 namespace AnydeskEasyConnect
 {
-    public partial class AddNewAnydeskCajun : Form
+    public partial class AddNewAnydesk : Form
     {
-        public AddNewAnydeskCajun()
+        public AddNewAnydesk(string SirketAdi)
         {
             InitializeComponent();
+            sirketAdi = SirketAdi;
         }
 
         internal string? subeAdi;
         internal string? subeAnydeskNumarasi;
         internal string? subeAnydeskParolasi;
         internal string? subeBilgisayarYetkisi;
+        internal string? sirketAdi;
         private void ŞubeAdıGirdisi_TextChanged(object sender, EventArgs e)
         {
             subeAdi = ŞubeAdıGirdisi.Text;
@@ -43,7 +45,7 @@ namespace AnydeskEasyConnect
             {
                 string formattedSubeAnydeskNumarasi = subeAnydeskNumarasi.ToString().Replace(" ", "");
                 formattedSubeAnydeskNumarasi = Algorithms.AnydeskNumarasiDuzenleyici(formattedSubeAnydeskNumarasi);
-                string checkAnydeskNoCommand = $"SELECT SubeAnydeskNumarasi,SubeAdi FROM Cajun WHERE SubeAnydeskNumarasi='{formattedSubeAnydeskNumarasi}'";
+                string checkAnydeskNoCommand = $"SELECT SubeAnydeskNumarasi,SubeAdi FROM {sirketAdi} WHERE SubeAnydeskNumarasi='{formattedSubeAnydeskNumarasi}'";
                 SqlCommand sqlCheckAnydeskNoCommand = new SqlCommand(checkAnydeskNoCommand, sqlConnection);
                 using (SqlDataReader reader = sqlCheckAnydeskNoCommand.ExecuteReader())
                 {
@@ -66,7 +68,7 @@ namespace AnydeskEasyConnect
             }
 
             // Check the number of entries in the table in order to set the Id value of the newest entry.
-            string countCommand = "SELECT COUNT(*) FROM Cajun";
+            string countCommand = $"SELECT COUNT(*) FROM {sirketAdi}";
             int countOfEntries = 0;
             SqlCommand sqlCountCommand = new SqlCommand(countCommand, sqlConnection);
             using (SqlDataReader reader = sqlCountCommand.ExecuteReader())
@@ -141,10 +143,13 @@ namespace AnydeskEasyConnect
             };
             if (subeAnydeskNumarasi != "null" & subeAdi.Count() >= 8)
             {
-                string insertQuery = $"INSERT INTO Cajun (Id,SubeAdi,SubeAnydeskNumarasi,SubeAnydeskParolasi,BilgisayarYetkisi) VALUES ({assignedId},'{subeAdi}','{subeAnydeskNumarasi}','{subeAnydeskParolasi}','{subeBilgisayarYetkisi}')";
+                string insertQuery = $"INSERT INTO {sirketAdi} (Id,SubeAdi,SubeAnydeskNumarasi,SubeAnydeskParolasi,BilgisayarYetkisi) VALUES ({assignedId},'{subeAdi}','{subeAnydeskNumarasi}','{subeAnydeskParolasi}','{subeBilgisayarYetkisi}')";
                 SqlCommand insertCommand = new SqlCommand(insertQuery, sqlConnection);
                 insertCommand.ExecuteNonQuery();
-                MainScreen.CajunYenile();
+                if (sirketAdi == "Adile")
+                {
+                    MainScreen.AdileYenile();
+                }
                 this.Close();
             }
             else
