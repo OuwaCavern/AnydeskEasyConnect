@@ -184,15 +184,15 @@ namespace AnydeskEasyConnect
             BindingSource HeyDonerBindingSource = new BindingSource();
             BindingSource DigerBindingSource = new BindingSource();
 
-            MaydonozBindingSource.DataSource = anydeskDAO.MaydonozAnydeskleriniGetir();
-            KofteciYusufBindingSource.DataSource = anydeskDAO.KofteciYusufAnydeskleriniGetir();
-            KomageneBindingSource.DataSource = anydeskDAO.KomageneAnydeskleriniGetir();
-            CajunCornerBindingSource.DataSource = anydeskDAO.CajunCornerAnydeskleriniGetir();
-            BereketDonerBindingSource.DataSource = anydeskDAO.BereketDonerAnydeskleriniGetir();
-            HotDonerBindingSource.DataSource = anydeskDAO.HotDonerAnydeskleriniGetir();
-            AdileSultanBindingSource.DataSource = anydeskDAO.AdileSultanAnydeskleriniGetir();
-            HeyDonerBindingSource.DataSource = anydeskDAO.HeyDonerAnydeskleriniGetir();
-            DigerBindingSource.DataSource = anydeskDAO.DigerAnydeskleriniGetir();
+            MaydonozBindingSource.DataSource = anydeskDAO.AnydeskleriGetir("Maydonoz");
+            KofteciYusufBindingSource.DataSource = anydeskDAO.AnydeskleriGetir("Maydonoz");
+            KomageneBindingSource.DataSource = anydeskDAO.AnydeskleriGetir("Maydonoz");
+            CajunCornerBindingSource.DataSource = anydeskDAO.AnydeskleriGetir("Maydonoz");
+            BereketDonerBindingSource.DataSource = anydeskDAO.AnydeskleriGetir("Maydonoz");
+            HotDonerBindingSource.DataSource = anydeskDAO.AnydeskleriGetir("Maydonoz");
+            AdileSultanBindingSource.DataSource = anydeskDAO.AnydeskleriGetir("Maydonoz");
+            HeyDonerBindingSource.DataSource = anydeskDAO.AnydeskleriGetir("Maydonoz");
+            DigerBindingSource.DataSource = anydeskDAO.AnydeskleriGetir("Maydonoz");
 
             MaydonozDataGrid.DataSource = MaydonozBindingSource;
             KofteciDataGrid.DataSource = KofteciYusufBindingSource;
@@ -846,112 +846,44 @@ namespace AnydeskEasyConnect
         }
         private void KomageneYenilemeButonu_Click(object sender, EventArgs e)
         {
-            KomageneYenile();
+            SayfaYenile("Komagene");
         }
         private void AdileYenilemeButonu_Click(object sender, EventArgs e)
         {
-            AdileYenile();
+            SayfaYenile("Adile");
         }
         private void MaydonozYenilemeButonu_Click(object sender, EventArgs e)
         {
-            MaydonozYenile();
+            SayfaYenile("Maydonoz");
         }
         private void HotYenilemeButonu_Click(object sender, EventArgs e)
         {
-            HotYenile();
+            SayfaYenile("Hot");
         }
         private void BereketYenilemeButonu_Click(object sender, EventArgs e)
         {
-            BereketYenile();
+            SayfaYenile("Bereket");
         }
         private void CajunYenilemeButonu_Click(object sender, EventArgs e)
         {
-            CajunYenile();
+            SayfaYenile("Cajun");
         }
         private void DigerYenilemeButonu_Click(object sender, EventArgs e)
         {
-            DigerYenile();
+            SayfaYenile("Diger");
         }
         private void HeyYenilemeButonu_Click(object sender, EventArgs e)
         {
-            HeyYenile();
+            SayfaYenile("Hey");
         }
-        internal static void AdileYenile()
+        
+        internal static void SayfaYenile(string sirketAdi)
         {
             AnydeskDAO anydeskDAO = new AnydeskDAO();
             BindingSource AdileBindingSource = new BindingSource();
-            AdileBindingSource.DataSource = anydeskDAO.AdileSultanAnydeskleriniGetir();
+            AdileBindingSource.DataSource = anydeskDAO.AnydeskleriGetir(sirketAdi);
             AdileDataGrid.DataSource = AdileBindingSource;
             AdileDataGrid.Refresh();
-        }
-        internal static void CajunYenile()
-        {
-            AnydeskDAO anydeskDAO = new AnydeskDAO();
-            BindingSource CajunBindingSource = new BindingSource();
-            CajunBindingSource.DataSource = anydeskDAO.CajunCornerAnydeskleriniGetir();
-            CajunDataGrid.DataSource = CajunBindingSource;
-            CajunDataGrid.Refresh();
-        }
-        internal static void MaydonozYenile()
-        {
-            AnydeskDAO anydeskDAO = new AnydeskDAO();
-            BindingSource MaydonozBindingSource = new BindingSource();
-            MaydonozBindingSource.DataSource = anydeskDAO.MaydonozAnydeskleriniGetir();
-            MaydonozDataGrid.DataSource = MaydonozBindingSource;
-            MaydonozDataGrid.Refresh();
-        }
-
-        internal static void BereketYenile()
-        {
-            AnydeskDAO anydeskDAO = new AnydeskDAO();
-            BindingSource BereketBindingSource = new BindingSource();
-            BereketBindingSource.DataSource = anydeskDAO.BereketDonerAnydeskleriniGetir();
-            BereketDataGrid.DataSource = BereketBindingSource;
-            BereketDataGrid.Refresh();
-        }
-
-        internal static void HotYenile()
-        {
-            AnydeskDAO anydeskDAO = new AnydeskDAO();
-            BindingSource HotBindingSource = new BindingSource();
-            HotBindingSource.DataSource = anydeskDAO.HotDonerAnydeskleriniGetir();
-            HotDataGrid.DataSource = HotBindingSource;
-            HotDataGrid.Refresh();
-        }
-
-        internal static void DigerYenile()
-        {
-            AnydeskDAO anydeskDAO = new AnydeskDAO();
-            BindingSource DigerBindingSource = new BindingSource();
-            DigerBindingSource.DataSource = anydeskDAO.DigerAnydeskleriniGetir();
-            DigerDataGrid.DataSource = DigerBindingSource;
-            DigerDataGrid.Refresh();
-        }
-
-        internal static void KomageneYenile()
-        {
-            AnydeskDAO anydeskDAO = new AnydeskDAO();
-            BindingSource KomageneBindingSource = new BindingSource();
-            KomageneBindingSource.DataSource = anydeskDAO.KomageneAnydeskleriniGetir();
-            KomageneDataGrid.DataSource = KomageneBindingSource;
-            KomageneDataGrid.Refresh();
-        }
-        internal static void KofteciYenile()
-        {
-            AnydeskDAO anydeskDAO = new AnydeskDAO();
-            BindingSource KofteciBindingSource = new BindingSource();
-            KofteciBindingSource.DataSource = anydeskDAO.KofteciYusufAnydeskleriniGetir();
-            KofteciDataGrid.DataSource = KofteciBindingSource;
-            KofteciDataGrid.Refresh();
-        }
-
-        internal static void HeyYenile()
-        {
-            AnydeskDAO anydeskDAO = new AnydeskDAO();
-            BindingSource HeyBindingSource = new BindingSource();
-            HeyBindingSource.DataSource = anydeskDAO.HeyDonerAnydeskleriniGetir();
-            HeyDataGrid.DataSource = HeyBindingSource;
-            HeyDataGrid.Refresh();
         }
 
         public static string? subeAdiylaAramaGirdisi;
@@ -994,47 +926,47 @@ namespace AnydeskEasyConnect
 
         private void KomageneAramaButonu_Click(object sender, EventArgs e)
         {
-            SearchFunctionKomagene.BindSearchData(KomageneDataGrid);
+            SearchFunction.BindSearchData(KomageneDataGrid, "Komagene");
             KomageneDataGrid.Refresh();
         }
         private void CajunAramaButonu_Click(object sender, EventArgs e)
         {
-            SearchFunctionCajun.BindSearchData(CajunDataGrid);
+            SearchFunction.BindSearchData(CajunDataGrid, "Cajun");
             CajunDataGrid.Refresh();
         }
         private void AdileAramaButonu_Click(object sender, EventArgs e)
         {
-            SearchFunctionAdile.BindSearchData(AdileDataGrid);
+            SearchFunction.BindSearchData(AdileDataGrid, "Adile");
             AdileDataGrid.Refresh();
         }
         private void KofteciAramaButonu_Click(object sender, EventArgs e)
         {
-            SearchFunctionKofteci.BindSearchData(KofteciDataGrid);
+            SearchFunction.BindSearchData(KofteciDataGrid, "Kofteci");
             KofteciDataGrid.Refresh();
         }
         private void BereketAramaButonu_Click(object sender, EventArgs e)
         {
-            SearchFunctionBereket.BindSearchData(BereketDataGrid);
+            SearchFunction.BindSearchData(BereketDataGrid, "Bereket");
             KomageneDataGrid.Refresh();
         }
         private void HotAramaButonu_Click(object sender, EventArgs e)
         {
-            SearchFunctionHot.BindSearchData(HotDataGrid);
+            SearchFunction.BindSearchData(HotDataGrid, "Hot");
             HotDataGrid.Refresh();
         }
         private void MaydonozAramaButonu_Click(object sender, EventArgs e)
         {
-            SearchFunctionMaydonoz.BindSearchData(MaydonozDataGrid);
+            SearchFunction.BindSearchData(MaydonozDataGrid, "Maydonoz");
             MaydonozDataGrid.Refresh();
         }
         private void HeyAramaButonu_Click(object sender, EventArgs e)
         {
-            SearchFunctionHey.BindSearchData(HeyDataGrid);
+            SearchFunction.BindSearchData(HeyDataGrid, "Hey");
             HeyDataGrid.Refresh();
         }
         private void DigerAramaButonu_Click(object sender, EventArgs e)
         {
-            SearchFunctionDiger.BindSearchData(DigerDataGrid);
+            SearchFunction.BindSearchData(DigerDataGrid, "Diger");
             DigerDataGrid.Refresh();
         }
 

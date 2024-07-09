@@ -1,30 +1,25 @@
 ﻿using Microsoft.Data.SqlClient;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace AnydeskEasyConnect
 {
-    internal class SearchFunctionMaydonoz
+    internal class SearchFunction
     {
-        internal static void BindSearchData(DataGridView MaydonozDataGrid)
+        internal static void BindSearchData(DataGridView DataGrid, string sirketAdi)
         {
-            BindingSource MaydonozBindingSource = new()
+            BindingSource BindingSource = new()
             {
-                DataSource = AramaSonucunuGetir(MainScreen.subeAdiylaAramaGirdisi, AnydeskDAO.CreateConnectionString())
+                DataSource = AramaSonucunuGetir(MainScreen.subeAdiylaAramaGirdisi, AnydeskDAO.CreateConnectionString(), sirketAdi)
             };
-            MaydonozDataGrid.DataSource = MaydonozBindingSource;
+            DataGrid.DataSource = BindingSource;
         }
-        private static List<Anydesks> AramaSonucunuGetir(string subeAdiylaAramaGirdisi, string connectionString)
+        private static List<Anydesks> AramaSonucunuGetir(string subeAdiylaAramaGirdisi, string connectionString, string sirketAdi)
         {
             List<Anydesks> returnThese = [];
             if (subeAdiylaAramaGirdisi != null)
             {
                 subeAdiylaAramaGirdisi = subeAdiylaAramaGirdisi.Trim();
             }
-            string searchQuery = $"SELECT SubeAdi,SubeAnydeskNumarasi,SubeAnydeskParolasi,BilgisayarYetkisi FROM Maydonoz WHERE SubeAdi LIKE '%{subeAdiylaAramaGirdisi}%'";
+            string searchQuery = $"SELECT SubeAdi,SubeAnydeskNumarasi,SubeAnydeskParolasi,BilgisayarYetkisi FROM {sirketAdi} WHERE SubeAdi LIKE '%{subeAdiylaAramaGirdisi}%'";
             try
             {
                 SqlConnection sqlConnection;
