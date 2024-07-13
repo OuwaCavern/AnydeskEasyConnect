@@ -28,12 +28,78 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Form1";
+            KullaniciAdiGirdisi = new TextBox();
+            KullaniciParolasiGirdisi = new TextBox();
+            KullaniciAdiLabel = new Label();
+            KullaniciParolasiLabel = new Label();
+            GirisYapButonu = new Button();
+            SuspendLayout();
+            // 
+            // KullaniciAdiGirdisi
+            // 
+            KullaniciAdiGirdisi.Location = new Point(63, 54);
+            KullaniciAdiGirdisi.Name = "KullaniciAdiGirdisi";
+            KullaniciAdiGirdisi.Size = new Size(251, 23);
+            KullaniciAdiGirdisi.TabIndex = 0;
+            KullaniciAdiGirdisi.TextChanged += KullaniciAdiGirdisi_TextChanged;
+            // 
+            // KullaniciParolasiGirdisi
+            // 
+            KullaniciParolasiGirdisi.Location = new Point(63, 113);
+            KullaniciParolasiGirdisi.Name = "KullaniciParolasiGirdisi";
+            KullaniciParolasiGirdisi.Size = new Size(251, 23);
+            KullaniciParolasiGirdisi.TabIndex = 1;
+            KullaniciParolasiGirdisi.TextChanged += KullaniciParolasiGirdisi_TextChanged;
+            // 
+            // KullaniciAdiLabel
+            // 
+            KullaniciAdiLabel.AutoSize = true;
+            KullaniciAdiLabel.Location = new Point(63, 36);
+            KullaniciAdiLabel.Name = "KullaniciAdiLabel";
+            KullaniciAdiLabel.Size = new Size(76, 15);
+            KullaniciAdiLabel.TabIndex = 2;
+            KullaniciAdiLabel.Text = "Kullanıcı Adı:";
+            // 
+            // KullaniciParolasiLabel
+            // 
+            KullaniciParolasiLabel.AutoSize = true;
+            KullaniciParolasiLabel.Location = new Point(63, 95);
+            KullaniciParolasiLabel.Name = "KullaniciParolasiLabel";
+            KullaniciParolasiLabel.Size = new Size(43, 15);
+            KullaniciParolasiLabel.TabIndex = 3;
+            KullaniciParolasiLabel.Text = "Parola:";
+            // 
+            // GirisYapButonu
+            // 
+            GirisYapButonu.Location = new Point(146, 152);
+            GirisYapButonu.Name = "GirisYapButonu";
+            GirisYapButonu.Size = new Size(98, 38);
+            GirisYapButonu.TabIndex = 4;
+            GirisYapButonu.Text = "Giriş Yap";
+            GirisYapButonu.UseVisualStyleBackColor = true;
+            // 
+            // Login
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(391, 202);
+            Controls.Add(GirisYapButonu);
+            Controls.Add(KullaniciParolasiLabel);
+            Controls.Add(KullaniciAdiLabel);
+            Controls.Add(KullaniciParolasiGirdisi);
+            Controls.Add(KullaniciAdiGirdisi);
+            Name = "Login";
+            Text = "Form1";
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
+
+        private TextBox KullaniciAdiGirdisi;
+        private TextBox KullaniciParolasiGirdisi;
+        private Label KullaniciAdiLabel;
+        private Label KullaniciParolasiLabel;
+        private Button GirisYapButonu;
     }
 }
