@@ -144,7 +144,7 @@ namespace AnydeskEasyConnect
                         string updateQuery = $"UPDATE {sirketAdi} SET SubeAdi='{duzenlenenSubeAdi}',SubeAnydeskNumarasi='{duzenlenenAnydeskNumarasi}',SubeAnydeskParolasi='{duzenlenenAnydeskParolasi}',BilgisayarYetkisi='{duzenlenenBilgisayarYetkisi}' WHERE SubeAnydeskNumarasi='{Algorithms.AnydeskNumarasiDuzenleyici(eskiAnydeskNumarasi)}'";
                         SqlCommand updateCommand = new SqlCommand(updateQuery, sqlConnection);
                         updateCommand.ExecuteNonQuery();
-                        MainScreen.AdileYenile();
+                        MainScreen.SayfaYenile(sirketAdi);
                         sqlConnection.Close();
                         this.Close();
                     }
@@ -160,36 +160,7 @@ namespace AnydeskEasyConnect
                     string updateQuery = $"UPDATE {sirketAdi} SET SubeAdi='{duzenlenenSubeAdi}',SubeAnydeskNumarasi='{duzenlenenAnydeskNumarasi}',SubeAnydeskParolasi='{duzenlenenAnydeskParolasi}',BilgisayarYetkisi='{duzenlenenBilgisayarYetkisi}' WHERE SubeAnydeskNumarasi='{Algorithms.AnydeskNumarasiDuzenleyici(eskiAnydeskNumarasi)}'";
                     SqlCommand updateCommand = new SqlCommand(updateQuery, sqlConnection);
                     updateCommand.ExecuteNonQuery();
-                    switch (sirketAdi)
-                    {
-                        case "Adile":
-                            MainScreen.AdileYenile();
-                            break;
-                        case "Bereket":
-                            MainScreen.BereketYenile();
-                            break;
-                        case "Cajun":
-                            MainScreen.CajunYenile();
-                            break;
-                        case "Diger":
-                            MainScreen.DigerYenile();
-                            break;
-                        case "Hey":
-                            MainScreen.HeyYenile();
-                            break;
-                        case "Hot":
-                            MainScreen.HotYenile();
-                            break;
-                        case "Kofteci":
-                            MainScreen.KofteciYenile();
-                            break;
-                        case "Komagene":
-                            MainScreen.KomageneYenile();
-                            break;
-                        case "Maydonoz":
-                            MainScreen.MaydonozYenile();
-                            break;
-                    }
+                    MainScreen.SayfaYenile(sirketAdi);
                     sqlConnection.Close();
                     this.Close();
                 }

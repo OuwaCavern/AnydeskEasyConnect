@@ -77,6 +77,7 @@
             GirisYapButonu.TabIndex = 4;
             GirisYapButonu.Text = "Giriş Yap";
             GirisYapButonu.UseVisualStyleBackColor = true;
+            GirisYapButonu.Click += GirisYapButonu_Click;
             // 
             // Login
             // 
@@ -89,7 +90,7 @@
             Controls.Add(KullaniciParolasiGirdisi);
             Controls.Add(KullaniciAdiGirdisi);
             Name = "Login";
-            Text = "Form1";
+            Text = "Giriş Yap";
             ResumeLayout(false);
             PerformLayout();
         }

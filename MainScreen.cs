@@ -880,10 +880,55 @@ namespace AnydeskEasyConnect
         internal static void SayfaYenile(string sirketAdi)
         {
             AnydeskDAO anydeskDAO = new AnydeskDAO();
-            BindingSource AdileBindingSource = new BindingSource();
-            AdileBindingSource.DataSource = anydeskDAO.AnydeskleriGetir(sirketAdi);
-            AdileDataGrid.DataSource = AdileBindingSource;
-            AdileDataGrid.Refresh();
+            BindingSource bindingSource = new BindingSource();
+            switch (sirketAdi)
+            {
+                case "Adile":
+                    bindingSource.DataSource = anydeskDAO.AnydeskleriGetir("Adile");
+                    AdileDataGrid.DataSource = bindingSource;
+                    AdileDataGrid.Refresh();
+                    break;
+                case "Bereket":
+                    bindingSource.DataSource = anydeskDAO.AnydeskleriGetir("Bereket");
+                    BereketDataGrid.DataSource = bindingSource;
+                    BereketDataGrid.Refresh();
+                    break;
+                case "Cajun":
+                    bindingSource.DataSource = anydeskDAO.AnydeskleriGetir("Cajun");
+                    CajunDataGrid.DataSource = bindingSource;
+                    CajunDataGrid.Refresh();
+                    break;
+                case "Diger":
+                    bindingSource.DataSource = anydeskDAO.AnydeskleriGetir("Diger");
+                    DigerDataGrid.DataSource = bindingSource;
+                    DigerDataGrid.Refresh();
+                    break;
+                case "Hey":
+                    bindingSource.DataSource = anydeskDAO.AnydeskleriGetir("Hey");
+                    HeyDataGrid.DataSource = bindingSource;
+                    HeyDataGrid.Refresh();
+                    break;
+                case "Hot":
+                    bindingSource.DataSource = anydeskDAO.AnydeskleriGetir("Hot");
+                    HotDataGrid.DataSource = bindingSource;
+                    HotDataGrid.Refresh();
+                    break;
+                case "Kofteci":
+                    bindingSource.DataSource = anydeskDAO.AnydeskleriGetir("Kofteci");
+                    KofteciDataGrid.DataSource = bindingSource;
+                    KofteciDataGrid.Refresh();
+                    break;
+                case "Komagene":
+                    bindingSource.DataSource = anydeskDAO.AnydeskleriGetir("Komagene");
+                    KomageneDataGrid.DataSource = bindingSource;
+                    KomageneDataGrid.Refresh();
+                    break;
+                case "Maydonoz":
+                    bindingSource.DataSource = anydeskDAO.AnydeskleriGetir("Maydonoz");
+                    MaydonozDataGrid.DataSource = bindingSource;
+                    MaydonozDataGrid.Refresh();
+                    break;
+            }
         }
 
         public static string? subeAdiylaAramaGirdisi;
