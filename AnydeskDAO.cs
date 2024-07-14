@@ -32,11 +32,11 @@ namespace AnydeskEasyConnect
             try
             {
                 ConnectionString = CreateConnectionString();
-                string selectMaydonozAll = $"SELECT TOP 1000 SubeAdi,SubeAnydeskNumarasi,SubeAnydeskParolasi,BilgisayarYetkisi FROM {sirketAdi}";
+                string selectQuery = $"SELECT TOP 1000 SubeAdi,SubeAnydeskNumarasi,SubeAnydeskParolasi,BilgisayarYetkisi FROM {sirketAdi}";
                 SqlConnection sqlConnection;
                 sqlConnection = new SqlConnection(ConnectionString);
                 sqlConnection.Open();
-                SqlCommand sqlCommand = new SqlCommand(selectMaydonozAll, sqlConnection);
+                SqlCommand sqlCommand = new SqlCommand(selectQuery, sqlConnection);
                 using (SqlDataReader reader = sqlCommand.ExecuteReader())
                 {
                     while (reader.Read())
