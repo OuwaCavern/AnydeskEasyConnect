@@ -19,8 +19,9 @@ namespace AnydeskEasyConnect
             InitializeComponent();
         }
 
-        public string? kullaniciAdi;
-        public string? kullaniciParolasi;
+        private string? kullaniciAdi;
+        private string? kullaniciParolasi;
+        public static bool basariliGiris = false;
 
         private void KullaniciAdiGirdisi_TextChanged(object sender, EventArgs e)
         {
@@ -35,27 +36,43 @@ namespace AnydeskEasyConnect
         private void GirisYapButonu_Click(object sender, EventArgs e)
         {
             string connectionString = AnydeskDAO.CreateConnectionString();
-            string selectQuery = $"SELECT * FROM UserBase WHERE KullaniciAdi='{PrivateHasher.ParolaSifreleyici(kullaniciAdi)}'";
 
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            try
             {
-                SqlCommand command = new SqlCommand(selectQuery, connection);
-                connection.Open();
-                SqlDataReader reader = command.ExecuteReader();
+                string ConnectionString = AnydeskDAO.CreateConnectionString();
+                string selectQuery = $"SELECT * FROM UserBase WHERE KullaniciAdi='{PrivateHasher.ParolaSifreleyici(kullaniciAdi)}'";
 
-                List<Dictionary<string, object>> result = new();
+                string foundKullaniciAdi = "";
+                string foundKullaniciParolasi = "";
 
-                while (reader.Read())
+                SqlConnection sqlConnection;
+                sqlConnection = new SqlConnection(ConnectionString);
+                sqlConnection.Open();
+                SqlCommand sqlCommand = new SqlCommand(selectQuery, sqlConnection);
+                using (SqlDataReader reader = sqlCommand.ExecuteReader())
                 {
-                    Dictionary<string, object> row = new();
-
-                    for (int i = 0; i < reader.FieldCount; i++)
+                    while (reader.Read())
                     {
-                        row.Add(reader.GetName(i), reader.GetValue(i));
+                        foundKullaniciAdi = reader.IsDBNull(0) ? "null" : reader.GetString(0);
+                        foundKullaniciParolasi = reader.IsDBNull(1) ? "null" : reader.GetString(1);
                     }
-
-                    result.Add(row);
                 }
+                sqlConnection.Close();
+
+                if (foundKullaniciAdi == kullaniciAdi && foundKullaniciParolasi == kullaniciParolasi)
+                {
+                    basariliGiris = true;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+            if (basariliGiris)
+            {
+                Application.Run(new MainScreen());
             }
         }
     }
