@@ -59,7 +59,7 @@ namespace AnydeskEasyConnect
                 }
                 sqlConnection.Close();
 
-                if (foundKullaniciAdi == kullaniciAdi && foundKullaniciParolasi == kullaniciParolasi)
+                if (PrivateHasher.ParolaGeriCevirici(foundKullaniciAdi) == kullaniciAdi && foundKullaniciParolasi == kullaniciParolasi)
                 {
                     basariliGiris = true;
                 }
