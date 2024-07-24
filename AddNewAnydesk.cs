@@ -14,6 +14,7 @@ namespace AnydeskEasyConnect
         internal string? subeAnydeskNumarasi;
         internal string? subeAnydeskParolasi;
         internal string? subeBilgisayarYetkisi;
+        internal string? subeOlusturulduguTarih;
         internal string? sirketAdi;
         private void ŞubeAdıGirdisi_TextChanged(object sender, EventArgs e)
         {
@@ -143,12 +144,13 @@ namespace AnydeskEasyConnect
             };
             if (subeAnydeskNumarasi != "null" & subeAdi.Count() >= 8)
             {
-                string insertQuery = $"INSERT INTO {sirketAdi} (Id,SubeAdi,SubeAnydeskNumarasi,SubeAnydeskParolasi,BilgisayarYetkisi) VALUES ({assignedId},'{subeAdi}','{subeAnydeskNumarasi}','{subeAnydeskParolasi}','{subeBilgisayarYetkisi}')";
+                subeOlusturulduguTarih = DateTime.Now.ToString();
+                string insertQuery = $"INSERT INTO {sirketAdi} (Id,SubeAdi,SubeAnydeskNumarasi,SubeAnydeskParolasi,BilgisayarYetkisi,OlusturulduguTarih) VALUES ({assignedId},'{subeAdi}','{subeAnydeskNumarasi}','{subeAnydeskParolasi}','{subeBilgisayarYetkisi}','{subeOlusturulduguTarih}')";
                 SqlCommand insertCommand = new SqlCommand(insertQuery, sqlConnection);
                 insertCommand.ExecuteNonQuery();
                 if (sirketAdi == "Adile")
                 {
-                    MainScreen.AdileYenile();
+                    MainScreen.SayfaYenile(sirketAdi);
                 }
                 this.Close();
             }
