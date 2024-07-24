@@ -15,5 +15,8 @@ namespace AnydeskEasyConnect
 
         [DisplayName("Bilgisayar Yetkisi")]
         public string? BilgisayarYetkisi { get; set; }
+
+        [DisplayName("Oluşturulduğu Tarih")]
+        public string? OluşturulduğuTarih { get; set; }
     }
 }
