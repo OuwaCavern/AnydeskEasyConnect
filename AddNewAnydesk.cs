@@ -148,10 +148,7 @@ namespace AnydeskEasyConnect
                 string insertQuery = $"INSERT INTO {sirketAdi} (Id,SubeAdi,SubeAnydeskNumarasi,SubeAnydeskParolasi,BilgisayarYetkisi,OlusturulduguTarih) VALUES ({assignedId},'{subeAdi}','{subeAnydeskNumarasi}','{subeAnydeskParolasi}','{subeBilgisayarYetkisi}','{subeOlusturulduguTarih}')";
                 SqlCommand insertCommand = new SqlCommand(insertQuery, sqlConnection);
                 insertCommand.ExecuteNonQuery();
-                if (sirketAdi == "Adile")
-                {
-                    MainScreen.SayfaYenile(sirketAdi);
-                }
+                MainScreen.SayfaYenile(sirketAdi);
                 this.Close();
             }
             else
