@@ -53,8 +53,8 @@ namespace AnydeskEasyConnect
                 {
                     while (reader.Read())
                     {
-                        foundKullaniciAdi = reader.IsDBNull(0) ? "null" : reader.GetString(0);
-                        foundKullaniciParolasi = reader.IsDBNull(1) ? "null" : reader.GetString(1);
+                        foundKullaniciAdi = reader.IsDBNull(0) ? "null" : reader.GetString(1);
+                        foundKullaniciParolasi = reader.IsDBNull(1) ? "null" : reader.GetString(2);
                     }
                 }
                 sqlConnection.Close();
@@ -70,9 +70,11 @@ namespace AnydeskEasyConnect
                 MessageBox.Show(ex.Message);
             }
 
+
             if (basariliGiris)
             {
-                Application.Run(new MainScreen());
+                Program.BasariliGirisiAyarla(true);
+                this.Close();
             }
         }
     }
