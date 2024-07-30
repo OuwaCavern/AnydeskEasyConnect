@@ -13,7 +13,7 @@ namespace AnydeskEasyConnect
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             Application.Run(new Login());
-            if (basariliGiris == true)
+            if (basariliGiris)
             {
                 Application.Run(new MainScreen());
             }
