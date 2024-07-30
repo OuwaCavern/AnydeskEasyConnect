@@ -1,10 +1,4 @@
-﻿using Microsoft.Identity.Client;
-using System.Drawing.Text;
-using System.Runtime.CompilerServices;
-using System.Security.AccessControl;
-using System.Windows.Forms;
-
-namespace AnydeskEasyConnect
+﻿namespace AnydeskEasyConnect
 {
     public partial class MainScreen : Form
     {
