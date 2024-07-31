@@ -32,7 +32,7 @@ namespace AnydeskEasyConnect
             try
             {
                 ConnectionString = CreateConnectionString();
-                string selectQuery = $"SELECT TOP 1000 SubeAdi,SubeAnydeskNumarasi,SubeAnydeskParolasi,BilgisayarYetkisi FROM {sirketAdi}";
+                string selectQuery = $"SELECT TOP 1000 SubeAdi,SubeAnydeskNumarasi,SubeAnydeskParolasi,BilgisayarYetkisi,OlusturulduguTarih FROM {sirketAdi}";
                 SqlConnection sqlConnection;
                 sqlConnection = new SqlConnection(ConnectionString);
                 sqlConnection.Open();
@@ -47,7 +47,7 @@ namespace AnydeskEasyConnect
                             ŞubeninAnydeskNumarası = reader.IsDBNull(1) ? "null" : reader.GetString(1),
                             ŞubeninAnydeskParolası = reader.IsDBNull(2) ? "null" : reader.GetString(2),
                             BilgisayarYetkisi = reader.IsDBNull(3) ? "null" : reader.GetString(3),
-                            OluşturulduğuTarih = reader.IsDBNull(4) ? "null" : reader.GetString(4),
+                            OluşturulduğuTarih = reader.IsDBNull(4) ? "null" : reader.GetDateTime(4).ToString(),
                         };
                         returnThese.Add(a);
                     }
