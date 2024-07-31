@@ -14,7 +14,6 @@ namespace AnydeskEasyConnect
         internal string? subeAnydeskNumarasi;
         internal string? subeAnydeskParolasi;
         internal string? subeBilgisayarYetkisi;
-        internal string? subeOlusturulduguTarih;
         internal string? sirketAdi;
         private void ŞubeAdıGirdisi_TextChanged(object sender, EventArgs e)
         {
@@ -144,8 +143,7 @@ namespace AnydeskEasyConnect
             };
             if (subeAnydeskNumarasi != "null" & subeAdi.Count() >= 8)
             {
-                subeOlusturulduguTarih = DateTime.Now.ToString();
-                string insertQuery = $"INSERT INTO {sirketAdi} (Id,SubeAdi,SubeAnydeskNumarasi,SubeAnydeskParolasi,BilgisayarYetkisi,OlusturulduguTarih) VALUES ({assignedId},'{subeAdi}','{subeAnydeskNumarasi}','{subeAnydeskParolasi}','{subeBilgisayarYetkisi}','{subeOlusturulduguTarih}')";
+                string insertQuery = $"INSERT INTO {sirketAdi} (Id,SubeAdi,SubeAnydeskNumarasi,SubeAnydeskParolasi,BilgisayarYetkisi,OlusturulduguTarih) VALUES ({assignedId},'{subeAdi}','{subeAnydeskNumarasi}','{subeAnydeskParolasi}','{subeBilgisayarYetkisi}','{DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")}')";
                 SqlCommand insertCommand = new SqlCommand(insertQuery, sqlConnection);
                 insertCommand.ExecuteNonQuery();
                 MainScreen.SayfaYenile(sirketAdi);
