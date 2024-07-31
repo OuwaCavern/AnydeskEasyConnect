@@ -47,7 +47,7 @@ namespace AnydeskEasyConnect
                             ŞubeninAnydeskNumarası = reader.IsDBNull(1) ? "null" : reader.GetString(1),
                             ŞubeninAnydeskParolası = reader.IsDBNull(2) ? "null" : reader.GetString(2),
                             BilgisayarYetkisi = reader.IsDBNull(3) ? "null" : reader.GetString(3),
-                            OluşturulduğuTarih = reader.IsDBNull(4) ? "null" : reader.GetDateTime(4).ToString(),
+                            OluşturulduğuTarih = reader.IsDBNull(4) ? DateTime.MinValue : reader.GetDateTime(4),
                         };
                         returnThese.Add(a);
                     }
