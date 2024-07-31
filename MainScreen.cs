@@ -179,14 +179,14 @@
             BindingSource DigerBindingSource = new BindingSource();
 
             MaydonozBindingSource.DataSource = anydeskDAO.AnydeskleriGetir("Maydonoz");
-            KofteciYusufBindingSource.DataSource = anydeskDAO.AnydeskleriGetir("Maydonoz");
-            KomageneBindingSource.DataSource = anydeskDAO.AnydeskleriGetir("Maydonoz");
-            CajunCornerBindingSource.DataSource = anydeskDAO.AnydeskleriGetir("Maydonoz");
-            BereketDonerBindingSource.DataSource = anydeskDAO.AnydeskleriGetir("Maydonoz");
-            HotDonerBindingSource.DataSource = anydeskDAO.AnydeskleriGetir("Maydonoz");
-            AdileSultanBindingSource.DataSource = anydeskDAO.AnydeskleriGetir("Maydonoz");
-            HeyDonerBindingSource.DataSource = anydeskDAO.AnydeskleriGetir("Maydonoz");
-            DigerBindingSource.DataSource = anydeskDAO.AnydeskleriGetir("Maydonoz");
+            KofteciYusufBindingSource.DataSource = anydeskDAO.AnydeskleriGetir("Kofteci");
+            KomageneBindingSource.DataSource = anydeskDAO.AnydeskleriGetir("Komagene");
+            CajunCornerBindingSource.DataSource = anydeskDAO.AnydeskleriGetir("Cajun");
+            BereketDonerBindingSource.DataSource = anydeskDAO.AnydeskleriGetir("Bereket");
+            HotDonerBindingSource.DataSource = anydeskDAO.AnydeskleriGetir("Hot");
+            AdileSultanBindingSource.DataSource = anydeskDAO.AnydeskleriGetir("Adile");
+            HeyDonerBindingSource.DataSource = anydeskDAO.AnydeskleriGetir("Hey");
+            DigerBindingSource.DataSource = anydeskDAO.AnydeskleriGetir("Diger");
 
             MaydonozDataGrid.DataSource = MaydonozBindingSource;
             KofteciDataGrid.DataSource = KofteciYusufBindingSource;
