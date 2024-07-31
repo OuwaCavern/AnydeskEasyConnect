@@ -35,9 +35,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="AddNewAnydesk.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Update="AddNewAnydesk.cs" />
     <Compile Update="EditExistingAnydesk.cs">
       <SubType>Form</SubType>
     </Compile>
