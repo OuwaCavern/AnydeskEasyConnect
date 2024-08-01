@@ -4,14 +4,47 @@ namespace AnydeskEasyConnect
 {
     public partial class Login : Form
     {
+        private Size formOriginalSize;
+        private Rectangle recKullaniciParolasiGirdisi;
+        private Rectangle recKullaniciAdiGirdisi;
+        private Rectangle recKullaniciAdiLabel;
+        private Rectangle recKullaniciParolasiLabel;
+        private Rectangle recGirisYapButonu;
         public Login()
         {
             InitializeComponent();
+            this.Resize += Login_Resiz;
+            formOriginalSize = this.Size;
+            recKullaniciParolasiGirdisi = new Rectangle(KullaniciParolasiGirdisi.Location, KullaniciParolasiGirdisi.Size);
+            recKullaniciAdiGirdisi = new Rectangle(KullaniciAdiGirdisi.Location, KullaniciAdiGirdisi.Size);
+            recKullaniciAdiLabel = new Rectangle(KullaniciAdiLabel.Location, KullaniciAdiLabel.Size);
+            recKullaniciParolasiLabel = new Rectangle(KullaniciParolasiLabel.Location, KullaniciParolasiLabel.Size);
+            recGirisYapButonu = new Rectangle(GirisYapButonu.Location, GirisYapButonu.Size);
+        }
+        private void Login_Resiz(object sender, EventArgs e)
+        {
+            ResizeControl(KullaniciParolasiGirdisi, recKullaniciParolasiGirdisi);
+            ResizeControl(KullaniciAdiGirdisi, recKullaniciAdiGirdisi);
+            ResizeControl(KullaniciAdiLabel, recKullaniciAdiLabel);
+            ResizeControl(KullaniciParolasiLabel, recKullaniciParolasiLabel);
+            ResizeControl(GirisYapButonu, recGirisYapButonu);
+        }
+        private void ResizeControl(Control control, Rectangle rect)
+        {
+            float xRatio = (float)(this.Width) / (float)(formOriginalSize.Width);
+            float yRatio = (float)(this.Height) / (float)(formOriginalSize.Height);
+            int newX = (int)(rect.X * xRatio);
+            int newY = (int)(rect.Y * yRatio);
+
+            int newWidth = (int)(rect.Width * xRatio);
+            int newHeight = (int)(rect.Height * yRatio);
+
+            control.Location = new Point(newX, newY);
+            control.Size = new Size(newWidth, newHeight);
         }
 
         private string? kullaniciAdi;
         private string? kullaniciParolasi;
-        public static bool basariliGiris = false;
 
         private void KullaniciAdiGirdisi_TextChanged(object sender, EventArgs e)
         {
@@ -54,20 +87,17 @@ namespace AnydeskEasyConnect
 
                 if (PrivateHasher.ParolaGeriCevirici(foundKullaniciAdi) == kullaniciAdi && foundKullaniciParolasi == kullaniciParolasi)
                 {
-                    basariliGiris = true;
+                    Program.BasariliGirisiAyarla(true);
+                    this.Close();
                 }
-
+                else
+                {
+                    MessageBox.Show(text:$"{kullaniciAdi} ile uygulamaya giriş yapılamadı. Lütfen kullanıcı adınızı ve şifrenizi kontrol edip yeniden deneyiniz.", caption:"Giriş yapılamadı",buttons: MessageBoxButtons.OK, icon: MessageBoxIcon.Warning);
+                }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-            }
-
-
-            if (basariliGiris)
-            {
-                Program.BasariliGirisiAyarla(true);
-                this.Close();
             }
         }
     }
