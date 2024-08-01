@@ -1,6 +1,7 @@
 ﻿using System.Configuration;
 using Microsoft.Data.SqlClient;
-using System.Windows.Forms;
+using System.ComponentModel;
+using Microsoft.EntityFrameworkCore.ChangeTracking.Internal;
 
 namespace AnydeskEasyConnect
 {
@@ -26,9 +27,10 @@ namespace AnydeskEasyConnect
             }
         }
 
-        public List<Anydesks> AnydeskleriGetir(string sirketAdi)
+        public SortableBindingList<Anydesks> AnydeskleriGetir(string sirketAdi)
         {
-            List<Anydesks> returnThese = [];
+            List<Anydesks> listOfAnydesks = new();
+            SortableBindingList<Anydesks> returnThese = new SortableBindingList<Anydesks>(listOfAnydesks);
             try
             {
                 ConnectionString = CreateConnectionString();
@@ -49,7 +51,7 @@ namespace AnydeskEasyConnect
                             BilgisayarYetkisi = reader.IsDBNull(3) ? "null" : reader.GetString(3),
                             OluşturulduğuTarih = reader.IsDBNull(4) ? DateTime.MinValue : reader.GetDateTime(4),
                         };
-                        returnThese.Add(a);
+                        listOfAnydesks.Add(a);
                     }
                 }
                 sqlConnection.Close();

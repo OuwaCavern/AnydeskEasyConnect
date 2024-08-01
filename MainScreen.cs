@@ -1,4 +1,7 @@
-﻿namespace AnydeskEasyConnect
+﻿using System.ComponentModel;
+using System.Windows.Forms;
+
+namespace AnydeskEasyConnect
 {
     public partial class MainScreen : Form
     {
@@ -198,6 +201,8 @@
             HeyDataGrid.DataSource = HeyDonerBindingSource;
             DigerDataGrid.DataSource = DigerBindingSource;
 
+            KomageneDataGrid.DataBindingComplete += KomageneDataGrid_DataBindingComplete;
+
             SetAcceptButtonForActiveTab();
         }
         internal void AnydeskiBaslat(object anydeskNumarasi)
@@ -241,7 +246,48 @@
                 MessageBox.Show(ex.Message);
             }
         }
+        private void KomageneDataGrid_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            DataGridViewColumn newColumn = KomageneDataGrid.Columns[e.ColumnIndex];
+            DataGridViewColumn oldColumn = KomageneDataGrid.SortedColumn;
+            ListSortDirection direction;
 
+            // If oldColumn is null, then the DataGridView is not sorted.
+            if (oldColumn != null)
+            {
+                // Sort the same column again, reversing the SortOrder.
+                if (oldColumn == newColumn &&
+                    KomageneDataGrid.SortOrder == SortOrder.Ascending)
+                {
+                    direction = ListSortDirection.Descending;
+                }
+                else
+                {
+                    // Sort a new column and remove the old SortGlyph.
+                    direction = ListSortDirection.Ascending;
+                    oldColumn.HeaderCell.SortGlyphDirection = SortOrder.None;
+                }
+            }
+            else
+            {
+                direction = ListSortDirection.Ascending;
+            }
+
+            // Sort the selected column.
+            KomageneDataGrid.Sort(newColumn, direction);
+            newColumn.HeaderCell.SortGlyphDirection =
+                direction == ListSortDirection.Ascending ?
+                SortOrder.Ascending : SortOrder.Descending;
+        }
+
+        private void KomageneDataGrid_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            // Put each of the columns into programmatic sort mode.
+            foreach (DataGridViewColumn column in KomageneDataGrid.Columns)
+            {
+                column.SortMode = DataGridViewColumnSortMode.Programmatic;
+            }
+        }
         internal void KomageneDataGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0 && e.ColumnIndex == KomageneDataGrid.Columns["KomageneBaglanButonu"].Index)

@@ -1539,6 +1539,7 @@ namespace AnydeskEasyConnect
             KomageneDataGrid.Size = new Size(810, 340);
             KomageneDataGrid.TabIndex = 5;
             KomageneDataGrid.CellContentClick += KomageneDataGrid_CellContentClick;
+            KomageneDataGrid.ColumnHeaderMouseClick += KomageneDataGrid_ColumnHeaderMouseClick;
             // 
             // KomageneBaglanButonu
             // 
