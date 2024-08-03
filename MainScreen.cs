@@ -288,6 +288,295 @@ namespace AnydeskEasyConnect
                 column.SortMode = DataGridViewColumnSortMode.Programmatic;
             }
         }
+        private void BereketDataGrid_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            DataGridViewColumn newColumn = BereketDataGrid.Columns[e.ColumnIndex];
+            DataGridViewColumn oldColumn = BereketDataGrid.SortedColumn;
+            ListSortDirection direction;
+
+            // If oldColumn is null, then the DataGridView is not sorted.
+            if (oldColumn != null)
+            {
+                // Sort the same column again, reversing the SortOrder.
+                if (oldColumn == newColumn &&
+                    BereketDataGrid.SortOrder == SortOrder.Ascending)
+                {
+                    direction = ListSortDirection.Descending;
+                }
+                else
+                {
+                    // Sort a new column and remove the old SortGlyph.
+                    direction = ListSortDirection.Ascending;
+                    oldColumn.HeaderCell.SortGlyphDirection = SortOrder.None;
+                }
+            }
+            else
+            {
+                direction = ListSortDirection.Ascending;
+            }
+
+            // Sort the selected column.
+            BereketDataGrid.Sort(newColumn, direction);
+            newColumn.HeaderCell.SortGlyphDirection =
+                direction == ListSortDirection.Ascending ?
+                SortOrder.Ascending : SortOrder.Descending;
+        }
+
+        private void BereketDataGrid_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            // Put each of the columns into programmatic sort mode.
+            foreach (DataGridViewColumn column in BereketDataGrid.Columns)
+            {
+                column.SortMode = DataGridViewColumnSortMode.Programmatic;
+            }
+        }
+
+        private void CajunDataGrid_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            DataGridViewColumn newColumn = CajunDataGrid.Columns[e.ColumnIndex];
+            DataGridViewColumn oldColumn = CajunDataGrid.SortedColumn;
+            ListSortDirection direction;
+
+            // If oldColumn is null, then the DataGridView is not sorted.
+            if (oldColumn != null)
+            {
+                // Sort the same column again, reversing the SortOrder.
+                if (oldColumn == newColumn &&
+                    CajunDataGrid.SortOrder == SortOrder.Ascending)
+                {
+                    direction = ListSortDirection.Descending;
+                }
+                else
+                {
+                    // Sort a new column and remove the old SortGlyph.
+                    direction = ListSortDirection.Ascending;
+                    oldColumn.HeaderCell.SortGlyphDirection = SortOrder.None;
+                }
+            }
+            else
+            {
+                direction = ListSortDirection.Ascending;
+            }
+
+            // Sort the selected column.
+            CajunDataGrid.Sort(newColumn, direction);
+            newColumn.HeaderCell.SortGlyphDirection =
+                direction == ListSortDirection.Ascending ?
+                SortOrder.Ascending : SortOrder.Descending;
+        }
+
+        private void CajunDataGrid_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            // Put each of the columns into programmatic sort mode.
+            foreach (DataGridViewColumn column in CajunDataGrid.Columns)
+            {
+                column.SortMode = DataGridViewColumnSortMode.Programmatic;
+            }
+        }
+
+        private void HotDataGrid_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            DataGridViewColumn newColumn = HotDataGrid.Columns[e.ColumnIndex];
+            DataGridViewColumn oldColumn = HotDataGrid.SortedColumn;
+            ListSortDirection direction;
+
+            // If oldColumn is null, then the DataGridView is not sorted.
+            if (oldColumn != null)
+            {
+                // Sort the same column again, reversing the SortOrder.
+                if (oldColumn == newColumn &&
+                    HotDataGrid.SortOrder == SortOrder.Ascending)
+                {
+                    direction = ListSortDirection.Descending;
+                }
+                else
+                {
+                    // Sort a new column and remove the old SortGlyph.
+                    direction = ListSortDirection.Ascending;
+                    oldColumn.HeaderCell.SortGlyphDirection = SortOrder.None;
+                }
+            }
+            else
+            {
+                direction = ListSortDirection.Ascending;
+            }
+
+            // Sort the selected column.
+            HotDataGrid.Sort(newColumn, direction);
+            newColumn.HeaderCell.SortGlyphDirection =
+                direction == ListSortDirection.Ascending ?
+                SortOrder.Ascending : SortOrder.Descending;
+        }
+
+        private void HotDataGrid_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            // Put each of the columns into programmatic sort mode.
+            foreach (DataGridViewColumn column in HotDataGrid.Columns)
+            {
+                column.SortMode = DataGridViewColumnSortMode.Programmatic;
+            }
+        }
+        private void HeyDataGrid_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            DataGridViewColumn newColumn = HeyDataGrid.Columns[e.ColumnIndex];
+            DataGridViewColumn oldColumn = HeyDataGrid.SortedColumn;
+            ListSortDirection direction;
+
+            // If oldColumn is null, then the DataGridView is not sorted.
+            if (oldColumn != null)
+            {
+                // Sort the same column again, reversing the SortOrder.
+                if (oldColumn == newColumn &&
+                    HeyDataGrid.SortOrder == SortOrder.Ascending)
+                {
+                    direction = ListSortDirection.Descending;
+                }
+                else
+                {
+                    // Sort a new column and remove the old SortGlyph.
+                    direction = ListSortDirection.Ascending;
+                    oldColumn.HeaderCell.SortGlyphDirection = SortOrder.None;
+                }
+            }
+            else
+            {
+                direction = ListSortDirection.Ascending;
+            }
+
+            // Sort the selected column.
+            HeyDataGrid.Sort(newColumn, direction);
+            newColumn.HeaderCell.SortGlyphDirection =
+                direction == ListSortDirection.Ascending ?
+                SortOrder.Ascending : SortOrder.Descending;
+        }
+
+        private void HeyDataGrid_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            // Put each of the columns into programmatic sort mode.
+            foreach (DataGridViewColumn column in HeyDataGrid.Columns)
+            {
+                column.SortMode = DataGridViewColumnSortMode.Programmatic;
+            }
+        }
+        private void KofteciDataGrid_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            DataGridViewColumn newColumn = KofteciDataGrid.Columns[e.ColumnIndex];
+            DataGridViewColumn oldColumn = KofteciDataGrid.SortedColumn;
+            ListSortDirection direction;
+
+            if (oldColumn != null)
+            {
+                if (oldColumn == newColumn &&
+                    KofteciDataGrid.SortOrder == SortOrder.Ascending)
+                {
+                    direction = ListSortDirection.Descending;
+                }
+                else
+                {
+                    direction = ListSortDirection.Ascending;
+                    oldColumn.HeaderCell.SortGlyphDirection = SortOrder.None;
+                }
+            }
+            else
+            {
+                direction = ListSortDirection.Ascending;
+            }
+
+            // Sort the selected column.
+            KofteciDataGrid.Sort(newColumn, direction);
+            newColumn.HeaderCell.SortGlyphDirection =
+                direction == ListSortDirection.Ascending ?
+                SortOrder.Ascending : SortOrder.Descending;
+        }
+
+        private void KofteciDataGrid_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            foreach (DataGridViewColumn column in KofteciDataGrid.Columns)
+            {
+                column.SortMode = DataGridViewColumnSortMode.Programmatic;
+            }
+        }
+        private void AdileDataGrid_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            DataGridViewColumn newColumn = AdileDataGrid.Columns[e.ColumnIndex];
+            DataGridViewColumn oldColumn = AdileDataGrid.SortedColumn;
+            ListSortDirection direction;
+
+            if (oldColumn != null)
+            {
+                if (oldColumn == newColumn &&
+                    AdileDataGrid.SortOrder == SortOrder.Ascending)
+                {
+                    direction = ListSortDirection.Descending;
+                }
+                else
+                {
+                    direction = ListSortDirection.Ascending;
+                    oldColumn.HeaderCell.SortGlyphDirection = SortOrder.None;
+                }
+            }
+            else
+            {
+                direction = ListSortDirection.Ascending;
+            }
+
+            // Sort the selected column.
+            AdileDataGrid.Sort(newColumn, direction);
+            newColumn.HeaderCell.SortGlyphDirection =
+                direction == ListSortDirection.Ascending ?
+                SortOrder.Ascending : SortOrder.Descending;
+        }
+
+        private void AdileDataGrid_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            foreach (DataGridViewColumn column in AdileDataGrid.Columns)
+            {
+                column.SortMode = DataGridViewColumnSortMode.Programmatic;
+            }
+        }
+        private void DigerDataGrid_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            DataGridViewColumn newColumn = DigerDataGrid.Columns[e.ColumnIndex];
+            DataGridViewColumn oldColumn = DigerDataGrid.SortedColumn;
+            ListSortDirection direction;
+
+            if (oldColumn != null)
+            {
+                if (oldColumn == newColumn &&
+                    DigerDataGrid.SortOrder == SortOrder.Ascending)
+                {
+                    direction = ListSortDirection.Descending;
+                }
+                else
+                {
+                    direction = ListSortDirection.Ascending;
+                    oldColumn.HeaderCell.SortGlyphDirection = SortOrder.None;
+                }
+            }
+            else
+            {
+                direction = ListSortDirection.Ascending;
+            }
+
+            // Sort the selected column.
+            DigerDataGrid.Sort(newColumn, direction);
+            newColumn.HeaderCell.SortGlyphDirection =
+                direction == ListSortDirection.Ascending ?
+                SortOrder.Ascending : SortOrder.Descending;
+        }
+
+        private void DigerDataGrid_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            foreach (DataGridViewColumn column in DigerDataGrid.Columns)
+            {
+                column.SortMode = DataGridViewColumnSortMode.Programmatic;
+            }
+        }
+
+
+
+
+
         internal void KomageneDataGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0 && e.ColumnIndex == KomageneDataGrid.Columns["KomageneBaglanButonu"].Index)
