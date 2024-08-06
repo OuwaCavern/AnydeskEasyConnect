@@ -380,10 +380,8 @@ namespace AnydeskEasyConnect
             DataGridViewColumn oldColumn = HotDataGrid.SortedColumn;
             ListSortDirection direction;
 
-            // If oldColumn is null, then the DataGridView is not sorted.
             if (oldColumn != null)
             {
-                // Sort the same column again, reversing the SortOrder.
                 if (oldColumn == newColumn &&
                     HotDataGrid.SortOrder == SortOrder.Ascending)
                 {
@@ -391,7 +389,6 @@ namespace AnydeskEasyConnect
                 }
                 else
                 {
-                    // Sort a new column and remove the old SortGlyph.
                     direction = ListSortDirection.Ascending;
                     oldColumn.HeaderCell.SortGlyphDirection = SortOrder.None;
                 }
@@ -401,7 +398,6 @@ namespace AnydeskEasyConnect
                 direction = ListSortDirection.Ascending;
             }
 
-            // Sort the selected column.
             HotDataGrid.Sort(newColumn, direction);
             newColumn.HeaderCell.SortGlyphDirection =
                 direction == ListSortDirection.Ascending ?
@@ -410,7 +406,6 @@ namespace AnydeskEasyConnect
 
         private void HotDataGrid_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
-            // Put each of the columns into programmatic sort mode.
             foreach (DataGridViewColumn column in HotDataGrid.Columns)
             {
                 column.SortMode = DataGridViewColumnSortMode.Programmatic;
@@ -422,10 +417,9 @@ namespace AnydeskEasyConnect
             DataGridViewColumn oldColumn = HeyDataGrid.SortedColumn;
             ListSortDirection direction;
 
-            // If oldColumn is null, then the DataGridView is not sorted.
             if (oldColumn != null)
             {
-                // Sort the same column again, reversing the SortOrder.
+
                 if (oldColumn == newColumn &&
                     HeyDataGrid.SortOrder == SortOrder.Ascending)
                 {
@@ -433,7 +427,6 @@ namespace AnydeskEasyConnect
                 }
                 else
                 {
-                    // Sort a new column and remove the old SortGlyph.
                     direction = ListSortDirection.Ascending;
                     oldColumn.HeaderCell.SortGlyphDirection = SortOrder.None;
                 }
@@ -442,8 +435,6 @@ namespace AnydeskEasyConnect
             {
                 direction = ListSortDirection.Ascending;
             }
-
-            // Sort the selected column.
             HeyDataGrid.Sort(newColumn, direction);
             newColumn.HeaderCell.SortGlyphDirection =
                 direction == ListSortDirection.Ascending ?
@@ -1302,46 +1293,55 @@ namespace AnydeskEasyConnect
         {
             SearchFunction.BindSearchData(KomageneDataGrid, "Komagene");
             KomageneDataGrid.Refresh();
+            KomageneDataGrid.Focus();
         }
         private void CajunAramaButonu_Click(object sender, EventArgs e)
         {
             SearchFunction.BindSearchData(CajunDataGrid, "Cajun");
             CajunDataGrid.Refresh();
+            CajunDataGrid.Focus();
         }
         private void AdileAramaButonu_Click(object sender, EventArgs e)
         {
             SearchFunction.BindSearchData(AdileDataGrid, "Adile");
             AdileDataGrid.Refresh();
+            AdileDataGrid.Focus();
         }
         private void KofteciAramaButonu_Click(object sender, EventArgs e)
         {
             SearchFunction.BindSearchData(KofteciDataGrid, "Kofteci");
             KofteciDataGrid.Refresh();
+            KofteciDataGrid.Focus();
         }
         private void BereketAramaButonu_Click(object sender, EventArgs e)
         {
             SearchFunction.BindSearchData(BereketDataGrid, "Bereket");
             KomageneDataGrid.Refresh();
+            KomageneDataGrid.Focus();
         }
         private void HotAramaButonu_Click(object sender, EventArgs e)
         {
             SearchFunction.BindSearchData(HotDataGrid, "Hot");
             HotDataGrid.Refresh();
+            HotDataGrid.Focus();
         }
         private void MaydonozAramaButonu_Click(object sender, EventArgs e)
         {
             SearchFunction.BindSearchData(MaydonozDataGrid, "Maydonoz");
             MaydonozDataGrid.Refresh();
+            MaydonozDataGrid.Focus();
         }
         private void HeyAramaButonu_Click(object sender, EventArgs e)
         {
             SearchFunction.BindSearchData(HeyDataGrid, "Hey");
             HeyDataGrid.Refresh();
+            HeyDataGrid.Focus();
         }
         private void DigerAramaButonu_Click(object sender, EventArgs e)
         {
             SearchFunction.BindSearchData(DigerDataGrid, "Diger");
             DigerDataGrid.Refresh();
+            DigerDataGrid.Focus();
         }
 
         private void mainTabControl_SelectedIndexChanged(object sender, EventArgs e)
