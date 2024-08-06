@@ -234,10 +234,8 @@ namespace AnydeskEasyConnect
             DataGridViewColumn oldColumn = KomageneDataGrid.SortedColumn;
             ListSortDirection direction;
 
-            // If oldColumn is null, then the DataGridView is not sorted.
             if (oldColumn != null)
             {
-                // Sort the same column again, reversing the SortOrder.
                 if (oldColumn == newColumn &&
                     KomageneDataGrid.SortOrder == SortOrder.Ascending)
                 {
@@ -245,7 +243,6 @@ namespace AnydeskEasyConnect
                 }
                 else
                 {
-                    // Sort a new column and remove the old SortGlyph.
                     direction = ListSortDirection.Ascending;
                     oldColumn.HeaderCell.SortGlyphDirection = SortOrder.None;
                 }
@@ -255,7 +252,6 @@ namespace AnydeskEasyConnect
                 direction = ListSortDirection.Ascending;
             }
 
-            // Sort the selected column.
             KomageneDataGrid.Sort(newColumn, direction);
             newColumn.HeaderCell.SortGlyphDirection =
                 direction == ListSortDirection.Ascending ?
@@ -264,7 +260,6 @@ namespace AnydeskEasyConnect
 
         private void KomageneDataGrid_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
-            // Put each of the columns into programmatic sort mode.
             foreach (DataGridViewColumn column in KomageneDataGrid.Columns)
             {
                 column.SortMode = DataGridViewColumnSortMode.Programmatic;
@@ -276,10 +271,8 @@ namespace AnydeskEasyConnect
             DataGridViewColumn oldColumn = BereketDataGrid.SortedColumn;
             ListSortDirection direction;
 
-            // If oldColumn is null, then the DataGridView is not sorted.
             if (oldColumn != null)
             {
-                // Sort the same column again, reversing the SortOrder.
                 if (oldColumn == newColumn &&
                     BereketDataGrid.SortOrder == SortOrder.Ascending)
                 {
@@ -287,7 +280,6 @@ namespace AnydeskEasyConnect
                 }
                 else
                 {
-                    // Sort a new column and remove the old SortGlyph.
                     direction = ListSortDirection.Ascending;
                     oldColumn.HeaderCell.SortGlyphDirection = SortOrder.None;
                 }
@@ -297,7 +289,6 @@ namespace AnydeskEasyConnect
                 direction = ListSortDirection.Ascending;
             }
 
-            // Sort the selected column.
             BereketDataGrid.Sort(newColumn, direction);
             newColumn.HeaderCell.SortGlyphDirection =
                 direction == ListSortDirection.Ascending ?
@@ -306,7 +297,6 @@ namespace AnydeskEasyConnect
 
         private void BereketDataGrid_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
-            // Put each of the columns into programmatic sort mode.
             foreach (DataGridViewColumn column in BereketDataGrid.Columns)
             {
                 column.SortMode = DataGridViewColumnSortMode.Programmatic;
@@ -319,10 +309,8 @@ namespace AnydeskEasyConnect
             DataGridViewColumn oldColumn = CajunDataGrid.SortedColumn;
             ListSortDirection direction;
 
-            // If oldColumn is null, then the DataGridView is not sorted.
             if (oldColumn != null)
             {
-                // Sort the same column again, reversing the SortOrder.
                 if (oldColumn == newColumn &&
                     CajunDataGrid.SortOrder == SortOrder.Ascending)
                 {
@@ -330,7 +318,6 @@ namespace AnydeskEasyConnect
                 }
                 else
                 {
-                    // Sort a new column and remove the old SortGlyph.
                     direction = ListSortDirection.Ascending;
                     oldColumn.HeaderCell.SortGlyphDirection = SortOrder.None;
                 }
@@ -340,7 +327,6 @@ namespace AnydeskEasyConnect
                 direction = ListSortDirection.Ascending;
             }
 
-            // Sort the selected column.
             CajunDataGrid.Sort(newColumn, direction);
             newColumn.HeaderCell.SortGlyphDirection =
                 direction == ListSortDirection.Ascending ?
@@ -349,7 +335,6 @@ namespace AnydeskEasyConnect
 
         private void CajunDataGrid_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
-            // Put each of the columns into programmatic sort mode.
             foreach (DataGridViewColumn column in CajunDataGrid.Columns)
             {
                 column.SortMode = DataGridViewColumnSortMode.Programmatic;
@@ -425,7 +410,6 @@ namespace AnydeskEasyConnect
 
         private void HeyDataGrid_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
-            // Put each of the columns into programmatic sort mode.
             foreach (DataGridViewColumn column in HeyDataGrid.Columns)
             {
                 column.SortMode = DataGridViewColumnSortMode.Programmatic;
@@ -455,7 +439,6 @@ namespace AnydeskEasyConnect
                 direction = ListSortDirection.Ascending;
             }
 
-            // Sort the selected column.
             KofteciDataGrid.Sort(newColumn, direction);
             newColumn.HeaderCell.SortGlyphDirection =
                 direction == ListSortDirection.Ascending ?
@@ -493,7 +476,6 @@ namespace AnydeskEasyConnect
                 direction = ListSortDirection.Ascending;
             }
 
-            // Sort the selected column.
             DigerDataGrid.Sort(newColumn, direction);
             newColumn.HeaderCell.SortGlyphDirection =
                 direction == ListSortDirection.Ascending ?
@@ -1158,49 +1140,41 @@ namespace AnydeskEasyConnect
         {
             SearchFunction.BindSearchData(KomageneDataGrid, "Komagene");
             KomageneDataGrid.Refresh();
-            KomageneDataGrid.Focus();
         }
         private void CajunAramaButonu_Click(object sender, EventArgs e)
         {
             SearchFunction.BindSearchData(CajunDataGrid, "Cajun");
             CajunDataGrid.Refresh();
-            CajunDataGrid.Focus();
         }
         private void KofteciAramaButonu_Click(object sender, EventArgs e)
         {
             SearchFunction.BindSearchData(KofteciDataGrid, "Kofteci");
             KofteciDataGrid.Refresh();
-            KofteciDataGrid.Focus();
         }
         private void BereketAramaButonu_Click(object sender, EventArgs e)
         {
             SearchFunction.BindSearchData(BereketDataGrid, "Bereket");
             KomageneDataGrid.Refresh();
-            KomageneDataGrid.Focus();
         }
         private void HotAramaButonu_Click(object sender, EventArgs e)
         {
             SearchFunction.BindSearchData(HotDataGrid, "Hot");
             HotDataGrid.Refresh();
-            HotDataGrid.Focus();
         }
         private void MaydonozAramaButonu_Click(object sender, EventArgs e)
         {
             SearchFunction.BindSearchData(MaydonozDataGrid, "Maydonoz");
             MaydonozDataGrid.Refresh();
-            MaydonozDataGrid.Focus();
         }
         private void HeyAramaButonu_Click(object sender, EventArgs e)
         {
             SearchFunction.BindSearchData(HeyDataGrid, "Hey");
             HeyDataGrid.Refresh();
-            HeyDataGrid.Focus();
         }
         private void DigerAramaButonu_Click(object sender, EventArgs e)
         {
             SearchFunction.BindSearchData(DigerDataGrid, "Diger");
             DigerDataGrid.Refresh();
-            DigerDataGrid.Focus();
         }
 
         private void mainTabControl_SelectedIndexChanged(object sender, EventArgs e)
