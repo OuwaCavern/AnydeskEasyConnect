@@ -1,4 +1,5 @@
 ﻿using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore.ChangeTracking.Internal;
 
 namespace AnydeskEasyConnect
 {
@@ -12,9 +13,10 @@ namespace AnydeskEasyConnect
             };
             DataGrid.DataSource = BindingSource;
         }
-        private static List<Anydesks> AramaSonucunuGetir(string subeAdiylaAramaGirdisi, string connectionString, string sirketAdi)
+        private static SortableBindingList<Anydesks> AramaSonucunuGetir(string subeAdiylaAramaGirdisi, string connectionString, string sirketAdi)
         {
-            List<Anydesks> returnThese = [];
+            List<Anydesks> listOfAnydesks = new();
+            SortableBindingList<Anydesks> returnThese = new SortableBindingList<Anydesks>(listOfAnydesks);
             if (subeAdiylaAramaGirdisi != null)
             {
                 subeAdiylaAramaGirdisi = subeAdiylaAramaGirdisi.Trim();

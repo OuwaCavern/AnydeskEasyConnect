@@ -23,9 +23,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="connectionstring.config">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="DesenPos_32512.ico" />
   </ItemGroup>
 
@@ -48,6 +45,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="App.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="icons\DesenPos_32512.ico">
       <Pack>True</Pack>
       <PackagePath>\</PackagePath>
