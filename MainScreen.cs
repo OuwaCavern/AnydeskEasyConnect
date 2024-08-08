@@ -33,11 +33,6 @@ namespace AnydeskEasyConnect
             recBereketAramaButonu = new Rectangle(BereketAramaButonu.Location, BereketAramaButonu.Size);
             recBereketAramaGirdisi = new Rectangle(BereketAramaGirdisi.Location, BereketAramaGirdisi.Size);
             recBereketYenilemeButonu = new Rectangle(BereketYenileButonu.Location, BereketYenileButonu.Size);
-            recAdileAnydeskEkleButonu = new Rectangle(AdileAnydeskEkleButonu.Location, AdileAnydeskEkleButonu.Size);
-            recAdileDataGrid = new Rectangle(AdileDataGrid.Location, AdileDataGrid.Size);
-            recAdileAramaButonu = new Rectangle(AdileAramaButonu.Location, AdileAramaButonu.Size);
-            recAdileAramaGirdisi = new Rectangle(AdileAramaGirdisi.Location, AdileAramaGirdisi.Size);
-            recAdileYenilemeButonu = new Rectangle(AdileYenileButonu.Location, AdileYenileButonu.Size);
             recKofteciAnydeskEkleButonu = new Rectangle(KofteciAnydeskEkleButonu.Location, KofteciAnydeskEkleButonu.Size);
             recKofteciDataGrid = new Rectangle(KofteciDataGrid.Location, KofteciDataGrid.Size);
             recKofteciAramaButonu = new Rectangle(KofteciAramaButonu.Location, KofteciAramaButonu.Size);
@@ -70,11 +65,6 @@ namespace AnydeskEasyConnect
         private Rectangle recCajunAramaButonu;
         private Rectangle recCajunYenilemeButonu;
         private Rectangle recCajunAramaGirdisi;
-        private Rectangle recAdileAnydeskEkleButonu;
-        private Rectangle recAdileDataGrid;
-        private Rectangle recAdileAramaButonu;
-        private Rectangle recAdileYenilemeButonu;
-        private Rectangle recAdileAramaGirdisi;
         private Rectangle recBereketAnydeskEkleButonu;
         private Rectangle recBereketDataGrid;
         private Rectangle recBereketAramaButonu;
@@ -113,11 +103,6 @@ namespace AnydeskEasyConnect
             ResizeControl(KomageneAramaButonu, recKomageneAramaButonu);
             ResizeControl(KomageneYenilemeButonu, recKomageneYenilemeButonu);
             ResizeControl(KomageneSubeAdiTextBox, recKomageneAramaGirdisi);
-            ResizeControl(AdileAnydeskEkleButonu, recAdileAnydeskEkleButonu);
-            ResizeControl(AdileDataGrid, recAdileDataGrid);
-            ResizeControl(AdileAramaButonu, recAdileAramaButonu);
-            ResizeControl(AdileYenileButonu, recAdileYenilemeButonu);
-            ResizeControl(AdileAramaGirdisi, recAdileAramaGirdisi);
             ResizeControl(MaydonozAnydeskEkleButonu, recMaydonozAnydeskEkleButonu);
             ResizeControl(MaydonozDataGrid, recMaydonozDataGrid);
             ResizeControl(MaydonozAramaButonu, recMaydonozAramaButonu);
@@ -177,7 +162,6 @@ namespace AnydeskEasyConnect
             BindingSource CajunCornerBindingSource = new BindingSource();
             BindingSource BereketDonerBindingSource = new BindingSource();
             BindingSource HotDonerBindingSource = new BindingSource();
-            BindingSource AdileSultanBindingSource = new BindingSource();
             BindingSource HeyDonerBindingSource = new BindingSource();
             BindingSource DigerBindingSource = new BindingSource();
 
@@ -187,7 +171,6 @@ namespace AnydeskEasyConnect
             CajunCornerBindingSource.DataSource = anydeskDAO.AnydeskleriGetir("Cajun");
             BereketDonerBindingSource.DataSource = anydeskDAO.AnydeskleriGetir("Bereket");
             HotDonerBindingSource.DataSource = anydeskDAO.AnydeskleriGetir("Hot");
-            AdileSultanBindingSource.DataSource = anydeskDAO.AnydeskleriGetir("Adile");
             HeyDonerBindingSource.DataSource = anydeskDAO.AnydeskleriGetir("Hey");
             DigerBindingSource.DataSource = anydeskDAO.AnydeskleriGetir("Diger");
 
@@ -197,7 +180,6 @@ namespace AnydeskEasyConnect
             CajunDataGrid.DataSource = CajunCornerBindingSource;
             BereketDataGrid.DataSource = BereketDonerBindingSource;
             HotDataGrid.DataSource = HotDonerBindingSource;
-            AdileDataGrid.DataSource = AdileSultanBindingSource;
             HeyDataGrid.DataSource = HeyDonerBindingSource;
             DigerDataGrid.DataSource = DigerBindingSource;
 
@@ -252,10 +234,8 @@ namespace AnydeskEasyConnect
             DataGridViewColumn oldColumn = KomageneDataGrid.SortedColumn;
             ListSortDirection direction;
 
-            // If oldColumn is null, then the DataGridView is not sorted.
             if (oldColumn != null)
             {
-                // Sort the same column again, reversing the SortOrder.
                 if (oldColumn == newColumn &&
                     KomageneDataGrid.SortOrder == SortOrder.Ascending)
                 {
@@ -263,7 +243,6 @@ namespace AnydeskEasyConnect
                 }
                 else
                 {
-                    // Sort a new column and remove the old SortGlyph.
                     direction = ListSortDirection.Ascending;
                     oldColumn.HeaderCell.SortGlyphDirection = SortOrder.None;
                 }
@@ -273,7 +252,6 @@ namespace AnydeskEasyConnect
                 direction = ListSortDirection.Ascending;
             }
 
-            // Sort the selected column.
             KomageneDataGrid.Sort(newColumn, direction);
             newColumn.HeaderCell.SortGlyphDirection =
                 direction == ListSortDirection.Ascending ?
@@ -282,12 +260,240 @@ namespace AnydeskEasyConnect
 
         private void KomageneDataGrid_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
-            // Put each of the columns into programmatic sort mode.
             foreach (DataGridViewColumn column in KomageneDataGrid.Columns)
             {
                 column.SortMode = DataGridViewColumnSortMode.Programmatic;
             }
         }
+        private void BereketDataGrid_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            DataGridViewColumn newColumn = BereketDataGrid.Columns[e.ColumnIndex];
+            DataGridViewColumn oldColumn = BereketDataGrid.SortedColumn;
+            ListSortDirection direction;
+
+            if (oldColumn != null)
+            {
+                if (oldColumn == newColumn &&
+                    BereketDataGrid.SortOrder == SortOrder.Ascending)
+                {
+                    direction = ListSortDirection.Descending;
+                }
+                else
+                {
+                    direction = ListSortDirection.Ascending;
+                    oldColumn.HeaderCell.SortGlyphDirection = SortOrder.None;
+                }
+            }
+            else
+            {
+                direction = ListSortDirection.Ascending;
+            }
+
+            BereketDataGrid.Sort(newColumn, direction);
+            newColumn.HeaderCell.SortGlyphDirection =
+                direction == ListSortDirection.Ascending ?
+                SortOrder.Ascending : SortOrder.Descending;
+        }
+
+        private void BereketDataGrid_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            foreach (DataGridViewColumn column in BereketDataGrid.Columns)
+            {
+                column.SortMode = DataGridViewColumnSortMode.Programmatic;
+            }
+        }
+
+        private void CajunDataGrid_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            DataGridViewColumn newColumn = CajunDataGrid.Columns[e.ColumnIndex];
+            DataGridViewColumn oldColumn = CajunDataGrid.SortedColumn;
+            ListSortDirection direction;
+
+            if (oldColumn != null)
+            {
+                if (oldColumn == newColumn &&
+                    CajunDataGrid.SortOrder == SortOrder.Ascending)
+                {
+                    direction = ListSortDirection.Descending;
+                }
+                else
+                {
+                    direction = ListSortDirection.Ascending;
+                    oldColumn.HeaderCell.SortGlyphDirection = SortOrder.None;
+                }
+            }
+            else
+            {
+                direction = ListSortDirection.Ascending;
+            }
+
+            CajunDataGrid.Sort(newColumn, direction);
+            newColumn.HeaderCell.SortGlyphDirection =
+                direction == ListSortDirection.Ascending ?
+                SortOrder.Ascending : SortOrder.Descending;
+        }
+
+        private void CajunDataGrid_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            foreach (DataGridViewColumn column in CajunDataGrid.Columns)
+            {
+                column.SortMode = DataGridViewColumnSortMode.Programmatic;
+            }
+        }
+
+        private void HotDataGrid_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            DataGridViewColumn newColumn = HotDataGrid.Columns[e.ColumnIndex];
+            DataGridViewColumn oldColumn = HotDataGrid.SortedColumn;
+            ListSortDirection direction;
+
+            if (oldColumn != null)
+            {
+                if (oldColumn == newColumn &&
+                    HotDataGrid.SortOrder == SortOrder.Ascending)
+                {
+                    direction = ListSortDirection.Descending;
+                }
+                else
+                {
+                    direction = ListSortDirection.Ascending;
+                    oldColumn.HeaderCell.SortGlyphDirection = SortOrder.None;
+                }
+            }
+            else
+            {
+                direction = ListSortDirection.Ascending;
+            }
+
+            HotDataGrid.Sort(newColumn, direction);
+            newColumn.HeaderCell.SortGlyphDirection =
+                direction == ListSortDirection.Ascending ?
+                SortOrder.Ascending : SortOrder.Descending;
+        }
+
+        private void HotDataGrid_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            foreach (DataGridViewColumn column in HotDataGrid.Columns)
+            {
+                column.SortMode = DataGridViewColumnSortMode.Programmatic;
+            }
+        }
+        private void HeyDataGrid_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            DataGridViewColumn newColumn = HeyDataGrid.Columns[e.ColumnIndex];
+            DataGridViewColumn oldColumn = HeyDataGrid.SortedColumn;
+            ListSortDirection direction;
+
+            if (oldColumn != null)
+            {
+
+                if (oldColumn == newColumn &&
+                    HeyDataGrid.SortOrder == SortOrder.Ascending)
+                {
+                    direction = ListSortDirection.Descending;
+                }
+                else
+                {
+                    direction = ListSortDirection.Ascending;
+                    oldColumn.HeaderCell.SortGlyphDirection = SortOrder.None;
+                }
+            }
+            else
+            {
+                direction = ListSortDirection.Ascending;
+            }
+            HeyDataGrid.Sort(newColumn, direction);
+            newColumn.HeaderCell.SortGlyphDirection =
+                direction == ListSortDirection.Ascending ?
+                SortOrder.Ascending : SortOrder.Descending;
+        }
+
+        private void HeyDataGrid_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            foreach (DataGridViewColumn column in HeyDataGrid.Columns)
+            {
+                column.SortMode = DataGridViewColumnSortMode.Programmatic;
+            }
+        }
+        private void KofteciDataGrid_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            DataGridViewColumn newColumn = KofteciDataGrid.Columns[e.ColumnIndex];
+            DataGridViewColumn oldColumn = KofteciDataGrid.SortedColumn;
+            ListSortDirection direction;
+
+            if (oldColumn != null)
+            {
+                if (oldColumn == newColumn &&
+                    KofteciDataGrid.SortOrder == SortOrder.Ascending)
+                {
+                    direction = ListSortDirection.Descending;
+                }
+                else
+                {
+                    direction = ListSortDirection.Ascending;
+                    oldColumn.HeaderCell.SortGlyphDirection = SortOrder.None;
+                }
+            }
+            else
+            {
+                direction = ListSortDirection.Ascending;
+            }
+
+            KofteciDataGrid.Sort(newColumn, direction);
+            newColumn.HeaderCell.SortGlyphDirection =
+                direction == ListSortDirection.Ascending ?
+                SortOrder.Ascending : SortOrder.Descending;
+        }
+
+        private void KofteciDataGrid_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            foreach (DataGridViewColumn column in KofteciDataGrid.Columns)
+            {
+                column.SortMode = DataGridViewColumnSortMode.Programmatic;
+            }
+        }
+        private void DigerDataGrid_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            DataGridViewColumn newColumn = DigerDataGrid.Columns[e.ColumnIndex];
+            DataGridViewColumn oldColumn = DigerDataGrid.SortedColumn;
+            ListSortDirection direction;
+
+            if (oldColumn != null)
+            {
+                if (oldColumn == newColumn &&
+                    DigerDataGrid.SortOrder == SortOrder.Ascending)
+                {
+                    direction = ListSortDirection.Descending;
+                }
+                else
+                {
+                    direction = ListSortDirection.Ascending;
+                    oldColumn.HeaderCell.SortGlyphDirection = SortOrder.None;
+                }
+            }
+            else
+            {
+                direction = ListSortDirection.Ascending;
+            }
+
+            DigerDataGrid.Sort(newColumn, direction);
+            newColumn.HeaderCell.SortGlyphDirection =
+                direction == ListSortDirection.Ascending ?
+                SortOrder.Ascending : SortOrder.Descending;
+        }
+
+        private void DigerDataGrid_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            foreach (DataGridViewColumn column in DigerDataGrid.Columns)
+            {
+                column.SortMode = DataGridViewColumnSortMode.Programmatic;
+            }
+        }
+
+
+
+
+
         internal void KomageneDataGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0 && e.ColumnIndex == KomageneDataGrid.Columns["KomageneBaglanButonu"].Index)
@@ -407,67 +613,6 @@ namespace AnydeskEasyConnect
                     EditExistingAnydesk editExistingAnydeskCajun = new EditExistingAnydesk("Cajun");
                     editExistingAnydeskCajun.SatirinBilgileriniAl(subeAdiString, anydeskNumarasiString, anydeskParolasiString, bilgisayarYetkisiString);
                     editExistingAnydeskCajun.Show();
-                }
-            }
-        }
-        internal void AdileDataGrid_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0 && e.ColumnIndex == AdileDataGrid.Columns["AdileBaglanButonu"].Index)
-            {
-                object anydeskNumarasi = AdileDataGrid.Rows[e.RowIndex].Cells["ŞubeninAnydeskNumarası"].Value;
-                if (anydeskNumarasi != null)
-                {
-                    AnydeskiBaslat(anydeskNumarasi);
-                }
-            }
-            else if (e.RowIndex >= 0 && e.ColumnIndex == AdileDataGrid.Columns["AdileSifreyleBaglanButonu"].Index)
-            {
-                object anydeskNumarasi = AdileDataGrid.Rows[e.RowIndex].Cells["ŞubeninAnydeskNumarası"].Value;
-                object anydeskParolasi = AdileDataGrid.Rows[e.RowIndex].Cells["ŞubeninAnydeskParolası"].Value;
-                if (anydeskNumarasi != null)
-                {
-                    AnydeskiSifreyleBaslat(anydeskNumarasi, anydeskParolasi);
-                }
-            }
-            else if (e.RowIndex >= 0 && e.ColumnIndex == AdileDataGrid.Columns["AdileDuzenleButonu"].Index)
-            {
-                object bilgisayarYetkisi = AdileDataGrid.Rows[e.RowIndex].Cells["BilgisayarYetkisi"].Value;
-                object subeAdi = AdileDataGrid.Rows[e.RowIndex].Cells["ŞubeninAdı"].Value;
-                object anydeskNumarasi = AdileDataGrid.Rows[e.RowIndex].Cells["ŞubeninAnydeskNumarası"].Value;
-                object anydeskParolasi = AdileDataGrid.Rows[e.RowIndex].Cells["ŞubeninAnydeskParolası"].Value;
-                if (anydeskNumarasi != null)
-                {
-                    string? anydeskParolasiString = "";
-                    string? subeAdiString = "";
-                    string? bilgisayarYetkisiString = "";
-                    try
-                    {
-                        anydeskParolasiString = anydeskParolasi.ToString();
-                    }
-                    catch
-                    {
-                        MessageBox.Show("Null Reference Exception: Parolası null olan en az 1 girdi bulundu.");
-                    }
-                    try
-                    {
-                        subeAdiString = subeAdi.ToString();
-                    }
-                    catch
-                    {
-                        MessageBox.Show("Null Reference Exception: Şube adı null olan en az 1 girdi bulundu.");
-                    }
-                    try
-                    {
-                        bilgisayarYetkisiString = bilgisayarYetkisi.ToString();
-                    }
-                    catch
-                    {
-                        MessageBox.Show("Null Reference Exception: Bilgisayar Yetkisi null olan en az 1 girdi bulundu.");
-                    }
-                    string anydeskNumarasiString = anydeskNumarasi.ToString();
-                    EditExistingAnydesk editExistingAnydeskAdile = new EditExistingAnydesk("Adile");
-                    editExistingAnydeskAdile.SatirinBilgileriniAl(subeAdiString, anydeskNumarasiString, anydeskParolasiString, bilgisayarYetkisiString);
-                    editExistingAnydeskAdile.Show();
                 }
             }
         }
@@ -844,11 +989,6 @@ namespace AnydeskEasyConnect
             AddNewAnydesk addNewAnydesk = new("Komagene");
             addNewAnydesk.Show();
         }
-        private void AdileAnydeskEkleButonu_Click(object sender, EventArgs e)
-        {
-            AddNewAnydesk addNewAnydesk = new("Adile");
-            addNewAnydesk.Show();
-        }
         private void MaydonozAnydeskEkleButonu_Click(object sender, EventArgs e)
         {
             AddNewAnydesk addNewAnydesk = new("Maydonoz");
@@ -888,10 +1028,6 @@ namespace AnydeskEasyConnect
         {
             SayfaYenile("Komagene");
         }
-        private void AdileYenilemeButonu_Click(object sender, EventArgs e)
-        {
-            SayfaYenile("Adile");
-        }
         private void MaydonozYenilemeButonu_Click(object sender, EventArgs e)
         {
             SayfaYenile("Maydonoz");
@@ -923,11 +1059,6 @@ namespace AnydeskEasyConnect
             BindingSource bindingSource = new BindingSource();
             switch (sirketAdi)
             {
-                case "Adile":
-                    bindingSource.DataSource = anydeskDAO.AnydeskleriGetir("Adile");
-                    AdileDataGrid.DataSource = bindingSource;
-                    AdileDataGrid.Refresh();
-                    break;
                 case "Bereket":
                     bindingSource.DataSource = anydeskDAO.AnydeskleriGetir("Bereket");
                     BereketDataGrid.DataSource = bindingSource;
@@ -976,10 +1107,6 @@ namespace AnydeskEasyConnect
         {
             subeAdiylaAramaGirdisi = KomageneSubeAdiTextBox.Text;
         }
-        private void AdileAramaGirdisi_TextChanged(object sender, EventArgs e)
-        {
-            subeAdiylaAramaGirdisi = AdileAramaGirdisi.Text;
-        }
         private void CajunAramaGirdisi_TextChanged(object sender, EventArgs e)
         {
             subeAdiylaAramaGirdisi = CajunAramaGirdisi.Text;
@@ -1018,11 +1145,6 @@ namespace AnydeskEasyConnect
         {
             SearchFunction.BindSearchData(CajunDataGrid, "Cajun");
             CajunDataGrid.Refresh();
-        }
-        private void AdileAramaButonu_Click(object sender, EventArgs e)
-        {
-            SearchFunction.BindSearchData(AdileDataGrid, "Adile");
-            AdileDataGrid.Refresh();
         }
         private void KofteciAramaButonu_Click(object sender, EventArgs e)
         {
@@ -1066,11 +1188,6 @@ namespace AnydeskEasyConnect
             {
                 AcceptButton = KomageneAramaButonu;
                 KomageneSubeAdiTextBox.Focus();
-            }
-            else if (maınTabControl.SelectedTab == AdileTab)
-            {
-                AcceptButton = AdileAramaButonu;
-                AdileAramaGirdisi.Focus();
             }
             else if (maınTabControl.SelectedTab == CajunTab)
             {
