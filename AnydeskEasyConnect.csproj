@@ -19,10 +19,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="connectionstring.config" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Content Include="DesenPos_32512.ico" />
   </ItemGroup>
 
@@ -34,9 +30,7 @@
 
   <ItemGroup>
     <Compile Update="AddNewAnydesk.cs" />
-    <Compile Update="EditExistingAnydesk.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Update="EditExistingAnydesk.cs" />
     <Compile Update="Properties\Settings.Designer.cs">
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <AutoGen>True</AutoGen>
