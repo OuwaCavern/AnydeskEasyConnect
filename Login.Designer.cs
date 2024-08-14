@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             KullaniciAdiGirdisi = new TextBox();
             KullaniciParolasiGirdisi = new TextBox();
             KullaniciAdiLabel = new Label();
@@ -90,6 +91,7 @@
             Controls.Add(KullaniciAdiLabel);
             Controls.Add(KullaniciParolasiGirdisi);
             Controls.Add(KullaniciAdiGirdisi);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Login";
             Text = "Giriş Yap";
             ResumeLayout(false);

@@ -1516,7 +1516,6 @@ namespace AnydeskEasyConnect
         private TextBox DigerAramaGirdisi;
         private Button DigerAramaButonu;
         private Button DigerYenileButonu;
-        internal static DataGridView DigerDataGrid;
         private DataGridViewButtonColumn DigerBaglanButonu;
         private DataGridViewButtonColumn DigerSifreyleBaglanButonu;
         private DataGridViewButtonColumn DigerDuzenleButonu;
@@ -1527,7 +1526,6 @@ namespace AnydeskEasyConnect
         private TextBox HeyAramaGirdisi;
         private Button HeyAramaButonu;
         private Button HeyYenileButonu;
-        internal static DataGridView HeyDataGrid;
         private DataGridViewButtonColumn HeyBaglanButonu;
         private DataGridViewButtonColumn HeySifreyleBaglanButonu;
         private DataGridViewButtonColumn HeyDuzenleButonu;
@@ -1538,7 +1536,6 @@ namespace AnydeskEasyConnect
         private TextBox HotAramaGirdisi;
         private Button HotAramaButonu;
         private Button HotYenileButonu;
-        internal static DataGridView HotDataGrid;
         private DataGridViewButtonColumn HotBaglanButonu;
         private DataGridViewButtonColumn HotSifreyleBaglanButonu;
         private DataGridViewButtonColumn HotDuzenleButonu;
@@ -1549,7 +1546,6 @@ namespace AnydeskEasyConnect
         private TextBox BereketAramaGirdisi;
         private Button BereketAramaButonu;
         private Button BereketYenileButonu;
-        internal static DataGridView BereketDataGrid;
         private DataGridViewButtonColumn BereketBaglanButonu;
         private DataGridViewButtonColumn BereketSifreyleBaglanButonu;
         private DataGridViewButtonColumn BereketDuzenleButonu;
@@ -1560,7 +1556,6 @@ namespace AnydeskEasyConnect
         private TextBox CajunAramaGirdisi;
         private Button CajunAramaButonu;
         private Button CajunYenileButonu;
-        internal static DataGridView CajunDataGrid;
         private DataGridViewButtonColumn CajunBaglanButonu;
         private DataGridViewButtonColumn CajunSifreyleBaglanButonu;
         private DataGridViewButtonColumn CajunDuzenleButonu;
@@ -1571,7 +1566,6 @@ namespace AnydeskEasyConnect
         private TextBox KofteciAramaGirdisi;
         private Button KofteciAramaButonu;
         private Button KofteciYenileButonu;
-        internal static DataGridView KofteciDataGrid;
         private DataGridViewButtonColumn KofteciBaglanButonu;
         private DataGridViewButtonColumn KofteciSifreyleBaglanButonu;
         private DataGridViewButtonColumn KofteciDuzenleButonu;
@@ -1582,7 +1576,6 @@ namespace AnydeskEasyConnect
         private TextBox MaydonozAramaGirdisi;
         private Button MaydonozAramaButonu;
         private Button MaydonozYenileButonu;
-        internal static DataGridView MaydonozDataGrid;
         private DataGridViewButtonColumn MaydonozBaglanButonu;
         private DataGridViewButtonColumn MaydonozSifreyleBaglanButonu;
         private DataGridViewButtonColumn MaydonozDuzenleButonu;
@@ -1593,11 +1586,18 @@ namespace AnydeskEasyConnect
         private TextBox KomageneSubeAdiTextBox;
         private Button KomageneAramaButonu;
         private Button KomageneYenilemeButonu;
-        internal static DataGridView KomageneDataGrid;
         private DataGridViewButtonColumn KomageneBaglanButonu;
         private DataGridViewButtonColumn KomageneSifreyleBaglanButonu;
         private DataGridViewButtonColumn KomageneDuzenleButonu;
         private Button KomageneAnydeskEkleButonu;
         private TabControl maınTabControl;
+        internal static DataGridView DigerDataGrid;
+        internal static DataGridView HeyDataGrid;
+        internal static DataGridView HotDataGrid;
+        internal static DataGridView BereketDataGrid;
+        internal static DataGridView CajunDataGrid;
+        internal static DataGridView KofteciDataGrid;
+        internal static DataGridView MaydonozDataGrid;
+        internal static DataGridView KomageneDataGrid;
     }
 }

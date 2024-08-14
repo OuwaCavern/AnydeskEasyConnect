@@ -15,11 +15,11 @@
     <RepositoryUrl>https://github.com/OuwaCavern/AnydeskEasyConnect</RepositoryUrl>
     <AssemblyVersion>1.1</AssemblyVersion>
     <DelaySign>False</DelaySign>
-    <ApplicationIcon>DesenPos_32512.ico</ApplicationIcon>
+    <ApplicationIcon>letter-a.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="DesenPos_32512.ico" />
+    <Content Include="letter-a.ico" />
   </ItemGroup>
 
   <ItemGroup>
