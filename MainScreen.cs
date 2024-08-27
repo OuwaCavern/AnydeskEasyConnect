@@ -671,7 +671,7 @@ namespace AnydeskEasyConnect
                         MessageBox.Show("Null Reference Exception: Bilgisayar Yetkisi null olan en az 1 girdi bulundu.");
                     }
                     string anydeskNumarasiString = anydeskNumarasi.ToString();
-                    EditExistingAnydesk editExistingAnydeskKofteci = new EditExistingAnydesk("Bereket");
+                    EditExistingAnydesk editExistingAnydeskKofteci = new EditExistingAnydesk("Kofteci");
                     editExistingAnydeskKofteci.SatirinBilgileriniAl(subeAdiString, anydeskNumarasiString, anydeskParolasiString, bilgisayarYetkisiString);
                     editExistingAnydeskKofteci.Show();
                 }
